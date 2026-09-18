@@ -1,50 +1,53 @@
 # Gốm Sứ Đại Long — Admin CMS
 
-Standalone CMS deployed as a separate Vercel project.
+Standalone admin app deployed separately from the public website.
 
-## Target
+## Current decision
 
-- Project: `gomsudailong-admin`
-- Domain: `admin.gomsudailong.vn`
-- Public site remains: `gomsudailong.vn`
-- Visual editor: Puck
-- Persistent CMS: Supabase
-- Existing production CMS/API remains connected during migration.
-- Admin is always `noindex, nofollow, noarchive`.
+The CMS keeps the **existing production backend/database**. Supabase is not part of the target architecture.
 
-## Architecture
+Existing production endpoints remain the source of truth:
+
+- `/api/admin/settings`
+- `/api/admin/products/*`
+- `/api/admin/articles/*`
+- `/api/admin/media`
+- `/api/admin/upload`
+- `/api/admin/revisions`
+- `/api/admin/preview`
+
+The existing backend already supports draft/publish and revision restore for settings, products and articles.
+
+## Admin architecture
 
 ```
 admin.gomsudailong.vn
   ├─ Dashboard
-  ├─ Puck visual page builder
-  ├─ Pages / Sites
-  ├─ Products / Categories / Projects
+  ├─ Puck visual builder (layout draft layer)
+  ├─ Existing live visual editor
+  ├─ Products / Categories
   ├─ Articles / Media
-  ├─ Navigation
-  ├─ SEO / Redirects
-  ├─ Versions / Audit
-  ├─ Users / RBAC
-  └─ Deployments
-       │
-       ├─ Supabase CMS store
-       └─ gomsudailong.vn legacy API bridge
+  ├─ Revisions / Settings
+  └─ Existing CMS API/database
+         │
+         └─ gomsudailong.vn
 ```
+
+## Important safety rule
+
+Puck Page Schema is **not** written into `/api/admin/settings` until the backend source is recovered and the settings write path is extended safely. The legacy client sends the complete settings object on save, so sending a partial object could overwrite current production settings.
+
+Until that extension exists:
+
+- Puck layout drafts are local-only.
+- Real production content changes continue through the existing CMS editor/API.
+- No Supabase project or migration is required.
+- Public production remains untouched by the separated admin deployment.
 
 ## Environment
 
 ```
 UPSTREAM_ADMIN_ORIGIN=https://gomsudailong.vn
-NEXT_PUBLIC_SUPABASE_URL=
-SUPABASE_SERVICE_ROLE_KEY=
 CMS_PREVIEW_SECRET=
 CMS_REVALIDATE_SECRET=
 ```
-
-Never expose the service-role key in client-side code.
-
-## Migration
-
-`supabase/migrations/20260918_cms_core.sql` defines Sites, Pages, page versions, Navigation, Redirects, CMS users, audit log and publish jobs.
-
-The old production CMS remains available through `/legacy/admin/*` until the public app can render the new Page Schema directly.

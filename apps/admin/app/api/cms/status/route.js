@@ -1,0 +1,2 @@
+export const dynamic="force-dynamic";
+export async function GET(){return Response.json({ok:true,builder:"puck",persistence:process.env.NEXT_PUBLIC_SUPABASE_URL?"supabase":"local-draft",publishBackend:"pending-public-renderer"})}

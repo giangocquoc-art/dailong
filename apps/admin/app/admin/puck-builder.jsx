@@ -1,0 +1,30 @@
+"use client";
+import {useEffect,useState} from "react";
+import {Puck} from "@puckeditor/core";
+import "@puckeditor/core/puck.css";
+
+const initialData={root:{props:{title:"Trang chủ"}},content:[
+{type:"Hero",props:{id:"hero-1",kicker:"Gốm sứ Đại Long",title:"Không gian mang hồn gốm Việt",description:"Dựng bố cục trực tiếp bằng kéo thả. Nội dung production vẫn lưu bằng CMS hiện tại.",imageUrl:"https://gomsudailong.vn/images/hero-3.jpg"}},
+{type:"RichText",props:{id:"text-1",text:"Puck hiện là lớp thiết kế bố cục. Để tránh ghi đè settings production, publish thật vẫn đi qua editor CMS hiện tại cho tới khi source backend được khôi phục và mở rộng an toàn."}},
+{type:"CTA",props:{id:"cta-1",label:"Mở editor production",href:"/legacy/admin/editor"}}]};
+
+const config={categories:{layout:{title:"Bố cục",components:["Section","Columns","Spacer"]},content:{title:"Nội dung",components:["Hero","Heading","RichText","Image","CTA"]},commerce:{title:"Dữ liệu",components:["ProductGrid","ProjectGrid"]}},components:{
+Hero:{fields:{kicker:{type:"text"},title:{type:"text"},description:{type:"textarea"},imageUrl:{type:"text"}},defaultProps:{kicker:"Đại Long",title:"Tiêu đề hero",description:"Mô tả",imageUrl:"https://gomsudailong.vn/images/hero-3.jpg"},render:({kicker,title,description,imageUrl})=><section className="puck-preview-section"><div className="puck-hero" style={{backgroundImage:`url("${imageUrl}")`}}><div><div style={{fontSize:12,letterSpacing:".16em",textTransform:"uppercase",fontWeight:800}}>{kicker}</div><h1>{title}</h1><p>{description}</p></div></div></section>},
+Heading:{fields:{text:{type:"text"},level:{type:"select",options:[{label:"H2",value:"h2"},{label:"H3",value:"h3"}]}},defaultProps:{text:"Tiêu đề nội dung",level:"h2"},render:({text,level})=><section className="puck-preview-section">{level==="h3"?<h3 style={{fontSize:28,color:"#102a56"}}>{text}</h3>:<h2 style={{font:"600 40px Georgia,serif",color:"#102a56"}}>{text}</h2>}</section>},
+RichText:{fields:{text:{type:"textarea"}},defaultProps:{text:"Nội dung đoạn văn"},render:({text})=><section className="puck-preview-section"><div className="puck-rich">{text}</div></section>},
+Image:{fields:{src:{type:"text"},alt:{type:"text"},caption:{type:"text"}},defaultProps:{src:"https://gomsudailong.vn/images/hero-3.jpg",alt:"Ảnh Đại Long",caption:""},render:({src,alt,caption})=><section className="puck-preview-section"><img className="puck-image" src={src} alt={alt}/>{caption&&<p className="muted">{caption}</p>}</section>},
+CTA:{fields:{label:{type:"text"},href:{type:"text"}},defaultProps:{label:"Xem thêm",href:"/"},render:({label,href})=><section className="puck-preview-section"><a className="puck-cta" href={href}>{label}</a></section>},
+Section:{fields:{title:{type:"text"},body:{type:"textarea"},background:{type:"select",options:[{label:"Trắng",value:"#fff"},{label:"Xám nhạt",value:"#f6f7fb"},{label:"Xanh nhạt",value:"#eef4ff"}]}},defaultProps:{title:"Section",body:"Nội dung section",background:"#fff"},render:({title,body,background})=><section style={{background}}><div className="puck-preview-section"><h2 style={{font:"600 36px Georgia,serif",color:"#102a56"}}>{title}</h2><div className="puck-rich">{body}</div></div></section>},
+Columns:{fields:{leftTitle:{type:"text"},leftText:{type:"textarea"},rightTitle:{type:"text"},rightText:{type:"textarea"}},defaultProps:{leftTitle:"Cột trái",leftText:"Nội dung",rightTitle:"Cột phải",rightText:"Nội dung"},render:(p)=><section className="puck-preview-section"><div className="puck-columns"><div><h3>{p.leftTitle}</h3><p className="puck-rich">{p.leftText}</p></div><div><h3>{p.rightTitle}</h3><p className="puck-rich">{p.rightText}</p></div></div></section>},
+Spacer:{fields:{height:{type:"number",min:16,max:240}},defaultProps:{height:64},render:({height})=><div style={{height}}/>},
+ProductGrid:{fields:{title:{type:"text"},limit:{type:"number",min:1,max:12},category:{type:"text"}},defaultProps:{title:"Sản phẩm nổi bật",limit:6,category:"all"},render:({title,limit,category})=><section className="puck-preview-section"><h2 style={{font:"600 36px Georgia,serif",color:"#102a56"}}>{title}</h2><p className="muted">Query config: category={category}, limit={limit}. Dữ liệu thật vẫn lấy từ CMS sản phẩm hiện tại.</p><div className="puck-grid">{Array.from({length:Math.min(limit,6)}).map((_,i)=><div className="puck-tile" key={i}><b>Sản phẩm {i+1}</b><p className="muted">Placeholder bố cục.</p></div>)}</div></section>},
+ProjectGrid:{fields:{title:{type:"text"},limit:{type:"number",min:1,max:12}},defaultProps:{title:"Công trình tiêu biểu",limit:3},render:({title,limit})=><section className="puck-preview-section"><h2 style={{font:"600 36px Georgia,serif",color:"#102a56"}}>{title}</h2><div className="puck-grid">{Array.from({length:Math.min(limit,6)}).map((_,i)=><div className="puck-tile" key={i}><b>Công trình {i+1}</b><p className="muted">Placeholder bố cục.</p></div>)}</div></section>}
+}};
+
+export default function PuckBuilder(){
+const [data,setData]=useState(null);const [message,setMessage]=useState("");
+useEffect(()=>{try{const raw=localStorage.getItem("dailong:puck:home");setData(raw?JSON.parse(raw):initialData)}catch{setData(initialData)}},[]);
+function saveLocal(next){setData(next);try{localStorage.setItem("dailong:puck:home",JSON.stringify(next));setMessage("Đã lưu layout draft trên trình duyệt. Chưa ghi vào production CMS.")}catch{setMessage("Không lưu được layout draft.")}}
+if(!data)return <div style={{padding:30}}>Đang mở visual builder…</div>;
+return <div className="builder-shell"><div className="builder-banner"><b>Puck visual builder</b><span>Backend: CMS hiện tại · Layout schema: local draft an toàn</span><a className="ghost" href="/legacy/admin/editor">Sửa nội dung production</a>{message&&<span style={{marginLeft:"auto"}}>{message}</span>}</div><Puck config={config} data={data} onChange={setData} onPublish={saveLocal}/></div>;
+}

@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Đại Long Admin",
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-  },
+  title: "Đại Long CMS",
+  robots: { index: false, follow: false, nocache: true },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

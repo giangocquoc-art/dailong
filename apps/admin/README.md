@@ -1,49 +1,53 @@
-# Gốm Sứ Đại Long — Separate Admin Vercel App
+# Gốm Sứ Đại Long — Admin CMS
 
-This app is the first safe separation layer for the existing production CMS.
+Standalone admin app deployed separately from the public website.
 
-## Purpose
+## Current decision
 
-- Run on a Vercel project separate from the public site.
-- Use `admin.gomsudailong.vn`.
-- Keep the current production CMS and API as the upstream source of truth.
-- Avoid changing or redeploying the public site while the admin is being separated.
-- Keep the admin domain out of search indexes.
+The CMS keeps the **existing production backend/database**. Supabase is not part of the target architecture.
 
-The current production deployment already exposes these CMS surfaces:
+Existing production endpoints remain the source of truth:
 
-- `/admin`
-- `/admin/editor`
-- `/admin/products`
-- `/admin/categories`
-- `/admin/articles`
-- `/admin/media`
-- `/admin/revisions`
-- `/admin/settings`
-- `/admin/account`
-- `/api/admin/*`
+- `/api/admin/settings`
+- `/api/admin/products/*`
+- `/api/admin/articles/*`
+- `/api/admin/media`
+- `/api/admin/upload`
+- `/api/admin/revisions`
+- `/api/admin/preview`
 
-This app proxies those routes to `https://gomsudailong.vn`.
+The existing backend already supports draft/publish and revision restore for settings, products and articles.
 
-## Vercel configuration
+## Admin architecture
 
-Create a NEW Vercel project with:
+```
+admin.gomsudailong.vn
+  ├─ Dashboard
+  ├─ Puck visual builder (layout draft layer)
+  ├─ Existing live visual editor
+  ├─ Products / Categories
+  ├─ Articles / Media
+  ├─ Revisions / Settings
+  └─ Existing CMS API/database
+         │
+         └─ gomsudailong.vn
+```
 
-- Project name: `gomsudailong-admin`
-- Repository: `giangocquoc-art/dailong`
-- Root Directory: `apps/admin`
-- Framework: Next.js
-- Node.js: 24.x
-- Production domain: `admin.gomsudailong.vn`
-- Environment variable:
-  - `UPSTREAM_ADMIN_ORIGIN=https://gomsudailong.vn`
+## Important safety rule
 
-Do NOT attach `gomsudailong.vn` or `www.gomsudailong.vn` to this project.
+Puck Page Schema is **not** written into `/api/admin/settings` until the backend source is recovered and the settings write path is extended safely. The legacy client sends the complete settings object on save, so sending a partial object could overwrite current production settings.
 
-## Migration path
+Until that extension exists:
 
-This proxy is intentionally phase 1. It gives the admin its own deployment boundary immediately while preserving the working CMS.
+- Puck layout drafts are local-only.
+- Real production content changes continue through the existing CMS editor/API.
+- No Supabase project or migration is required.
+- Public production remains untouched by the separated admin deployment.
 
-Phase 2 moves the admin React/Puck UI into this app while keeping the production API as the source of truth.
+## Environment
 
-Phase 3 moves privileged admin integrations (Vercel deployments, revisions, media, RBAC) server-side into this app and leaves only public read/render APIs on the public site.
+```
+UPSTREAM_ADMIN_ORIGIN=https://gomsudailong.vn
+CMS_PREVIEW_SECRET=
+CMS_REVALIDATE_SECRET=
+```

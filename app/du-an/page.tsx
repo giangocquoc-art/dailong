@@ -8,7 +8,7 @@ import { contentText, currentPageHref, getLanguage, textFor, withLang, zaloHref,
 
 export const dynamic = "force-dynamic";
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
-  return { title: textFor(getLanguage((await searchParams).lang), "Công trình tham khảo", "Project references") };
+  return { title: textFor(getLanguage((await searchParams).lang), "Gợi ý ứng dụng", "Application ideas") };
 }
 export default async function ProjectsPage({ searchParams }: PageProps) {
   const [query, settings] = await Promise.all([searchParams, getSettings()]);
@@ -20,7 +20,7 @@ export default async function ProjectsPage({ searchParams }: PageProps) {
   ];
   return <SiteShell settings={settings} lang={lang} currentHref={currentPageHref("/du-an", query)}>
     <section className="page-intro"><div className="container-site">
-      <nav className="breadcrumbs" aria-label={textFor(lang, "Đường dẫn trang", "Breadcrumb")}><Link href={withLang("/", lang)}>{textFor(lang, "Trang chủ", "Home")}</Link><span aria-hidden="true">/</span><span>{textFor(lang, "Công trình", "Projects")}</span></nav>
+      <nav className="breadcrumbs" aria-label={textFor(lang, "Đường dẫn trang", "Breadcrumb")}><Link href={withLang("/", lang)}>{textFor(lang, "Trang chủ", "Home")}</Link><span aria-hidden="true">/</span><span>{textFor(lang, "Ứng dụng", "Applications")}</span></nav>
       <h1>{textFor(lang, "Khi gốm trở thành một phần của kiến trúc", "When ceramics become part of the architecture")}</h1>
       <p>{textFor(lang, "Gợi ý ứng dụng gốm kiến trúc Đại Long qua chất liệu, tỷ lệ và sắc men. Ảnh minh họa giúp hình dung cách phối; mỗi công trình cần được tư vấn theo hiện trạng thực tế.", "Explore Dai Long architectural ceramics through material, proportion and glaze. These visual references help with planning; each project should be specified for its actual conditions.")}</p>
     </div></section>

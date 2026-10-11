@@ -12,7 +12,7 @@ export function SiteFooter({ settings, lang = "vi" }: { settings: SiteSettings; 
       </div>
       <div><p className="footer-title">{textFor(lang, "Khám phá", "Explore")}</p><nav className="footer-links" aria-label={textFor(lang, "Điều hướng chân trang", "Footer navigation")}>
         <Link href={withLang("/san-pham", lang)}>{textFor(lang, "Bộ sưu tập sản phẩm", "Product collection")}</Link>
-        <Link href={withLang("/du-an", lang)}>{textFor(lang, "Gốm trong công trình", "Ceramics in architecture")}</Link>
+        <Link href={withLang("/du-an", lang)}>{textFor(lang, "Gợi ý ứng dụng", "Application ideas")}</Link>
         <Link href={withLang("/gioi-thieu", lang)}>{textFor(lang, "Câu chuyện Đại Long", "The Dai Long story")}</Link>
         <Link href={withLang("/lien-he", lang)}>{textFor(lang, "Liên hệ tư vấn", "Contact us")}</Link>
       </nav></div>

@@ -13,7 +13,7 @@ export function SiteHeader({ settings, lang, currentHref }: { settings: Pick<Sit
   const navigation = [
     { href: "/", label: textFor(lang, "Trang chủ", "Home") },
     { href: "/san-pham", label: textFor(lang, "Sản phẩm", "Products") },
-    { href: "/du-an", label: textFor(lang, "Công trình", "Projects") },
+    { href: "/du-an", label: textFor(lang, "Ứng dụng", "Applications") },
     { href: "/gioi-thieu", label: textFor(lang, "Về Đại Long", "Our story") },
     { href: "/lien-he", label: textFor(lang, "Liên hệ", "Contact") },
   ];

@@ -44,3 +44,34 @@ for (const [size, overall, length, width, cap] of [
   ['M', '145 × 165 × 80 mm', '140 mm', '170 mm', '76 mm'],
   ['S', '102 × 117 × 60 mm', '102 mm', '117 mm', '70 mm'],
 ]) await writeFile(new URL(`ngoi-am-duong-${size.toLowerCase()}.svg`, out), roof(size, overall, length, width, cap));
+
+const tileRoof = (size, module, yinLength, yinWidth, depth, yangLength, cap) => frame(
+  "Ngói âm dương · cỡ " + size,
+  "Mặt cắt ngói âm, ngói dương và cách xếp cặp trên mái",
+  [
+    '<path d="M600 195V570" stroke="#d9d2c1" stroke-width="2"/>',
+    '<text x="330" y="215" text-anchor="middle" fill="#24487d" stroke="none" font-family="Arial,sans-serif" font-size="24" font-weight="700">MẶT CẮT NGANG</text>',
+    '<text x="850" y="215" text-anchor="middle" fill="#24487d" stroke="none" font-family="Arial,sans-serif" font-size="24" font-weight="700">SƠ ĐỒ XẾP CẶP TRÊN MÁI</text>',
+    '<text x="330" y="255" text-anchor="middle" fill="#242f3e" stroke="none" font-family="Arial,sans-serif" font-size="22">Ngói âm · lòng rãnh</text>',
+    '<path d="M185 285V325 Q330 485 475 325V285 M208 290V320 Q330 455 452 320V290"/>',
+    '<path d="M185 510V535 M475 510V535 M185 525H475 M185 517L197 525L185 533 M475 517L463 525L475 533" stroke-width="3"/>',
+    '<text x="330" y="559" text-anchor="middle" fill="#24487d" stroke="none" font-family="Arial,sans-serif" font-size="21">W ' + yinWidth + ' · D' + depth + '</text>',
+    '<text x="330" y="395" text-anchor="middle" fill="#716c60" stroke="none" font-family="Arial,sans-serif" font-size="20">L ' + yinLength + '</text>',
+    '<text x="330" y="420" text-anchor="middle" fill="#242f3e" stroke="none" font-family="Arial,sans-serif" font-size="22">Ngói dương · nắp phủ</text>',
+    '<path d="M248 450 Q330 370 412 450 L412 474 Q330 412 248 474Z" stroke="#ac8151"/>',
+    '<path d="M248 480V495 M412 480V495 M248 490H412 M248 484L258 490L248 496 M412 484L402 490L412 496" stroke="#ac8151" stroke-width="3"/>',
+    '<text x="330" y="510" text-anchor="middle" fill="#8a6738" stroke="none" font-family="Arial,sans-serif" font-size="19">L ' + yangLength + ' · Ø ' + cap + '</text>',
+    '<path d="M700 275V485 M820 275V485 M940 275V485" stroke-width="13"/>',
+    '<path d="M682 275V485 M802 275V485 M922 275V485 M718 275V485 M838 275V485 M958 275V485" stroke-width="3"/>',
+    '<path d="M665 320 Q700 275 735 320V345 Q700 310 665 345Z M785 382 Q820 337 855 382V407 Q820 372 785 407Z M905 440 Q940 395 975 440V465 Q940 430 905 465Z" stroke="#ac8151" stroke-width="5"/>',
+    '<path d="M660 500H980" stroke-dasharray="10 12" stroke-width="3"/>',
+    '<text x="820" y="535" text-anchor="middle" fill="#242f3e" stroke="none" font-family="Arial,sans-serif" font-size="20">Ngói âm tạo rãnh · ngói dương phủ mối ghép</text>',
+    '<text x="820" y="570" text-anchor="middle" fill="#716c60" stroke="none" font-family="Arial,sans-serif" font-size="18">Mô-đun tham khảo: ' + module + '</text>',
+  ].join("")
+);
+
+for (const [size, module, yinLength, yinWidth, depth, yangLength, cap] of [
+  ['L', '200 × 195 × 100 mm', '180 mm', '190 mm', '8 mm', '155 mm', '95 mm'],
+  ['M', '145 × 165 × 80 mm', '140 mm', '170 mm', '8 mm', '120 mm', '76 mm'],
+  ['S', '102 × 117 × 60 mm', '102 mm', '117 mm', '6 mm', '110 mm', '70 mm'],
+]) await writeFile(new URL('ngoi-am-duong-' + size.toLowerCase() + '.svg', out), tileRoof(size, module, yinLength, yinWidth, depth, yangLength, cap));

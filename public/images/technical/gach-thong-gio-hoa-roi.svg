@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+<title id="title">Gạch thông gió Hoa Roi</title><desc id="desc">Mặt viên và sơ đồ ghép mảng tường thoáng</desc>
+<rect width="1200" height="680" fill="#faf8f1"/><path d="M56 76H1144M56 604H1144" stroke="#d9d2c1" stroke-width="2"/>
+<text x="64" y="53" fill="#21477f" font-family="Arial,sans-serif" font-size="25" letter-spacing="2">GỐM SỨ ĐẠI LONG · BẢN VẼ THAM KHẢO</text>
+<text x="64" y="650" fill="#716c60" font-family="Arial,sans-serif" font-size="21">Sơ đồ minh họa, không theo tỷ lệ · Kích thước và cấu tạo cần xác nhận theo mẫu Đại Long</text>
+<g fill="none" stroke="#24487d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><rect x="250" y="220" width="300" height="300" rx="8"/><path d="M400 245 C330 275 315 322 372 358 C318 392 342 448 400 480 C458 448 482 392 428 358 C485 322 470 275 400 245Z M400 250V466 M330 358H470"/><rect x="690" y="238" width="100" height="100"/><rect x="790" y="238" width="100" height="100"/><rect x="690" y="338" width="100" height="100"/><rect x="790" y="338" width="100" height="100"/><rect x="690" y="438" width="100" height="80"/><rect x="790" y="438" width="100" height="80"/><path d="M740 262 Q790 287 740 314 M840 262 Q890 287 840 314 M740 362 Q790 387 740 414 M840 362 Q890 387 840 414 M740 456 Q790 480 740 506 M840 456 Q890 480 840 506"/><path d="M180 360H225 M920 360H1020" stroke-dasharray="10 12"/></g>
+<text x="600" y="128" text-anchor="middle" fill="#242f3e" font-family="Arial,sans-serif" font-size="34" font-weight="700">Gạch thông gió Hoa Roi</text>
+<text x="600" y="166" text-anchor="middle" fill="#716c60" font-family="Arial,sans-serif" font-size="21">Mặt viên và sơ đồ ghép mảng tường thoáng</text></svg>

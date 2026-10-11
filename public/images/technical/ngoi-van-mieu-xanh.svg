@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+<title id="title">Ngói Văn Miếu</title><desc id="desc">Sơ đồ xếp lớp ngói trên mặt mái</desc>
+<rect width="1200" height="680" fill="#faf8f1"/><path d="M56 76H1144M56 604H1144" stroke="#d9d2c1" stroke-width="2"/>
+<text x="64" y="53" fill="#21477f" font-family="Arial,sans-serif" font-size="25" letter-spacing="2">GỐM SỨ ĐẠI LONG · BẢN VẼ THAM KHẢO</text>
+<text x="64" y="650" fill="#716c60" font-family="Arial,sans-serif" font-size="21">Sơ đồ minh họa, không theo tỷ lệ · Kích thước và cấu tạo cần xác nhận theo mẫu Đại Long</text>
+<g fill="none" stroke="#24487d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M250 470L590 220L950 470 M320 470L590 272 M420 470L590 326 M520 470L590 380 M620 470L670 415 M720 470L770 415 M820 470L870 415"/><g><path d="M350 407 Q390 375 430 407V436H350Z M450 342 Q490 310 530 342V371H450Z M550 278 Q590 246 630 278V307H550Z M650 342 Q690 310 730 342V371H650Z M750 407 Q790 375 830 407V436H750Z"/><path d="M350 436H430 M450 371H530 M550 307H630 M650 371H730 M750 436H830"/></g><path d="M235 493H970" stroke-dasharray="12 12"/></g>
+<text x="600" y="128" text-anchor="middle" fill="#242f3e" font-family="Arial,sans-serif" font-size="34" font-weight="700">Ngói Văn Miếu</text>
+<text x="600" y="166" text-anchor="middle" fill="#716c60" font-family="Arial,sans-serif" font-size="21">Sơ đồ xếp lớp ngói trên mặt mái</text></svg>

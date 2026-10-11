@@ -206,7 +206,7 @@
 .site-button--primary:hover { background: #173565; border-color: #173565; }
 .site-footer { border-top: 1px solid #dfd7c8; }
 .brand-mascot-lockup { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; color: #70634f; font-size: .8125rem; font-weight: 600; }
-.brand-mascot { width: 58px; height: 58px; flex: 0 0 auto; filter: drop-shadow(0 4px 4px rgb(66 52 31 / 12%)); }
+.brand-mascot { width: 98px; height: 98px; flex: 0 0 auto; filter: drop-shadow(0 6px 7px rgb(44 52 66 / 14%)); }
 .roof-applications { background: #f3efe5; }
 .roof-applications .section-head { align-items: end; }
 .roof-applications-intro { max-width: 390px; color: #6b665c; font-size: .9375rem; }

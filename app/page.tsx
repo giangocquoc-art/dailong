@@ -19,7 +19,7 @@ export default async function Home({ searchParams }: PageProps) {
     <section className="hero">
       <div className="container-site hero-grid">
         <div className="hero-copy">
-          <div className="brand-mascot-lockup"><DaiLongMascot className="brand-mascot"/><span>{textFor(lang, "Long Gốm · Bạn đồng hành chọn gốm kiến trúc", "Long Gom · Your guide to architectural ceramics")}</span></div>
+          <div className="brand-mascot-lockup"><DaiLongMascot className="brand-mascot"/><span>{textFor(lang, "Long Gốm · Rồng gốm men lam của Đại Long", "Long Gom · Dai Long's blue-glazed ceramic dragon")}</span></div>
           <p className="eyebrow">{contentText(settings.heroKicker, lang)}</p>
           <h1 className="hero-title">{contentText(settings.heroTitle, lang)}</h1>
           <p className="hero-description">{contentText(settings.heroDescription, lang)}</p>

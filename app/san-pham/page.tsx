@@ -5,6 +5,7 @@ import { SiteShell } from "@/components/site-shell";
 import { SiteButton } from "@/components/site-button";
 import { categories, getProducts, getSettings } from "@/lib/content";
 import { contentText, currentPageHref, getLanguage, textFor, withLang, type PageProps } from "@/lib/presentation";
+import { DaiLongMascot } from "@/components/dai-long-mascot";
 
 export const dynamic = "force-dynamic";
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
@@ -33,6 +34,7 @@ export default async function ProductsPage({ searchParams }: PageProps) {
       </aside>
       <div>
         <div className="catalog-summary"><h2>{selected ? contentText(selected, lang) : textFor(lang, "Tất cả sản phẩm", "All products")}</h2><p>{visible.length} {textFor(lang, "sản phẩm", "products")}</p></div>
+        <div className="catalog-guide"><DaiLongMascot mood="guide" lang={lang} className="catalog-guide-mascot"/><p>{textFor(lang, "Long Gốm gợi ý", "A note from Long Gom")}</p><span>{textFor(lang, "Chọn chất liệu và sắc men hài hòa với mái nhà, khu vườn và kiến trúc quanh bạn.", "Choose forms and glazes that sit naturally with your roof, garden and architecture.")}</span></div>
         {visible.length ? <div className="product-grid">{visible.map((product) => <ProductCard key={product.id} product={product} lang={lang} />)}</div> : <div className="empty-state"><h3>{textFor(lang, "Danh mục đang được cập nhật", "This collection is being updated")}</h3><p>{textFor(lang, "Bạn có thể xem các mẫu khác hoặc liên hệ Đại Long để được tư vấn.", "Browse other designs or contact Dai Long for advice.")}</p><SiteButton><Link href={withLang("/san-pham", lang)}>{textFor(lang, "Xem tất cả sản phẩm", "View all products")}</Link></SiteButton></div>}
         <p className="section-note">{textFor(lang, "Hình ảnh, sắc men và quy cách mang tính tham khảo. Vui lòng liên hệ để xác nhận mẫu, kích thước và báo giá.", "Images, glaze colours and dimensions are for reference. Contact us to confirm the design, specifications and quotation.")}</p>
       </div>

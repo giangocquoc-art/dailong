@@ -30,7 +30,7 @@ export default async function Home({ searchParams }: PageProps) {
           <p className="hero-origin"><MapPin size={17} aria-hidden="true" />{contentText(settings.address, lang)}</p>
         </div>
         <figure className="hero-visual">
-          <img className="hero-image" src={settings.heroImageUrl} alt={textFor(lang, "Mái chùa với ngói và chi tiết gốm kiến trúc truyền thống", "Traditional temple roof with architectural ceramic details")} width={700} height={600} fetchPriority="high" />
+          <img className="hero-image" src={settings.heroImageUrl} alt={textFor(lang, "Cận cảnh ngói gốm men xanh và phụ kiện mái nung đất", "Close-up of celadon roof tiles and terracotta roof ornaments")} width={700} height={600} fetchPriority="high" />
           <div className="hero-inset"><img src="/images/ngoi-van-mieu.jpg" alt={textFor(lang, "Cận cảnh sắc men xanh ngói Văn Miếu", "Close-up of teal-glazed temple roof tiles")} width={160} height={160} /></div>
           <figcaption>{textFor(lang, "Đất, lửa và sắc men Việt.", "Clay, fire and Vietnamese glaze.")}</figcaption>
         </figure>

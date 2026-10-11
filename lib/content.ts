@@ -31,7 +31,7 @@ export const defaultSettings: SiteSettings = {
   heroTitle: "Gìn giữ dáng Việt trong từng nếp nhà",
   heroDescription:
     "Gốm sứ kiến trúc được chế tác thủ công tại Bát Tràng, dành cho công trình tâm linh, nhà ở và không gian sân vườn mang bản sắc riêng.",
-  heroImageUrl: "/images/ngoi-van-mieu.jpg",
+  heroImageUrl: "/images/hero-3.jpg",
   aboutText:
     "Từ đất, lửa và đôi tay người thợ Bát Tràng, Đại Long tiếp nối kỹ nghệ gốm kiến trúc truyền thống bằng tinh thần chỉn chu của một thương hiệu đương đại. Mỗi sản phẩm được lựa chọn về tỷ lệ, sắc men và độ bền để hài hòa cùng công trình Việt.",
   phone: "0975203933",

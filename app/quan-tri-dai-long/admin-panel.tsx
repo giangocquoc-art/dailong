@@ -1,12 +1,12 @@
 "use client";
 
-import { Eye, EyeOff, ImagePlus, ImageUp, Loader2, LogOut, PackagePlus, Save, ShieldCheck, X } from "lucide-react";
+import { Eye, EyeOff, ImagePlus, ImageUp, Loader2, LogOut, PackagePlus, Plus, Save, ShieldCheck, Trash2, X } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
-import type { Product, SiteSettings } from "@/lib/content";
+import type { Product, ProductTechnicalInfo, SiteSettings } from "@/lib/content";
 
 type Notice = { type: "success" | "error"; text: string } | null;
 
@@ -108,6 +108,7 @@ export function AdminPanel({ initialSettings, initialProducts }: { initialSettin
       id: `san-pham-${crypto.randomUUID().slice(0, 8)}`,
       title: "", category: "", code: "", material: "", dimensions: "", description: "",
       imageUrl: "", images: [], isPublished: 1, featured: 0,
+      technicalInfo: { sections: [], table: null },
       sortOrder: products.reduce((largest, product) => Math.max(largest, product.sortOrder), 0) + 1,
     });
   }
@@ -173,6 +174,7 @@ function ProductEditor({ product, isNew = false, saving, onChange, onSave, onIma
         <Field label="Quy cách / kích thước"><Input required value={product.dimensions} onChange={(event) => onChange({ ...product, dimensions: event.target.value })}/></Field>
         <Field label="Thứ tự hiển thị"><Input type="number" value={product.sortOrder} onChange={(event) => onChange({ ...product, sortOrder: Number(event.target.value) })}/></Field>
         <div className="sm:col-span-2"><Field label="Mô tả sản phẩm"><Textarea value={product.description} onChange={(event) => onChange({ ...product, description: event.target.value })} className="min-h-28" placeholder="Mô tả công dụng, sắc men, cách dùng…"/></Field></div>
+        <div className="sm:col-span-2"><ProductTechnicalInfoEditor product={product} onChange={(technicalInfo) => onChange({ ...product, technicalInfo })}/></div>
         <div className="flex flex-wrap gap-x-6 gap-y-3 sm:col-span-2">
           <label className="flex min-h-11 items-center gap-2 text-sm font-semibold text-[#24324a]"><input type="checkbox" checked={product.isPublished === 1} onChange={(event) => onChange({ ...product, isPublished: event.target.checked ? 1 : 0 })}/><span>{product.isPublished ? <Eye size={17} className="inline"/> : <EyeOff size={17} className="inline"/>} Đăng sản phẩm trên website</span></label>
           <label className="flex min-h-11 items-center gap-2 text-sm font-semibold text-[#24324a]"><input type="checkbox" checked={product.featured === 1} onChange={(event) => onChange({ ...product, featured: event.target.checked ? 1 : 0 })}/>Ưu tiên trên trang chủ</label>
@@ -181,4 +183,65 @@ function ProductEditor({ product, isNew = false, saving, onChange, onSave, onIma
       </div>
     </div>
   </details>;
+}
+
+function ProductTechnicalInfoEditor({ product, onChange }: { product: Product; onChange: (info: ProductTechnicalInfo) => void }) {
+  const info = product.technicalInfo ?? { sections: [], table: null };
+  const [uploadingSection, setUploadingSection] = useState<number | null>(null);
+  const [uploadError, setUploadError] = useState("");
+  async function replaceSectionImage(index: number, file?: File) {
+    if (!file) return;
+    setUploadingSection(index);
+    setUploadError("");
+    try {
+      const imageUrl = await uploadImage(file);
+      onChange({ ...info, sections: info.sections.map((section, position) => position === index ? { ...section, imageUrl } : section) });
+    } catch (error) {
+      setUploadError(error instanceof Error ? error.message : "Không thể tải ảnh.");
+    } finally { setUploadingSection(null); }
+  }
+  function updateColumn(index: number, value: string) {
+    const table = info.table;
+    if (!table) return;
+    const columns = table.columns.map((column, position) => position === index ? value : column);
+    onChange({ ...info, table: { ...table, columns } });
+  }
+  function removeColumn(index: number) {
+    const table = info.table;
+    if (!table) return;
+    onChange({ ...info, table: { ...table, columns: table.columns.filter((_, position) => position !== index), rows: table.rows.map((row) => ({ ...row, values: row.values.filter((_, position) => position !== index) })) } });
+  }
+  function updateRow(index: number, patch: { label?: string; valueIndex?: number; value?: string }) {
+    const table = info.table;
+    if (!table) return;
+    onChange({ ...info, table: { ...table, rows: table.rows.map((row, position) => {
+      if (position !== index) return row;
+      const values = patch.valueIndex === undefined ? row.values : row.values.map((value, cell) => cell === patch.valueIndex ? (patch.value ?? "") : value);
+      return { ...row, ...(patch.label === undefined ? {} : { label: patch.label }), values };
+    }) } });
+  }
+  return <section className="border-t border-[#dbe2ec] pt-5">
+    <div className="mb-4"><h3 className="font-bold text-[#17213a]">Thông tin kỹ thuật theo sản phẩm</h3><p className="mt-1 text-sm leading-6 text-[#667085]">Thêm ảnh cấu tạo, sơ đồ hoặc ghi chú phù hợp với riêng sản phẩm này. Chỉ nhập số liệu đã được Đại Long xác nhận.</p></div>
+    <div className="space-y-4">
+      {info.sections.map((section, index) => <div key={index} className="grid gap-4 border-y border-[#e5eaf1] py-4 sm:grid-cols-[180px_1fr]">
+        <div>{section.imageUrl ? <img src={section.imageUrl} alt={section.title || "Ảnh thông tin sản phẩm"} className="aspect-[4/3] w-full border border-[#dbe2ec] object-cover"/> : <div className="grid aspect-[4/3] place-items-center bg-[#f4f6f9] text-sm text-[#667085]">Chưa có ảnh</div>}
+          <label className="mt-2 flex min-h-10 cursor-pointer items-center justify-center gap-2 border border-dashed border-[#163874]/35 px-2 text-xs font-bold text-[#163874]"><ImageUp size={15}/>{uploadingSection === index ? "Đang tải ảnh..." : section.imageUrl ? "Thay ảnh minh họa" : "Thêm ảnh minh họa"}<Input type="file" accept="image/jpeg,image/png,image/webp,image/avif" className="hidden" disabled={uploadingSection !== null} onChange={(event) => { void replaceSectionImage(index, event.currentTarget.files?.[0]); event.currentTarget.value = ""; }}/></label>
+        </div>
+        <div className="grid content-start gap-3"><Field label="Tiêu đề"><Input value={section.title} maxLength={140} onChange={(event) => onChange({ ...info, sections: info.sections.map((item, position) => position === index ? { ...item, title: event.target.value } : item) })} placeholder="Ví dụ: Cấu tạo thân mái"/></Field><Field label="Nội dung"><Textarea value={section.text} maxLength={1200} onChange={(event) => onChange({ ...info, sections: info.sections.map((item, position) => position === index ? { ...item, text: event.target.value } : item) })} className="min-h-20" placeholder="Mô tả ngắn, đúng với sản phẩm này"/></Field><Button type="button" variant="ghost" onClick={() => onChange({ ...info, sections: info.sections.filter((_, position) => position !== index) })} className="min-h-10 justify-self-start rounded-none px-2 text-[#8b3329]"><Trash2 size={16}/>Gỡ mục này</Button></div>
+      </div>)}
+      {info.sections.length < 8 && <Button type="button" variant="outline" onClick={() => onChange({ ...info, sections: [...info.sections, { title: "", text: "", imageUrl: "" }] })} className="min-h-11 rounded-none"><Plus size={17}/>Thêm mục ảnh và nội dung</Button>}
+      {uploadError && <p role="alert" className="text-sm text-red-700">{uploadError}</p>}
+    </div>
+    <div className="mt-6 border-t border-[#dbe2ec] pt-5">
+      <h4 className="font-bold text-[#17213a]">Bảng quy cách</h4>
+      {!info.table ? <Button type="button" variant="outline" onClick={() => onChange({ ...info, table: { title: "", columns: [], rows: [] } })} className="mt-3 min-h-11 rounded-none"><Plus size={17}/>Thêm bảng so sánh cỡ / thông số</Button> : <div className="mt-3 space-y-4">
+        <Field label="Tên bảng"><Input value={info.table.title} maxLength={140} onChange={(event) => onChange({ ...info, table: { ...info.table!, title: event.target.value } })} placeholder="Ví dụ: Bảng tham khảo quy cách"/></Field>
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">{info.table.columns.map((column, index) => <div key={index} className="flex items-end gap-2"><div className="min-w-0 flex-1"><Field label={`Cỡ / phiên bản ${index + 1}`}><Input value={column} maxLength={80} onChange={(event) => updateColumn(index, event.target.value)} placeholder="Ví dụ: Cỡ L"/></Field></div><Button type="button" variant="ghost" onClick={() => removeColumn(index)} aria-label={`Gỡ cột ${column || index + 1}`} className="mb-px h-11 w-11 shrink-0 rounded-none px-0 text-[#8b3329]"><X size={17}/></Button></div>)}</div>
+        {info.table.columns.length < 6 && <Button type="button" variant="outline" onClick={() => onChange({ ...info, table: { ...info.table!, columns: [...info.table!.columns, ""], rows: info.table!.rows.map((row) => ({ ...row, values: [...row.values, ""] })) } })} className="min-h-10 rounded-none"><Plus size={16}/>Thêm cỡ / phiên bản</Button>}
+        {info.table.rows.map((row, index) => <div key={index} className="grid gap-3 border-y border-[#e5eaf1] py-3 sm:grid-cols-2 xl:grid-cols-3"> <div className="flex items-end gap-2 sm:col-span-2 xl:col-span-3"><div className="min-w-0 flex-1"><Field label={`Thông số ${index + 1}`}><Input value={row.label} maxLength={100} onChange={(event) => updateRow(index, { label: event.target.value })} placeholder="Ví dụ: Kích thước ngói âm"/></Field></div><Button type="button" variant="ghost" onClick={() => onChange({ ...info, table: { ...info.table!, rows: info.table!.rows.filter((_, position) => position !== index) } })} aria-label={`Gỡ thông số ${row.label}`} className="mb-px h-11 w-11 shrink-0 rounded-none px-0 text-[#8b3329]"><Trash2 size={16}/></Button></div>{info.table.columns.map((column, cell) => <Field key={cell} label={column || `Giá trị cỡ ${cell + 1}`}><Input value={row.values[cell] ?? ""} maxLength={180} onChange={(event) => updateRow(index, { valueIndex: cell, value: event.target.value })} placeholder="Nhập thông số đã xác nhận"/></Field>)}</div>)}
+        {info.table.rows.length < 24 && <Button type="button" variant="outline" onClick={() => onChange({ ...info, table: { ...info.table!, rows: [...info.table!.rows, { label: "", values: info.table!.columns.map(() => "") }] } })} className="min-h-10 rounded-none"><Plus size={16}/>Thêm dòng thông số</Button>}
+        <Button type="button" variant="ghost" onClick={() => onChange({ ...info, table: null })} className="min-h-10 rounded-none px-2 text-[#8b3329]"><Trash2 size={16}/>Gỡ bảng quy cách</Button>
+      </div>}
+    </div>
+  </section>;
 }

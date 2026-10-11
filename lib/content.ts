@@ -12,6 +12,23 @@ export type SiteSettings = {
   address: string;
 };
 
+export type ProductInfoSection = {
+  title: string;
+  text: string;
+  imageUrl: string;
+};
+
+export type ProductInfoTable = {
+  title: string;
+  columns: string[];
+  rows: { label: string; values: string[] }[];
+};
+
+export type ProductTechnicalInfo = {
+  sections: ProductInfoSection[];
+  table: ProductInfoTable | null;
+};
+
 export type Product = {
   id: string;
   title: string;
@@ -25,6 +42,7 @@ export type Product = {
   isPublished: number;
   featured: number;
   sortOrder: number;
+  technicalInfo?: ProductTechnicalInfo;
 };
 
 export const defaultSettings: SiteSettings = {
@@ -143,6 +161,24 @@ export const defaultProducts: Product[] = [
       "Dáng ngói truyền thống với lớp men xanh ghi có chiều sâu, phù hợp mái nhà Việt, nhà thờ họ và khu nghỉ dưỡng.",
     imageUrl: "/images/ngoi-am-duong.jpg",
     images: [],
+    technicalInfo: {
+      sections: [{
+        title: "Thân mái: Ngói âm và ngói dương",
+        text: "Ngói âm nằm dưới để thoát nước; ngói dương phủ lên khe tiếp giáp, giúp mái kín và bền.",
+        imageUrl: "/images/ngoi-am-duong.jpg",
+      }],
+      table: {
+        title: "Bảng tham khảo ba quy cách ngói âm dương",
+        columns: ["Ngói âm dương cỡ L", "Ngói âm dương cỡ M", "Ngói âm dương cỡ S"],
+        rows: [
+          { label: "Ngói âm", values: ["L180 × W190 × D8", "L140 × W170 × D8", "L102 × W117 × D6"] },
+          { label: "Ngói dương", values: ["L155 × D8 × Ø95", "L120 × D8 × Ø76", "L110 × D6 × Ø70"] },
+          { label: "Số cặp/m²", values: ["27 cặp/m²", "43 cặp/m²", "80 cặp/m²"] },
+          { label: "Số điểm/m dài", values: ["5 cặp/m dài", "6 cặp/m dài", "8 cặp/m dài"] },
+          { label: "Công trình ứng dụng", values: ["Mái trên 200 m²; mái ngói trang trí nhà hàng", "Mái nhà từ 50–200 m²", "Mái khoảng 10 m²; miếu mộ và bờ rào"] },
+        ],
+      },
+    },
     isPublished: 1,
     featured: 1,
     sortOrder: 7,
@@ -216,6 +252,7 @@ type DbProductRow = {
   description: string;
   image_url: string;
   gallery_json?: string;
+  technical_info_json?: string;
   is_published?: number;
   featured: number;
   sort_order: number;
@@ -241,6 +278,11 @@ function productFromRow(row: DbProductRow): Product {
     const parsed = JSON.parse(row.gallery_json || "[]") as unknown;
     if (Array.isArray(parsed)) images = parsed.filter((url): url is string => typeof url === "string").slice(0, 12);
   } catch { /* An invalid legacy gallery falls back to its cover image. */ }
+  let technicalInfo: ProductTechnicalInfo | undefined;
+  try {
+    const parsed = JSON.parse(row.technical_info_json || "null") as ProductTechnicalInfo | null;
+    if (parsed && Array.isArray(parsed.sections)) technicalInfo = parsed;
+  } catch { /* Old rows have no technical information yet. */ }
   return {
     id: row.id,
     title: row.title,
@@ -254,6 +296,7 @@ function productFromRow(row: DbProductRow): Product {
     isPublished: row.is_published ?? 1,
     featured: row.featured,
     sortOrder: row.sort_order,
+    technicalInfo,
   };
 }
 
@@ -273,20 +316,23 @@ export async function getProducts({ includeUnpublished = false }: { includeUnpub
     let result: { results: DbProductRow[] };
     try {
       result = await env.DB.prepare(
-        "SELECT id, title, category, code, material, dimensions, description, image_url, gallery_json, is_published, featured, sort_order FROM products ORDER BY sort_order, title",
+        "SELECT id, title, category, code, material, dimensions, description, image_url, gallery_json, technical_info_json, is_published, featured, sort_order FROM products ORDER BY sort_order, title",
       ).all<DbProductRow>();
     } catch {
       const legacy = await env.DB.prepare(
         "SELECT id, title, category, code, material, dimensions, description, image_url, featured, sort_order FROM products ORDER BY sort_order, title",
       ).all<DbProductRow>();
-      result = { results: (legacy.results as DbProductRow[]).map((row) => ({ ...row, gallery_json: "[]", is_published: 1 })) };
+      result = { results: (legacy.results as DbProductRow[]).map((row) => ({ ...row, gallery_json: "[]", technical_info_json: "null", is_published: 1 })) };
     }
     const overrides = new Map(
       result.results.map((row) => [row.id, productFromRow(row)]),
     );
     const defaultIds = new Set(defaultProducts.map((product) => product.id));
     const combined = [
-      ...defaultProducts.map((product) => overrides.get(product.id) ?? product),
+      ...defaultProducts.map((product) => {
+        const override = overrides.get(product.id);
+        return override ? { ...product, ...override, technicalInfo: override.technicalInfo ?? product.technicalInfo } : product;
+      }),
       ...result.results.map(productFromRow).filter((product) => !defaultIds.has(product.id)),
     ];
     return combined

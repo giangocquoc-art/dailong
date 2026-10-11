@@ -13,8 +13,6 @@ export async function ensureAdminSchema() {
   const applied = await env.DB.prepare("SELECT version FROM admin_schema_versions WHERE version = ?")
     .bind("product-gallery-publishing-v1")
     .first<{ version: string }>();
-  if (applied) return;
-
   await env.DB.prepare(`CREATE TABLE IF NOT EXISTS products (
     id TEXT PRIMARY KEY NOT NULL,
     title TEXT NOT NULL,
@@ -28,7 +26,8 @@ export async function ensureAdminSchema() {
     sort_order INTEGER NOT NULL DEFAULT 0,
     updated_at INTEGER NOT NULL,
     gallery_json TEXT NOT NULL DEFAULT '[]',
-    is_published INTEGER NOT NULL DEFAULT 1
+    is_published INTEGER NOT NULL DEFAULT 1,
+    technical_info_json TEXT NOT NULL DEFAULT 'null'
   )`).run();
 
   await env.DB.prepare(`CREATE TABLE IF NOT EXISTS site_settings (
@@ -45,16 +44,30 @@ export async function ensureAdminSchema() {
     updated_at INTEGER NOT NULL
   )`).run();
 
-  const additions = [
-    "ALTER TABLE products ADD COLUMN gallery_json TEXT NOT NULL DEFAULT '[]'",
-    "ALTER TABLE products ADD COLUMN is_published INTEGER NOT NULL DEFAULT 1",
-  ];
-  for (const statement of additions) {
-    try { await env.DB.prepare(statement).run(); }
+  if (!applied) {
+    const additions = [
+      "ALTER TABLE products ADD COLUMN gallery_json TEXT NOT NULL DEFAULT '[]'",
+      "ALTER TABLE products ADD COLUMN is_published INTEGER NOT NULL DEFAULT 1",
+    ];
+    for (const statement of additions) {
+      try { await env.DB.prepare(statement).run(); }
+      catch (error) {
+        if (!String(error).toLowerCase().includes("duplicate column name")) throw error;
+      }
+    }
+    await env.DB.prepare("INSERT OR IGNORE INTO admin_schema_versions (version, applied_at) VALUES (?, ?)")
+      .bind("product-gallery-publishing-v1", Date.now()).run();
+  }
+
+  const infoApplied = await env.DB.prepare("SELECT version FROM admin_schema_versions WHERE version = ?")
+    .bind("product-technical-info-v1")
+    .first<{ version: string }>();
+  if (!infoApplied) {
+    try { await env.DB.prepare("ALTER TABLE products ADD COLUMN technical_info_json TEXT NOT NULL DEFAULT 'null'").run(); }
     catch (error) {
       if (!String(error).toLowerCase().includes("duplicate column name")) throw error;
     }
+    await env.DB.prepare("INSERT OR IGNORE INTO admin_schema_versions (version, applied_at) VALUES (?, ?)")
+      .bind("product-technical-info-v1", Date.now()).run();
   }
-  await env.DB.prepare("INSERT OR IGNORE INTO admin_schema_versions (version, applied_at) VALUES (?, ?)")
-    .bind("product-gallery-publishing-v1", Date.now()).run();
 }

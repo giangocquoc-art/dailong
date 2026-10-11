@@ -162,19 +162,20 @@ export const defaultProducts: Product[] = [
     imageUrl: "/images/ngoi-am-duong.jpg",
     images: [],
     technicalInfo: {
-      sections: [{
-        title: "Bản vẽ kỹ thuật · Cấu tạo và cách lợp",
-        text: "Bản vẽ thể hiện riêng viên ngói âm dạng lòng rãnh, viên ngói dương dạng nắp phủ và cách ghép cặp trên mái. Bảng quy cách phía dưới ghi số đo theo từng cỡ L, M, S.",
-        imageUrl: "/images/technical/ngoi-am-duong.webp",
-      }],
+      sections: [
+        { title: "Minh họa tham khảo · cỡ L", text: "Hình minh họa hình dáng cặp ngói âm và ngói dương cỡ L; không theo tỷ lệ. Kích thước tham khảo được ghi riêng trong bảng bên dưới.", imageUrl: "/images/technical/ngoi-am-duong-l.webp" },
+        { title: "Minh họa tham khảo · cỡ M", text: "Hình minh họa hình dáng cặp ngói âm và ngói dương cỡ M; không theo tỷ lệ. Kích thước tham khảo được ghi riêng trong bảng bên dưới.", imageUrl: "/images/technical/ngoi-am-duong-m.webp" },
+        { title: "Minh họa tham khảo · cỡ S", text: "Hình minh họa hình dáng cặp ngói âm và ngói dương cỡ S; không theo tỷ lệ. Kích thước tham khảo được ghi riêng trong bảng bên dưới.", imageUrl: "/images/technical/ngoi-am-duong-s.webp" },
+      ],
       table: {
         title: "Bảng tham khảo ba quy cách ngói âm dương",
         columns: ["Ngói âm dương cỡ L", "Ngói âm dương cỡ M", "Ngói âm dương cỡ S"],
         rows: [
+          { label: "Kích thước tổng thể tham khảo", values: ["200 × 195 × 100 mm", "145 × 165 × 80 mm", "102 × 117 × 60 mm"] },
           { label: "Ngói âm", values: ["L180 × W190 × D8", "L140 × W170 × D8", "L102 × W117 × D6"] },
           { label: "Ngói dương", values: ["L155 × D8 × Ø95", "L120 × D8 × Ø76", "L110 × D6 × Ø70"] },
           { label: "Số cặp/m²", values: ["27 cặp/m²", "43 cặp/m²", "80 cặp/m²"] },
-          { label: "Số điểm/m dài", values: ["5 cặp/m dài", "6 cặp/m dài", "8 cặp/m dài"] },
+          { label: "Số cặp/m dài", values: ["5 cặp/m dài", "6 cặp/m dài", "8 cặp/m dài"] },
           { label: "Công trình ứng dụng", values: ["Mái trên 200 m²; mái ngói trang trí nhà hàng", "Mái nhà từ 50–200 m²", "Mái khoảng 10 m²; miếu mộ và bờ rào"] },
         ],
       },
@@ -231,15 +232,15 @@ export const defaultProducts: Product[] = [
 ];
 
 const technicalDrawingByProduct: Record<string, { image: string; title: string; text: string }> = {
-  "rong-chau-nguyet": { image: "rong-chau-nguyet.webp", title: "Mặt đứng bộ rồng chầu nguyệt và vị trí trên nóc", text: "Bản vẽ tham khảo thể hiện cặp rồng đối xứng, mặt bên và vị trí trang trí trên nóc. Kích thước, hình thức và điểm liên kết cần chốt theo hiện trạng công trình." },
-  "gach-thong-gio-hoa-roi": { image: "gach-thong-gio-hoa-roi.webp", title: "Mặt viên, mặt cắt và cách ghép mảng", text: "Quy cách catalog hiện có: 30 × 30 cm. Bản vẽ thể hiện hoa văn, mặt cạnh và hướng thông thoáng; chiều dày và chi tiết liên kết cần xác nhận theo mẫu." },
-  "den-ngan-hoa": { image: "den-ngan-hoa.webp", title: "Hình chiếu thân đèn và chi tiết ô thoáng", text: "Bản vẽ tham khảo thể hiện thân đèn, miệng mở và hoa văn xuyên sáng. Dòng sản phẩm có nhiều kích thước; cần chốt kích thước và phương án chiếu sáng theo mẫu." },
-  "lan-can-luc-binh": { image: "lan-can-luc-binh.webp", title: "Mặt đứng con tiện và cấu tạo lan can", text: "Bản vẽ tham khảo thể hiện con tiện lục bình, tay vịn và chân đế. Cao độ, khoảng cách và liên kết cần đo theo công trình." },
-  "gach-trang-tri-hoa-van": { image: "gach-trang-tri-hoa-van.webp", title: "Mặt viên, mặt cạnh và mảng ghép hoa văn", text: "Bản vẽ thể hiện họa tiết hoa bốn cánh, phần rỗng và mặt cạnh của viên gạch. Kích thước và độ dày cần chốt theo mẫu." },
-  "gach-lat-ngoai-that": { image: "gach-lat-ngoai-that.webp", title: "Mặt bằng lát, mặt cắt nền và bậc sân", text: "Bản vẽ tham khảo cách ghép viên lát và cấu tạo lớp nền. Kích thước viên, chiều dày, loại nền và mạch lát cần xác nhận theo sản phẩm và hiện trạng." },
-  "ngoi-van-mieu-xanh": { image: "ngoi-van-mieu-xanh.webp", title: "Mặt viên ngói và chi tiết lợp mái", text: "Bản vẽ tham khảo thể hiện mặt đầu hoa sen, mặt bên và cách xếp lớp dưới diềm mái. Catalog chưa có số đo cấu kiện; cần lập quy cách theo mái thực tế." },
-  "nghe-phong-thuy-men-ran": { image: "nghe-phong-thuy-men-ran.webp", title: "Mặt đứng, mặt bên và mặt bằng tượng nghê", text: "Bản vẽ tham khảo thể hiện dáng nghê ngồi, đuôi cuộn và bệ tượng. Dòng sản phẩm có nhiều kích thước; xác nhận số đo theo mẫu đặt." },
-  "bo-hoa-chanh-doi": { image: "bo-hoa-chanh-doi.webp", title: "Mặt đứng, mặt cắt và vị trí trên đường nóc", text: "Bản vẽ tham khảo thể hiện thân gốm hoa chanh, mặt cạnh và cách bố trí trên nóc. Kích thước, điểm nối và số lượng cần xác định sau khi đo đường nóc." },
+  "rong-chau-nguyet": { image: "rong-chau-nguyet.webp", title: "Minh họa bố cục bộ rồng chầu nguyệt", text: "Hình tham khảo gợi bố cục cặp rồng chầu nguyệt, không theo tỷ lệ và không xác nhận cấu tạo đặt trên mái. Kích thước, hình thức và điểm liên kết cần chốt theo mẫu và hiện trạng công trình." },
+  "gach-thong-gio-hoa-roi": { image: "gach-thong-gio-hoa-roi.webp", title: "Minh họa viên gạch thông gió và mảng ghép", text: "Hình tham khảo hoa văn, bề mặt và cách ghép mảng; không thay thế bản vẽ có kích thước. Quy cách catalog hiện có: 30 × 30 cm; chiều dày và chi tiết liên kết cần xác nhận theo mẫu." },
+  "den-ngan-hoa": { image: "den-ngan-hoa.webp", title: "Minh họa hình dáng đèn Ngàn Hoa", text: "Hình tham khảo thân đèn và hoa văn ô thoáng, không xác nhận cấu tạo chân đế hoặc bộ điện. Dòng sản phẩm có nhiều kích thước; cần chốt số đo và phương án chiếu sáng theo mẫu." },
+  "lan-can-luc-binh": { image: "lan-can-luc-binh.webp", title: "Minh họa con tiện lục bình và nhịp lan can", text: "Hình gợi ý hình dáng và bố cục tham khảo; chưa xác nhận chi tiết liên kết, cao độ hay khoảng cách. Quy cách cần đo và duyệt theo công trình." },
+  "gach-trang-tri-hoa-van": { image: "gach-trang-tri-hoa-van-v2.webp", title: "Minh họa dải gạch trang trí hoa văn", text: "Hình tham khảo dải gạch men xanh và hoa văn lặp theo ảnh sản phẩm; không thay thế bản vẽ có kích thước. Kích thước, độ dày và cách ghép cần xác nhận theo mẫu thực tế." },
+  "gach-lat-ngoai-that": { image: "gach-lat-ngoai-that.webp", title: "Minh họa bề mặt và cách ghép gạch lát", text: "Hình tham khảo bề mặt và cách ghép viên lát; lớp nền trong hình chỉ mang tính minh họa, không phải chi tiết cấu tạo thi công. Kích thước viên và phương án lát cần xác nhận theo mẫu và hiện trạng." },
+  "ngoi-van-mieu-xanh": { image: "ngoi-van-mieu-xanh.webp", title: "Minh họa hình dáng ngói Văn Miếu", text: "Hình tham khảo hình dáng và sắc men; phần lợp dưới diềm mái chỉ gợi ý bố cục, không xác nhận cấu tạo thực tế. Catalog chưa có số đo cấu kiện; cần chốt theo mẫu và mái công trình." },
+  "nghe-phong-thuy-men-ran": { image: "nghe-phong-thuy-men-ran.webp", title: "Minh họa ý tưởng tượng nghê men rạn", text: "Hình tham khảo gợi hình dáng nghê men rạn, chưa xác nhận tư thế, chi tiết tạo hình hay kích thước của mẫu bán. Cần đối chiếu mẫu thực tế và chốt số đo trước khi đặt." },
+  "bo-hoa-chanh-doi": { image: "bo-hoa-chanh-doi.webp", title: "Minh họa hoa văn bò hoa chanh đôi", text: "Hình tham khảo hoa văn và sắc men; cách bố trí trên đường nóc chỉ mang tính gợi ý, không xác nhận cấu tạo lắp đặt. Kích thước, điểm nối và số lượng cần xác định theo mẫu và công trình." },
 };
 
 for (const product of defaultProducts) {
@@ -364,8 +365,13 @@ export async function getProducts({ includeUnpublished = false }: { includeUnpub
         const override = overrides.get(product.id);
         if (!override) return product;
         const storedInfo = override.technicalInfo;
-        const staleImageOnly = storedInfo?.sections.length && storedInfo.sections.every((section) => section.imageUrl === product.imageUrl);
-        const technicalInfo = !storedInfo || (!storedInfo.sections.length && !storedInfo.table?.columns.length) || staleImageOnly
+      const previousGeneratedImages = new Set([
+        "/images/technical/ngoi-am-duong.webp",
+        "/images/technical/gach-trang-tri-hoa-van.webp",
+        ...Object.values(technicalDrawingByProduct).map(({ image }) => `/images/technical/${image}`),
+      ]);
+      const staleDefaultIllustrations = storedInfo?.sections.length && storedInfo.sections.every((section) => section.imageUrl && previousGeneratedImages.has(section.imageUrl));
+      const technicalInfo = !storedInfo || (!storedInfo.sections.length && !storedInfo.table?.columns.length) || staleDefaultIllustrations
           ? product.technicalInfo
           : storedInfo;
         return { ...product, ...override, technicalInfo };

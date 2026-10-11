@@ -21,6 +21,8 @@ export type Product = {
   dimensions: string;
   description: string;
   imageUrl: string;
+  images: string[];
+  isPublished: number;
   featured: number;
   sortOrder: number;
 };
@@ -50,6 +52,8 @@ export const defaultProducts: Product[] = [
     description:
       "Bộ rồng chầu nguyệt tạo điểm nhấn trang nghiêm cho mái đình, chùa, từ đường và công trình kiến trúc truyền thống.",
     imageUrl: "/images/rong-phuong.jpg",
+    images: [],
+    isPublished: 1,
     featured: 1,
     sortOrder: 1,
   },
@@ -63,6 +67,8 @@ export const defaultProducts: Product[] = [
     description:
       "Hoa văn mềm, thoáng sáng và có chiều sâu bề mặt; phù hợp mặt tiền, tường rào và vách ngăn sân vườn.",
     imageUrl: "/images/gach-thong-gio.jpg",
+    images: [],
+    isPublished: 1,
     featured: 1,
     sortOrder: 2,
   },
@@ -76,6 +82,8 @@ export const defaultProducts: Product[] = [
     description:
       "Thân đèn tạo hình thủ công với hàng trăm ô thoáng, cho ánh sáng ấm và lớp bóng đổ giàu trang trí.",
     imageUrl: "/images/den-vuon.jpg",
+    images: [],
+    isPublished: 1,
     featured: 1,
     sortOrder: 3,
   },
@@ -89,6 +97,8 @@ export const defaultProducts: Product[] = [
     description:
       "Con tiện sứ sáng, bền thời tiết, thích hợp ban công, hiên nhà và công trình mang phong cách Đông Dương.",
     imageUrl: "/images/lan-can.jpg",
+    images: [],
+    isPublished: 1,
     featured: 0,
     sortOrder: 4,
   },
@@ -102,6 +112,8 @@ export const defaultProducts: Product[] = [
     description:
       "Gạch gốm giàu sắc độ tự nhiên, dùng tạo mảng tường, lối đi và điểm nhấn cho không gian kiến trúc.",
     imageUrl: "/images/gach-trang-tri.jpg",
+    images: [],
+    isPublished: 1,
     featured: 0,
     sortOrder: 5,
   },
@@ -115,6 +127,8 @@ export const defaultProducts: Product[] = [
     description:
       "Bề mặt mộc, màu trầm và chống trơn, phù hợp sân vườn, bậc tam cấp và không gian phục dựng.",
     imageUrl: "/images/gach-lat.jpg",
+    images: [],
+    isPublished: 1,
     featured: 0,
     sortOrder: 6,
   },
@@ -128,6 +142,8 @@ export const defaultProducts: Product[] = [
     description:
       "Dáng ngói truyền thống với lớp men xanh ghi có chiều sâu, phù hợp mái nhà Việt, nhà thờ họ và khu nghỉ dưỡng.",
     imageUrl: "/images/ngoi-am-duong.jpg",
+    images: [],
+    isPublished: 1,
     featured: 1,
     sortOrder: 7,
   },
@@ -141,6 +157,8 @@ export const defaultProducts: Product[] = [
     description:
       "Dòng ngói mang dáng dấp kiến trúc cổ, màu men bền và nổi bật dưới ánh sáng tự nhiên.",
     imageUrl: "/images/ngoi-van-mieu.jpg",
+    images: [],
+    isPublished: 1,
     featured: 0,
     sortOrder: 8,
   },
@@ -154,6 +172,8 @@ export const defaultProducts: Product[] = [
     description:
       "Tạo tác nghê cân đối, thần thái sống động; thích hợp đặt tại cổng, từ đường và không gian thờ tự.",
     imageUrl: "/images/nghe-phong-thuy.jpg",
+    images: [],
+    isPublished: 1,
     featured: 1,
     sortOrder: 9,
   },
@@ -167,6 +187,8 @@ export const defaultProducts: Product[] = [
     description:
       "Phụ kiện hoàn thiện đường nóc, giữ nhịp mái và tăng vẻ bề thế cho kiến trúc truyền thống.",
     imageUrl: "/images/dao-kim-noc.jpg",
+    images: [],
+    isPublished: 1,
     featured: 0,
     sortOrder: 10,
   },
@@ -193,6 +215,8 @@ type DbProductRow = {
   dimensions: string;
   description: string;
   image_url: string;
+  gallery_json?: string;
+  is_published?: number;
   featured: number;
   sort_order: number;
 };
@@ -212,6 +236,11 @@ function settingsFromRow(row: DbSettingsRow): SiteSettings {
 }
 
 function productFromRow(row: DbProductRow): Product {
+  let images: string[] = [];
+  try {
+    const parsed = JSON.parse(row.gallery_json || "[]") as unknown;
+    if (Array.isArray(parsed)) images = parsed.filter((url): url is string => typeof url === "string").slice(0, 12);
+  } catch { /* An invalid legacy gallery falls back to its cover image. */ }
   return {
     id: row.id,
     title: row.title,
@@ -221,6 +250,8 @@ function productFromRow(row: DbProductRow): Product {
     dimensions: row.dimensions,
     description: row.description,
     imageUrl: row.image_url,
+    images,
+    isPublished: row.is_published ?? 1,
     featured: row.featured,
     sortOrder: row.sort_order,
   };
@@ -237,34 +268,37 @@ export async function getSettings(): Promise<SiteSettings> {
   }
 }
 
-export async function getProducts(): Promise<Product[]> {
+export async function getProducts({ includeUnpublished = false }: { includeUnpublished?: boolean } = {}): Promise<Product[]> {
   try {
-    const result = await env.DB.prepare(
-      "SELECT id, title, category, code, material, dimensions, description, image_url, featured, sort_order FROM products ORDER BY sort_order, title",
-    ).all<DbProductRow>();
+    let result: { results: DbProductRow[] };
+    try {
+      result = await env.DB.prepare(
+        "SELECT id, title, category, code, material, dimensions, description, image_url, gallery_json, is_published, featured, sort_order FROM products ORDER BY sort_order, title",
+      ).all<DbProductRow>();
+    } catch {
+      const legacy = await env.DB.prepare(
+        "SELECT id, title, category, code, material, dimensions, description, image_url, featured, sort_order FROM products ORDER BY sort_order, title",
+      ).all<DbProductRow>();
+      result = { results: (legacy.results as DbProductRow[]).map((row) => ({ ...row, gallery_json: "[]", is_published: 1 })) };
+    }
     const overrides = new Map(
       result.results.map((row) => [row.id, productFromRow(row)]),
     );
-    return defaultProducts
-      .map((product) => overrides.get(product.id) ?? product)
+    const defaultIds = new Set(defaultProducts.map((product) => product.id));
+    const combined = [
+      ...defaultProducts.map((product) => overrides.get(product.id) ?? product),
+      ...result.results.map(productFromRow).filter((product) => !defaultIds.has(product.id)),
+    ];
+    return combined
+      .filter((product) => includeUnpublished || product.isPublished === 1)
       .sort((a, b) => a.sortOrder - b.sortOrder);
   } catch {
-    return defaultProducts;
+    return defaultProducts.filter((product) => includeUnpublished || product.isPublished === 1);
   }
 }
 
 export async function getProductById(id: string): Promise<Product | null> {
-  try {
-    const row = await env.DB.prepare(
-      "SELECT id, title, category, code, material, dimensions, description, image_url, featured, sort_order FROM products WHERE id = ?",
-    )
-      .bind(id)
-      .first<DbProductRow>();
-    if (row) return productFromRow(row);
-  } catch {
-    // Fall through to the bundled catalog while the database is unavailable.
-  }
-  return defaultProducts.find((product) => product.id === id) ?? null;
+  return (await getProducts()).find((product) => product.id === id) ?? null;
 }
 
 export const categories = [

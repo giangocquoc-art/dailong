@@ -25,5 +25,7 @@ export const products = sqliteTable("products", {
   imageUrl: text("image_url").notNull(),
   featured: integer("featured").notNull().default(0),
   sortOrder: integer("sort_order").notNull().default(0),
+  galleryJson: text("gallery_json").notNull().default("[]"),
+  isPublished: integer("is_published").notNull().default(1),
   updatedAt: integer("updated_at").notNull(),
 });

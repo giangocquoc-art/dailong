@@ -2,6 +2,7 @@ import { env } from "cloudflare:workers";
 import { NextResponse } from "next/server";
 import { isAdminCookie } from "@/lib/admin-auth";
 import type { SiteSettings } from "@/lib/content";
+import { ensureAdminSchema } from "@/lib/admin-schema";
 
 function safeText(value: unknown, max: number) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
@@ -18,6 +19,7 @@ export async function POST(request: Request) {
   };
   if (Object.values(data).some((value) => !value)) return NextResponse.json({ error: "Vui lòng điền đủ thông tin." }, { status: 400 });
   try {
+    await ensureAdminSchema();
     await env.DB.prepare(`INSERT INTO site_settings (id, site_title, hero_kicker, hero_title, hero_description, hero_image_url, about_text, phone, email, address, updated_at)
       VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       ON CONFLICT(id) DO UPDATE SET site_title=excluded.site_title, hero_kicker=excluded.hero_kicker, hero_title=excluded.hero_title, hero_description=excluded.hero_description, hero_image_url=excluded.hero_image_url, about_text=excluded.about_text, phone=excluded.phone, email=excluded.email, address=excluded.address, updated_at=excluded.updated_at`)

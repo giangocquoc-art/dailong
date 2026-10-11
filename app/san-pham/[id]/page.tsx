@@ -23,11 +23,15 @@ export default async function ProductDetail({ params, searchParams }: DetailProp
   const lang = getLanguage(query.lang);
   const related = allProducts.filter((p) => p.id !== id && p.category === product.category);
   const relatedProducts = [...related, ...allProducts.filter((p) => p.id !== id && p.category !== product.category)].slice(0, 3);
+  const gallery = Array.from(new Set([product.imageUrl, ...product.images])).filter(Boolean);
   return <SiteShell settings={settings} lang={lang} currentHref={currentPageHref("/san-pham/" + id, query)}>
     <section className="section"><div className="container-site">
       <nav className="breadcrumbs" aria-label={textFor(lang, "Đường dẫn trang", "Breadcrumb")}><Link href={withLang("/san-pham", lang)} className="text-link"><ArrowLeft aria-hidden="true" />{textFor(lang, "Bộ sưu tập sản phẩm", "Product collection")}</Link><span aria-hidden="true">/</span><Link href={withLang("/san-pham?danh-muc=" + encodeURIComponent(product.category), lang)}>{contentText(product.category, lang)}</Link></nav>
       <div className="detail-grid">
-        <div className="detail-photo"><img src={product.imageUrl} alt={contentText(product.title, lang)} width={680} height={680} fetchPriority="high" /></div>
+        <div className="detail-gallery">
+          <div className="detail-photo"><img src={product.imageUrl} alt={contentText(product.title, lang)} width={900} height={900} fetchPriority="high" /></div>
+          {gallery.length > 1 && <div className="detail-gallery-thumbs" aria-label={textFor(lang, "Ảnh khác của sản phẩm", "More product images")}>{gallery.slice(1).map((url, index) => <img key={`${url}-${index}`} src={url} alt={`${contentText(product.title, lang)} — ${textFor(lang, "ảnh", "image")} ${index + 2}`} width={180} height={180} loading="lazy" decoding="async"/>)}</div>}
+        </div>
         <div className="detail-copy">
           <p className="eyebrow">{contentText(product.category, lang)}</p>
           <h1>{contentText(product.title, lang)}</h1>

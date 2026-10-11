@@ -4,7 +4,6 @@ import { ProductCard } from "@/components/product-card";
 import { SiteShell } from "@/components/site-shell";
 import { SiteButton } from "@/components/site-button";
 import { Consultation } from "@/components/consultation";
-import { DaiLongMascot } from "@/components/dai-long-mascot";
 import { categories, getProducts, getSettings, projects } from "@/lib/content";
 import { contentText, currentPageHref, getLanguage, textFor, withLang, zaloHref, type PageProps } from "@/lib/presentation";
 
@@ -19,7 +18,6 @@ export default async function Home({ searchParams }: PageProps) {
     <section className="hero">
       <div className="container-site hero-grid">
         <div className="hero-copy">
-          <div className="brand-mascot-lockup"><DaiLongMascot mood="welcome" lang={lang} className="brand-mascot"/><span>{textFor(lang, "Long Gốm · Rồng gốm men lam của Đại Long", "Long Gom · Dai Long's blue-glazed ceramic dragon")}</span></div>
           <p className="eyebrow">{contentText(settings.heroKicker, lang)}</p>
           <h1 className="hero-title">{contentText(settings.heroTitle, lang)}</h1>
           <p className="hero-description">{contentText(settings.heroDescription, lang)}</p>

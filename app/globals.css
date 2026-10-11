@@ -78,7 +78,7 @@
 .site-header { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid var(--border); background: #fff; }
 .header-inner { min-height: 92px; display: flex; align-items: center; justify-content: space-between; gap: 26px; }
 .brand { display: inline-flex; align-items: center; gap: 13px; flex-shrink: 0; color: var(--primary); }
-.brand img { width: 65px; height: 53px; object-fit: contain; }
+.brand-mark { width: 57px; height: 57px; flex: 0 0 auto; }
 .brand-name { display: block; font-family: Georgia,"Times New Roman",serif; font-size: 1.2rem; line-height: 1.6; font-weight: 600; white-space: nowrap; letter-spacing: 0; }
 .brand-origin { display: block; font-size: .75rem; color: #5b6d85; line-height: 1.7; letter-spacing: .045em; }
 .desktop-nav { display: flex; align-items: center; gap: 25px; }
@@ -261,7 +261,7 @@
 }
 @media (max-width:760px) {
   .container-site { width: calc(100% - 40px); } .section { padding-block: 52px; }
-  .header-inner { gap: 12px; min-height: 78px; } .brand { gap: 9px; } .brand img { width: 46px; height: 44px; }
+  .header-inner { gap: 12px; min-height: 78px; } .brand { gap: 9px; } .brand-mark { width: 46px; height: 46px; }
   .brand-name { font-size: .9375rem; } .brand-origin { font-size: .75rem; letter-spacing: 0; }
   .header-tools { gap: 8px; } .language-switch { border: 0; padding: 0; } .language-switch a { width: 32px; min-height: 40px; }
   .hero { padding-block: 20px 32px; } .hero-grid { grid-template-columns: 1fr; gap: 25px; }
@@ -293,7 +293,7 @@
   .values-grid { grid-template-columns: 1fr; gap: 22px; } .value-item svg { margin-bottom: 14px; } .contact-visual img { height: 280px; }
 }
 @media (max-width:420px) {
-  .container-site { width: calc(100% - 32px); } .brand-name { font-size: .8125rem; } .brand img { width: 36px; }
+  .container-site { width: calc(100% - 32px); } .brand-name { font-size: .8125rem; } .brand-mark { width: 38px; height: 38px; }
   .brand-origin { font-size: .75rem; } .header-tools { gap: 5px; } .menu-toggle { width: 40px; height: 42px; }
   .language-switch a { width: 30px; } .category-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px 16px; }
   .category-tile span { font-size: .8125rem; } .button-row > .site-button { flex: 1 1 auto; }

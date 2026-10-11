@@ -4,6 +4,7 @@ import { Menu, Phone, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { SiteSettings } from "@/lib/content";
+import { DaiLongMascot } from "@/components/dai-long-mascot";
 import { contentText, phoneHref, textFor, withLang, type Language } from "@/lib/presentation";
 
 export function SiteHeader({ settings, lang, currentHref }: { settings: Pick<SiteSettings, "siteTitle" | "phone" | "address">; lang: Language; currentHref: string }) {
@@ -24,7 +25,7 @@ export function SiteHeader({ settings, lang, currentHref }: { settings: Pick<Sit
   }}>
     <div className="container-site header-inner">
       <Link href={withLang("/", lang)} className="brand" aria-label={textFor(lang, "Gốm sứ Đại Long — Trang chủ", "Dai Long Ceramics — Home")}>
-        <img src="/logo-dai-long.png" alt="" width={65} height={53} />
+        <DaiLongMascot className="brand-mark" />
         <span><strong className="brand-name">{settings.siteTitle.normalize("NFC")}</strong><span className="brand-origin">{textFor(lang, "Bát Tràng · Hà Nội", "Bat Trang · Hanoi")}</span></span>
       </Link>
       <nav className="desktop-nav" aria-label={textFor(lang, "Điều hướng chính", "Main navigation")}>

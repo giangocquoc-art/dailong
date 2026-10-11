@@ -31,7 +31,7 @@ export const defaultSettings: SiteSettings = {
   heroTitle: "Gìn giữ dáng Việt trong từng nếp nhà",
   heroDescription:
     "Gốm sứ kiến trúc được chế tác thủ công tại Bát Tràng, dành cho công trình tâm linh, nhà ở và không gian sân vườn mang bản sắc riêng.",
-  heroImageUrl: "/images/hero-3.jpg",
+  heroImageUrl: "/images/ngoi-van-mieu.jpg",
   aboutText:
     "Từ đất, lửa và đôi tay người thợ Bát Tràng, Đại Long tiếp nối kỹ nghệ gốm kiến trúc truyền thống bằng tinh thần chỉn chu của một thương hiệu đương đại. Mỗi sản phẩm được lựa chọn về tỷ lệ, sắc men và độ bền để hài hòa cùng công trình Việt.",
   phone: "0975203933",
@@ -282,18 +282,33 @@ export const categories = [
 
 export const projects = [
   {
-    title: "Khu sinh thái Ecopark",
-    type: "Không gian sân vườn",
-    imageUrl: "/images/project-ecopark.jpg",
+    title: "Ngói âm dương trên mái nhà Việt",
+    type: "Gợi ý ứng dụng · mái nhà",
+    imageUrl: "/images/ngoi-am-duong.jpg",
   },
   {
-    title: "Vườn Nhật Bản – Vinpearl Nha Trang",
-    type: "Cảnh quan nghỉ dưỡng",
-    imageUrl: "/images/project-vinpearl.jpg",
+    title: "Sắc men xanh cho công trình",
+    type: "Gợi ý ứng dụng · sắc men",
+    imageUrl: "/images/ngoi-van-mieu.jpg",
   },
   {
-    title: "Chùa Đu",
-    type: "Kiến trúc tâm linh",
+    title: "Chi tiết mái kiến trúc truyền thống",
+    type: "Gợi ý ứng dụng · chi tiết mái",
     imageUrl: "/images/project-chua-du.jpg",
+  },
+];
+
+export const roofTileApplications = [
+  {
+    title: "Nhịp mái kiến trúc truyền thống",
+    type: "Hình tham khảo · mái ngói",
+    imageUrl: "/images/project-chua-du.jpg",
+    description: "Mái nhiều lớp gợi cách nhịp ngói và đường bờ mái định hình tổng thể. Ảnh tham khảo kiến trúc, không xác nhận nguồn cung ngói.",
+  },
+  {
+    title: "Sắc men xanh trên từng viên ngói",
+    type: "Chi tiết vật liệu · men xanh",
+    imageUrl: "/images/ngoi-van-mieu.jpg",
+    description: "Bề mặt men xanh ghi tạo chiều sâu và thay đổi theo ánh sáng. Hãy đối chiếu màu thực tế bằng mẫu gốm trước khi chọn.",
   },
 ];

@@ -49,6 +49,7 @@ const translations: Record<string, string> = {
   "Đao - Kìm nóc": "Roof ornaments",
   "Tinh hoa gốm kiến trúc Bát Tràng": "Architectural ceramics from Bat Trang",
   "Gìn giữ dáng Việt trong từng nếp nhà": "Vietnamese heritage, shaped for your home",
+  "Long Gốm · Bạn đồng hành chọn gốm kiến trúc": "Long Gom · Your guide to architectural ceramics",
   "Gốm sứ kiến trúc được chế tác thủ công tại Bát Tràng, dành cho công trình tâm linh, nhà ở và không gian sân vườn mang bản sắc riêng.": "Handcrafted architectural ceramics from Bat Trang for traditional buildings, homes and gardens with a character of their own.",
   "Từ đất, lửa và đôi tay người thợ Bát Tràng, Đại Long tiếp nối kỹ nghệ gốm kiến trúc truyền thống bằng tinh thần chỉn chu của một thương hiệu đương đại. Mỗi sản phẩm được lựa chọn về tỷ lệ, sắc men và độ bền để hài hòa cùng công trình Việt.": "Shaped by clay, fire and the hands of Bat Trang craftspeople, Dai Long carries traditional ceramic craftsmanship into today's architecture. Each piece is considered for its proportions, glaze and place within the building.",
   "Phố Gốm - Bát Tràng - Hà Nội": "Pho Gom, Bat Trang, Hanoi, Vietnam",

@@ -4,6 +4,7 @@ import { ProductCard } from "@/components/product-card";
 import { SiteShell } from "@/components/site-shell";
 import { SiteButton } from "@/components/site-button";
 import { Consultation } from "@/components/consultation";
+import { DaiLongMascot } from "@/components/dai-long-mascot";
 import { categories, getProducts, getSettings, projects } from "@/lib/content";
 import { contentText, currentPageHref, getLanguage, textFor, withLang, zaloHref, type PageProps } from "@/lib/presentation";
 
@@ -18,6 +19,7 @@ export default async function Home({ searchParams }: PageProps) {
     <section className="hero">
       <div className="container-site hero-grid">
         <div className="hero-copy">
+          <div className="brand-mascot-lockup"><DaiLongMascot className="brand-mascot"/><span>{textFor(lang, "Long Gốm · Bạn đồng hành chọn gốm kiến trúc", "Long Gom · Your guide to architectural ceramics")}</span></div>
           <p className="eyebrow">{contentText(settings.heroKicker, lang)}</p>
           <h1 className="hero-title">{contentText(settings.heroTitle, lang)}</h1>
           <p className="hero-description">{contentText(settings.heroDescription, lang)}</p>
@@ -74,7 +76,7 @@ export default async function Home({ searchParams }: PageProps) {
           <img src={project.imageUrl} alt={contentText(project.title, lang)} width={480} height={330} loading="lazy" decoding="async" />
           <p className="eyebrow">{contentText(project.type, lang)}</p><h3>{contentText(project.title, lang)}</h3>
         </Link>)}</div>
-        <p className="section-note">{textFor(lang, "Hình ảnh công trình tham khảo từ website Gốm sứ Thanh Hải trước đây.", "Project reference images from the former Thanh Hai Ceramics website.")}</p>
+        <p className="section-note">{textFor(lang, "Gợi ý ứng dụng và hình ảnh tham khảo; vui lòng liên hệ để Đại Long tư vấn theo công trình thực tế.", "Application ideas and visual references; contact Dai Long for advice tailored to your project.")}</p>
       </div>
     </section>
     <Consultation settings={settings} lang={lang} />

@@ -22,7 +22,7 @@ export default async function ProductsPage({ searchParams }: PageProps) {
     <section className="page-intro"><div className="container-site">
       <nav className="breadcrumbs" aria-label={textFor(lang, "Đường dẫn trang", "Breadcrumb")}><Link href={withLang("/", lang)}>{textFor(lang, "Trang chủ", "Home")}</Link><span aria-hidden="true">/</span><span>{textFor(lang, "Sản phẩm", "Products")}</span></nav>
       <h1>{textFor(lang, "Bộ sưu tập gốm kiến trúc", "The architectural ceramics collection")}</h1>
-      <p>{textFor(lang, "Từ mái ngói, tường gạch đến khoảng sân — chọn dòng gốm phù hợp với công trình của bạn.", "From roofs and walls to courtyards — find the ceramics that belong in your project.")}</p>
+      <p>{textFor(lang, "Từ ngói lợp, gạch trang trí đến chi tiết sân vườn — khám phá sản phẩm gốm kiến trúc Đại Long theo từng nhu cầu công trình.", "From roof tiles and decorative brick to garden details — explore Dai Long architectural ceramics for your project.")}</p>
     </div></section>
     <section className="section"><div className="container-site catalog-layout">
       <aside className="catalog-sidebar"><h2>{textFor(lang, "Danh mục sản phẩm", "Collections")}</h2>

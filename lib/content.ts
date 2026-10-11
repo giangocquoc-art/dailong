@@ -162,11 +162,11 @@ export const defaultProducts: Product[] = [
     imageUrl: "/images/ngoi-am-duong.jpg",
     images: [],
     technicalInfo: {
-      sections: ["l", "m", "s"].map((size) => ({
-        title: `Bản vẽ tham khảo · Cỡ ${size.toUpperCase()}`,
-        text: "Hình chiếu và kích thước tham khảo theo bảng Đại Long cung cấp. Vui lòng đối chiếu mẫu thực tế trước khi chốt quy cách.",
-        imageUrl: `/images/technical/ngoi-am-duong-${size}.svg`,
-      })),
+      sections: [{
+        title: "Bản vẽ kỹ thuật · Cấu tạo và cách lợp",
+        text: "Bản vẽ thể hiện riêng viên ngói âm dạng lòng rãnh, viên ngói dương dạng nắp phủ và cách ghép cặp trên mái. Bảng quy cách phía dưới ghi số đo theo từng cỡ L, M, S.",
+        imageUrl: "/images/technical/ngoi-am-duong.webp",
+      }],
       table: {
         title: "Bảng tham khảo ba quy cách ngói âm dương",
         columns: ["Ngói âm dương cỡ L", "Ngói âm dương cỡ M", "Ngói âm dương cỡ S"],
@@ -231,15 +231,15 @@ export const defaultProducts: Product[] = [
 ];
 
 const technicalDrawingByProduct: Record<string, { image: string; title: string; text: string }> = {
-  "rong-chau-nguyet": { image: "rong-chau-nguyet.svg", title: "Bố trí rồng chầu nguyệt trên đỉnh mái", text: "Sơ đồ vị trí trang trí trên nóc; hình thức, kích thước và điểm liên kết được xác định theo hiện trạng công trình." },
-  "gach-thong-gio-hoa-roi": { image: "gach-thong-gio-hoa-roi.svg", title: "Mặt viên và sơ đồ ghép mảng", text: "Quy cách catalog hiện có: 30 × 30 cm. Hình ghép minh họa hướng thông thoáng; xác nhận độ dày và chi tiết liên kết theo mẫu." },
-  "den-ngan-hoa": { image: "den-ngan-hoa.svg", title: "Thân đèn và vùng ô thoáng", text: "Sơ đồ hình dáng tham khảo. Dòng sản phẩm có nhiều kích thước; cần chốt kích thước, nguồn sáng và cách lắp đặt theo mẫu." },
-  "lan-can-luc-binh": { image: "lan-can-luc-binh.svg", title: "Cấu kiện lan can nhìn chính diện", text: "Minh họa tay vịn, con tiện và chân đế. Số lượng, cao độ, khoảng cách và liên kết cần đo theo công trình." },
-  "gach-trang-tri-hoa-van": { image: "gach-trang-tri-hoa-van.svg", title: "Mặt viên và mảng ghép hoa văn", text: "Sơ đồ lặp họa tiết để tham khảo cách bố trí. Kích thước viên, độ dày và mạch ghép cần chốt theo mẫu." },
-  "gach-lat-ngoai-that": { image: "gach-lat-ngoai-that.svg", title: "Sơ đồ lát sân và mạch ghép", text: "Minh họa mặt bằng lát gạch. Quy cách viên, chiều dày, loại nền và mạch lát cần xác nhận theo sản phẩm và hiện trạng." },
-  "ngoi-van-mieu-xanh": { image: "ngoi-van-mieu-xanh.svg", title: "Sơ đồ xếp lớp ngói trên mái", text: "Sơ đồ tham khảo cách tạo lớp ngói theo mặt mái; chưa có số đo cấu kiện trong catalog. Cần lập quy cách theo mái thực tế." },
-  "nghe-phong-thuy-men-ran": { image: "nghe-phong-thuy-men-ran.svg", title: "Hình chiếu tượng và bệ đặt", text: "Sơ đồ dáng tượng và bệ đặt tham khảo. Dòng sản phẩm có nhiều kích thước; xác nhận số đo và vị trí đặt theo mẫu." },
-  "bo-hoa-chanh-doi": { image: "bo-hoa-chanh-doi.svg", title: "Bố trí cấu kiện trên đường nóc", text: "Sơ đồ cấu kiện trang trí theo mái. Kích thước, điểm nối và số lượng được xác định sau khi đo đường nóc công trình." },
+  "rong-chau-nguyet": { image: "rong-chau-nguyet.webp", title: "Mặt đứng bộ rồng chầu nguyệt và vị trí trên nóc", text: "Bản vẽ tham khảo thể hiện cặp rồng đối xứng, mặt bên và vị trí trang trí trên nóc. Kích thước, hình thức và điểm liên kết cần chốt theo hiện trạng công trình." },
+  "gach-thong-gio-hoa-roi": { image: "gach-thong-gio-hoa-roi.webp", title: "Mặt viên, mặt cắt và cách ghép mảng", text: "Quy cách catalog hiện có: 30 × 30 cm. Bản vẽ thể hiện hoa văn, mặt cạnh và hướng thông thoáng; chiều dày và chi tiết liên kết cần xác nhận theo mẫu." },
+  "den-ngan-hoa": { image: "den-ngan-hoa.webp", title: "Hình chiếu thân đèn và chi tiết ô thoáng", text: "Bản vẽ tham khảo thể hiện thân đèn, miệng mở và hoa văn xuyên sáng. Dòng sản phẩm có nhiều kích thước; cần chốt kích thước và phương án chiếu sáng theo mẫu." },
+  "lan-can-luc-binh": { image: "lan-can-luc-binh.webp", title: "Mặt đứng con tiện và cấu tạo lan can", text: "Bản vẽ tham khảo thể hiện con tiện lục bình, tay vịn và chân đế. Cao độ, khoảng cách và liên kết cần đo theo công trình." },
+  "gach-trang-tri-hoa-van": { image: "gach-trang-tri-hoa-van.webp", title: "Mặt viên, mặt cạnh và mảng ghép hoa văn", text: "Bản vẽ thể hiện họa tiết hoa bốn cánh, phần rỗng và mặt cạnh của viên gạch. Kích thước và độ dày cần chốt theo mẫu." },
+  "gach-lat-ngoai-that": { image: "gach-lat-ngoai-that.webp", title: "Mặt bằng lát, mặt cắt nền và bậc sân", text: "Bản vẽ tham khảo cách ghép viên lát và cấu tạo lớp nền. Kích thước viên, chiều dày, loại nền và mạch lát cần xác nhận theo sản phẩm và hiện trạng." },
+  "ngoi-van-mieu-xanh": { image: "ngoi-van-mieu-xanh.webp", title: "Mặt viên ngói và chi tiết lợp mái", text: "Bản vẽ tham khảo thể hiện mặt đầu hoa sen, mặt bên và cách xếp lớp dưới diềm mái. Catalog chưa có số đo cấu kiện; cần lập quy cách theo mái thực tế." },
+  "nghe-phong-thuy-men-ran": { image: "nghe-phong-thuy-men-ran.webp", title: "Mặt đứng, mặt bên và mặt bằng tượng nghê", text: "Bản vẽ tham khảo thể hiện dáng nghê ngồi, đuôi cuộn và bệ tượng. Dòng sản phẩm có nhiều kích thước; xác nhận số đo theo mẫu đặt." },
+  "bo-hoa-chanh-doi": { image: "bo-hoa-chanh-doi.webp", title: "Mặt đứng, mặt cắt và vị trí trên đường nóc", text: "Bản vẽ tham khảo thể hiện thân gốm hoa chanh, mặt cạnh và cách bố trí trên nóc. Kích thước, điểm nối và số lượng cần xác định sau khi đo đường nóc." },
 };
 
 for (const product of defaultProducts) {

@@ -103,6 +103,24 @@ export function AdminPanel({ initialSettings, initialProducts }: { initialSettin
     } catch (error) { showNotice("error", error instanceof Error ? error.message : "Không thể tải ảnh."); }
     finally { setSaving(""); }
   }
+  async function replaceProductInfoImage(file: File, productId: string, sectionIndex: number) {
+    const savingKey = `info-image-${productId}-${sectionIndex}`;
+    setSaving(savingKey);
+    try {
+      const imageUrl = await uploadImage(file);
+      const withImage = (product: Product) => ({
+        ...product,
+        technicalInfo: {
+          ...(product.technicalInfo ?? { sections: [], table: null }),
+          sections: (product.technicalInfo?.sections ?? []).map((section, index) => index === sectionIndex ? { ...section, imageUrl } : section),
+        },
+      });
+      setProducts((current) => current.map((product) => product.id === productId ? withImage(product) : product));
+      setDraft((current) => current?.id === productId ? withImage(current) : current);
+      showNotice("success", "Ảnh đã tải lên. Nhấn Lưu sản phẩm để áp dụng.");
+    } catch (error) { showNotice("error", error instanceof Error ? error.message : "Không thể tải ảnh."); }
+    finally { setSaving(""); }
+  }
   function startNewProduct() {
     setDraft({
       id: `san-pham-${crypto.randomUUID().slice(0, 8)}`,
@@ -130,8 +148,8 @@ export function AdminPanel({ initialSettings, initialProducts }: { initialSettin
             <Button type="button" onClick={startNewProduct} disabled={!!draft} className="h-11 rounded-none bg-[#163874]"><PackagePlus/>Thêm sản phẩm</Button>
           </div>
           <div className="space-y-5">
-            {draft && <ProductEditor key={draft.id} product={draft} isNew saving={saving} onChange={updateProduct} onSave={async (product) => { const saved = await saveProduct(product); if (saved) setDraft(null); return saved; }} onImage={(file) => replaceImage(file, draft.id)} onImages={(files) => addProductImages(files, draft)} onCancel={() => setDraft(null)} />}
-            {products.map((product) => <ProductEditor key={product.id} product={product} saving={saving} onChange={updateProduct} onSave={saveProduct} onImage={(file) => replaceImage(file, product.id)} onImages={(files) => addProductImages(files, product)} />)}
+            {draft && <ProductEditor key={draft.id} product={draft} isNew saving={saving} onChange={updateProduct} onSave={async (product) => { const saved = await saveProduct(product); if (saved) setDraft(null); return saved; }} onImage={(file) => replaceImage(file, draft.id)} onImages={(files) => addProductImages(files, draft)} onSectionImage={(file, index) => replaceProductInfoImage(file, draft.id, index)} onCancel={() => setDraft(null)} />}
+            {products.map((product) => <ProductEditor key={product.id} product={product} saving={saving} onChange={updateProduct} onSave={saveProduct} onImage={(file) => replaceImage(file, product.id)} onImages={(files) => addProductImages(files, product)} onSectionImage={(file, index) => replaceProductInfoImage(file, product.id, index)} />)}
           </div>
         </TabsContent>
       </Tabs>
@@ -139,7 +157,7 @@ export function AdminPanel({ initialSettings, initialProducts }: { initialSettin
   </main>;
 }
 
-function ProductEditor({ product, isNew = false, saving, onChange, onSave, onImage, onImages, onCancel }: {
+function ProductEditor({ product, isNew = false, saving, onChange, onSave, onImage, onImages, onSectionImage, onCancel }: {
   product: Product;
   isNew?: boolean;
   saving: string;
@@ -147,9 +165,10 @@ function ProductEditor({ product, isNew = false, saving, onChange, onSave, onIma
   onSave: (product: Product) => Promise<boolean>;
   onImage: (file: File) => void;
   onImages: (files: FileList | null) => void;
+  onSectionImage: (file: File, index: number) => void;
   onCancel?: () => void;
 }) {
-  const busy = saving === product.id || saving === `upload-${product.id}` || saving === `gallery-${product.id}`;
+  const busy = saving !== "";
   return <details className={`group border bg-white ${isNew ? "border-[#163874] shadow-sm" : "border-[#dbe2ec]"}`} open={isNew}>
     <summary className="flex cursor-pointer list-none items-center gap-4 p-4 sm:p-5">
       {product.imageUrl ? <img src={product.imageUrl} alt="" className="h-16 w-16 shrink-0 object-cover"/> : <span className="grid h-16 w-16 shrink-0 place-items-center bg-[#eaf0f8] text-xs text-[#667085]">Chưa có ảnh</span>}
@@ -174,7 +193,7 @@ function ProductEditor({ product, isNew = false, saving, onChange, onSave, onIma
         <Field label="Quy cách / kích thước"><Input required value={product.dimensions} onChange={(event) => onChange({ ...product, dimensions: event.target.value })}/></Field>
         <Field label="Thứ tự hiển thị"><Input type="number" value={product.sortOrder} onChange={(event) => onChange({ ...product, sortOrder: Number(event.target.value) })}/></Field>
         <div className="sm:col-span-2"><Field label="Mô tả sản phẩm"><Textarea value={product.description} onChange={(event) => onChange({ ...product, description: event.target.value })} className="min-h-28" placeholder="Mô tả công dụng, sắc men, cách dùng…"/></Field></div>
-        <div className="sm:col-span-2"><ProductTechnicalInfoEditor product={product} onChange={(technicalInfo) => onChange({ ...product, technicalInfo })}/></div>
+        <div className="sm:col-span-2"><ProductTechnicalInfoEditor product={product} saving={saving} onChange={(technicalInfo) => onChange({ ...product, technicalInfo })} onSectionImage={onSectionImage}/></div>
         <div className="flex flex-wrap gap-x-6 gap-y-3 sm:col-span-2">
           <label className="flex min-h-11 items-center gap-2 text-sm font-semibold text-[#24324a]"><input type="checkbox" checked={product.isPublished === 1} onChange={(event) => onChange({ ...product, isPublished: event.target.checked ? 1 : 0 })}/><span>{product.isPublished ? <Eye size={17} className="inline"/> : <EyeOff size={17} className="inline"/>} Đăng sản phẩm trên website</span></label>
           <label className="flex min-h-11 items-center gap-2 text-sm font-semibold text-[#24324a]"><input type="checkbox" checked={product.featured === 1} onChange={(event) => onChange({ ...product, featured: event.target.checked ? 1 : 0 })}/>Ưu tiên trên trang chủ</label>
@@ -185,21 +204,8 @@ function ProductEditor({ product, isNew = false, saving, onChange, onSave, onIma
   </details>;
 }
 
-function ProductTechnicalInfoEditor({ product, onChange }: { product: Product; onChange: (info: ProductTechnicalInfo) => void }) {
+function ProductTechnicalInfoEditor({ product, saving, onChange, onSectionImage }: { product: Product; saving: string; onChange: (info: ProductTechnicalInfo) => void; onSectionImage: (file: File, index: number) => void }) {
   const info = product.technicalInfo ?? { sections: [], table: null };
-  const [uploadingSection, setUploadingSection] = useState<number | null>(null);
-  const [uploadError, setUploadError] = useState("");
-  async function replaceSectionImage(index: number, file?: File) {
-    if (!file) return;
-    setUploadingSection(index);
-    setUploadError("");
-    try {
-      const imageUrl = await uploadImage(file);
-      onChange({ ...info, sections: info.sections.map((section, position) => position === index ? { ...section, imageUrl } : section) });
-    } catch (error) {
-      setUploadError(error instanceof Error ? error.message : "Không thể tải ảnh.");
-    } finally { setUploadingSection(null); }
-  }
   function updateColumn(index: number, value: string) {
     const table = info.table;
     if (!table) return;
@@ -225,12 +231,11 @@ function ProductTechnicalInfoEditor({ product, onChange }: { product: Product; o
     <div className="space-y-4">
       {info.sections.map((section, index) => <div key={index} className="grid gap-4 border-y border-[#e5eaf1] py-4 sm:grid-cols-[180px_1fr]">
         <div>{section.imageUrl ? <img src={section.imageUrl} alt={section.title || "Ảnh thông tin sản phẩm"} className="aspect-[4/3] w-full border border-[#dbe2ec] object-cover"/> : <div className="grid aspect-[4/3] place-items-center bg-[#f4f6f9] text-sm text-[#667085]">Chưa có ảnh</div>}
-          <label className="mt-2 flex min-h-10 cursor-pointer items-center justify-center gap-2 border border-dashed border-[#163874]/35 px-2 text-xs font-bold text-[#163874]"><ImageUp size={15}/>{uploadingSection === index ? "Đang tải ảnh..." : section.imageUrl ? "Thay ảnh minh họa" : "Thêm ảnh minh họa"}<Input type="file" accept="image/jpeg,image/png,image/webp,image/avif" className="hidden" disabled={uploadingSection !== null} onChange={(event) => { void replaceSectionImage(index, event.currentTarget.files?.[0]); event.currentTarget.value = ""; }}/></label>
+          <label className="mt-2 flex min-h-10 cursor-pointer items-center justify-center gap-2 border border-dashed border-[#163874]/35 px-2 text-xs font-bold text-[#163874]"><ImageUp size={15}/>{saving === `info-image-${product.id}-${index}` ? "Đang tải ảnh..." : section.imageUrl ? "Thay ảnh minh họa" : "Thêm ảnh minh họa"}<Input type="file" accept="image/jpeg,image/png,image/webp,image/avif" className="hidden" disabled={busy} onChange={(event) => { const file = event.currentTarget.files?.[0]; if (file) onSectionImage(file, index); event.currentTarget.value = ""; }}/></label>
         </div>
         <div className="grid content-start gap-3"><Field label="Tiêu đề"><Input value={section.title} maxLength={140} onChange={(event) => onChange({ ...info, sections: info.sections.map((item, position) => position === index ? { ...item, title: event.target.value } : item) })} placeholder="Ví dụ: Cấu tạo thân mái"/></Field><Field label="Nội dung"><Textarea value={section.text} maxLength={1200} onChange={(event) => onChange({ ...info, sections: info.sections.map((item, position) => position === index ? { ...item, text: event.target.value } : item) })} className="min-h-20" placeholder="Mô tả ngắn, đúng với sản phẩm này"/></Field><Button type="button" variant="ghost" onClick={() => onChange({ ...info, sections: info.sections.filter((_, position) => position !== index) })} className="min-h-10 justify-self-start rounded-none px-2 text-[#8b3329]"><Trash2 size={16}/>Gỡ mục này</Button></div>
       </div>)}
       {info.sections.length < 8 && <Button type="button" variant="outline" onClick={() => onChange({ ...info, sections: [...info.sections, { title: "", text: "", imageUrl: "" }] })} className="min-h-11 rounded-none"><Plus size={17}/>Thêm mục ảnh và nội dung</Button>}
-      {uploadError && <p role="alert" className="text-sm text-red-700">{uploadError}</p>}
     </div>
     <div className="mt-6 border-t border-[#dbe2ec] pt-5">
       <h4 className="font-bold text-[#17213a]">Bảng quy cách</h4>

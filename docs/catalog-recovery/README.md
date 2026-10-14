@@ -7,6 +7,7 @@
 - Sao lưu dữ liệu gốc: `docs/catalog-recovery/payload-products-snapshot-2026-10-15.json` (read-only API export).
 - Tổng 29 mã sản phẩm riêng biệt trên hai nguồn; **0 mã trùng chính xác, 0 tên trùng chính xác**. Điều này KHÔNG chứng minh 29 sản phẩm vật lý khác nhau.
 - **16/19 ảnh đại diện CMS trả HTTP 404**, 3 ảnh trả HTTP 200 nhưng là ảnh tĩnh dùng chung với sản phẩm mặc định.
+- **14/14 ảnh gallery bổ sung cũng trả HTTP 404** (kiểm tra trực tiếp từng URL). Tổng cộng 30/33 đường dẫn ảnh lưu trong CMS bị lỗi 404.
 - CMS `/api/media` trả 0 bản ghi, ảnh catalog thuộc `/images/catalog/` vắng mặt trong nhánh Git đang triển khai. Không xóa, không sửa database/production.
 
 ## Danh sách CMS & ảnh đại diện

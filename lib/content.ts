@@ -1,4 +1,5 @@
 import { env } from "cloudflare:workers";
+import { loadPublishedPayloadProducts, mergeCatalogWithoutExactDuplicates } from "./payload-catalog";
 
 export type SiteSettings = {
   siteTitle: string;
@@ -344,6 +345,17 @@ export async function getSettings(): Promise<SiteSettings> {
 }
 
 export async function getProducts({ includeUnpublished = false }: { includeUnpublished?: boolean } = {}): Promise<Product[]> {
+  // Preview-only during recovery. Production opt-in requires an explicit environment flag.
+  const readFromPayload = typeof process !== "undefined" && process.env.VERCEL === "1" &&
+    (process.env.VERCEL_GIT_COMMIT_REF === "codex/dai-long-cms-catalog-recovery" ||
+      process.env.DAI_LONG_ENABLE_PAYLOAD_CATALOG === "1");
+  if (readFromPayload) {
+    const restored = await loadPublishedPayloadProducts();
+    if (restored !== null) {
+      return mergeCatalogWithoutExactDuplicates(defaultProducts, restored)
+        .filter((product) => includeUnpublished || product.isPublished === 1);
+    }
+  }
   try {
     let result: { results: DbProductRow[] };
     try {

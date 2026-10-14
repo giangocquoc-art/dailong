@@ -60,3 +60,11 @@
 - `lib/content.ts`: chỉ dùng Payload trên nhánh `codex/dai-long-cms-catalog-recovery` hoặc khi `DAI_LONG_ENABLE_PAYLOAD_CATALOG=1` trong Vercel. Production hiện tại KHÔNG bật cờ.
 - `next.config.ts`: alias Cloudflare Worker bindings cho môi trường Vercel để preview biên dịch; Cloudflare Worker thực tế không thay đổi.
 - Giữ nguyên các trang JSX/CSS hiện tại. Có fallback 10 sản phẩm khi CMS không truy cập được.
+
+## Phát hiện mới: bản deploy ngày 23/09/2026 còn giữ ảnh gốc
+
+- Đã truy tìm deployment Vercel production cũ `dpl_Am2mPAKbqbBczeGjdFTvVePyaYbA` (23/09/2026, nhánh `feature/admin-cms-builder`, commit lúc deploy `a9371c0cab010ed5880b241d7615efee5ffa1798`).
+- API Vercel xác nhận thư mục nguồn `src/public/images/catalog` của deployment này **còn 27 tệp**. Số này khớp chính xác 27 đường dẫn ảnh `/images/catalog/*` CMS đang tham chiếu và website mới trả 404; 3 tệp `*-hover.png` thuộc thư mục cha `src/public/images` cũng hiện diện.
+- Đã kiểm tra trực tiếp một số ảnh gốc qua URL của deployment cũ và nhận HTTP 200, như `ngoi-am-duong-gom-anh-1.jpg`, `ao-kim-dsc-5365-copy.jpg`, `ho-lo-chong-set-dsc-5359.jpg`, `ngoi-bo-noc-750-5242.jpg`, `gach-hoa-gom-gach-hoa-buoi-30-gom-3.jpg` và `den-vuon-hover.png`.
+- **Chưa sao chép tệp ảnh nhị phân về Git hoặc website mới**; các công cụ đọc deployment hiện tại giới hạn kích thước/độ sâu phản hồi, và một số tệp ảnh lớn bị chặn khi truy xuất qua kết nối. Không nên xem đường dẫn `.vercel.app` cũ là CDN công khai ổn định vì có Deployment Protection.
+- Dữ liệu CMS 19 bản ghi vẫn an toàn. **Production vẫn giữ 10 sản phẩm; chỉ bản preview phục hồi đủ tên của 29 bản ghi** và cần bổ sung đúng tệp ảnh trước khi xuất bản.

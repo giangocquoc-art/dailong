@@ -1,3 +1,5 @@
+import { textFor, type Language } from "@/lib/presentation";
+
 /** A compact, accessible scale-reference diagram using the original L/M/S data. */
 const sizes = [
   { key: "l", name: "Ngói âm dương cỡ L", widthTop: "200 mm", widthBottom: "195 mm", height: "100 mm" },
@@ -5,13 +7,13 @@ const sizes = [
   { key: "s", name: "Ngói âm dương cỡ S", widthTop: "102 mm", widthBottom: "117 mm", height: "60 mm" },
 ];
 
-export function RoofTileDimensions() {
-  return <div className="roof-size-reference" aria-label="Sơ đồ kích thước tham khảo ngói âm dương cỡ L, M, S">
-    <h3>Sơ đồ kích thước ngói âm dương</h3>
+export function RoofTileDimensions({ lang = "vi" }: { lang?: Language }) {
+  return <div className="roof-size-reference" aria-label={textFor(lang, "Sơ đồ kích thước tham khảo ngói âm dương cỡ L, M, S", "Reference dimensions of yin-yang roof tiles in sizes L, M and S")}>
+    <h3>{textFor(lang, "Sơ đồ kích thước ngói âm dương", "Yin-yang roof tile size diagrams")}</h3>
     <div className="roof-size-grid">
       {sizes.map((size) => <figure className="roof-size-card" key={size.key}>
-        <figcaption>{size.name}</figcaption>
-        <svg viewBox="0 0 320 250" role="img" aria-label={`${size.name}: ${size.widthTop}, ${size.widthBottom}, ${size.height}`}>
+        <figcaption>{textFor(lang, size.name, `Yin-yang roof tile size ${size.key.toUpperCase()}`)}</figcaption>
+        <svg viewBox="0 0 320 250" role="img" aria-label={`${textFor(lang, size.name, `Size ${size.key.toUpperCase()}`)}: ${size.widthTop}, ${size.widthBottom}, ${size.height}`}>
           <defs>
             <marker id={`roof-arrow-${size.key}`} markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto-start-reverse">
               <path d="M0 0 L6 3 L0 6 Z" fill="#19345f"/>
@@ -38,6 +40,6 @@ export function RoofTileDimensions() {
         </svg>
       </figure>)}
     </div>
-    <p className="roof-size-note">Sơ đồ không theo tỷ lệ. Kích thước và số lượng tham khảo được đối chiếu trong bảng quy cách bên dưới.</p>
+    <p className="roof-size-note">{textFor(lang, "Sơ đồ không theo tỷ lệ. Kích thước và số lượng tham khảo được đối chiếu trong bảng quy cách bên dưới.", "Diagrams are not to scale. Refer to the specification table below for indicative dimensions and quantities.")}</p>
   </div>;
 }

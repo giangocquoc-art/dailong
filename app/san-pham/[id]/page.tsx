@@ -59,7 +59,7 @@ export default async function ProductDetail({ params, searchParams }: DetailProp
         {item.imageUrl && <img src={item.imageUrl} alt={contentText(item.title, lang)} width={720} height={480} loading="lazy" decoding="async"/>}
         <div className="product-info-card-copy">{item.title && <h3>{contentText(item.title, lang)}</h3>}{item.text && <p>{contentText(item.text, lang)}</p>}</div>
       </article>)}</div> : null}
-      {product.category === "Ngói âm dương" && <RoofTileDimensions />}
+      {product.category === "Ngói âm dương" && <RoofTileDimensions lang={lang} />}
       {technicalInfo?.table && <div className="product-spec-table-wrap">
         {technicalInfo.table.title && <h3>{contentText(technicalInfo.table.title, lang)}</h3>}
         <p className="product-table-scroll-hint">{textFor(lang, "Vuốt ngang bảng để xem đủ các cỡ.", "Swipe horizontally to see all sizes.")}</p>

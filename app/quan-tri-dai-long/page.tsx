@@ -1,19 +1,14 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
-import { AdminPanel, LoginPanel } from "./admin-panel";
-import { isAdminCookie } from "@/lib/admin-auth";
-import { getProducts, getSettings } from "@/lib/content";
-import { ensureAdminSchema } from "@/lib/admin-schema";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = { title: "Quản trị Đại Long", robots: { index: false, follow: false } };
-export const dynamic = "force-dynamic";
+export const metadata: Metadata = {
+  title: "Quản trị Đại Long",
+  robots: { index: false, follow: false },
+};
 
-export default async function AdminPage() {
-  const requestHeaders = await headers();
-  const authenticated = await isAdminCookie(requestHeaders.get("cookie"));
-  if (!authenticated) return <div className="admin-surface" lang="vi"><LoginPanel /></div>;
-  try { await ensureAdminSchema(); }
-  catch (error) { console.error("Admin schema setup failed", error); }
-  const [settings, products] = await Promise.all([getSettings(), getProducts({ includeUnpublished: true })]);
-  return <div className="admin-surface" lang="vi"><AdminPanel initialSettings={settings} initialProducts={products} /></div>;
+// The old Cloudflare D1 admin panel is not writable on Vercel because it has
+// no Worker DB bindings. Send customers to the connected Payload CMS so future
+// products are stored in the same source of truth as the live storefront.
+export default function AdminPage() {
+  redirect("https://admin.gomsudailong.vn/admin");
 }

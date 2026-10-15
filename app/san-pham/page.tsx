@@ -15,7 +15,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
 export default async function ProductsPage({ searchParams }: PageProps) {
   const [query, settings, products] = await Promise.all([searchParams, getSettings(), getProducts()]);
   const lang = getLanguage(query.lang);
-  const oldCategoryAliases: Record<string, string> = { "Rồng phượng": "Rồng - phượng", "Đao - Kìm nóc": "Phụ kiện mái" };
+  const oldCategoryAliases: Record<string, string> = { "Rồng phượng": "Rồng - phượng", "Đao - Kìm nóc": "Phụ kiện mái", "Gạch lát - gạch cổ": "Gạch lát - Gạch cổ" };
   const requestedCategory = typeof query["danh-muc"] === "string" ? query["danh-muc"] : undefined;
   const selected = requestedCategory ? oldCategoryAliases[requestedCategory] ?? requestedCategory : undefined;
   const requestedSubcategory = typeof query["phan-loai"] === "string" ? query["phan-loai"] : undefined;

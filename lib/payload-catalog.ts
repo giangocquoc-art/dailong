@@ -37,25 +37,38 @@ type CMSProduct = {
  */
 const topLevelCategoryByCmsName: Record<string, string> = {
   "Mảnh sành sứ": "Mảnh sành sứ",
-  "Đao - Kìm": "Đao - Kìm nóc",
-  "Hồ lô chống sét": "Đao - Kìm nóc",
-  "Ngói bò nóc": "Đao - Kìm nóc",
+  "Đao - Kìm": "Phụ kiện mái",
+  "Hồ lô chống sét": "Phụ kiện mái",
+  "Ngói bò nóc": "Phụ kiện mái",
   "Nghê sứ": "Nghê phong thủy",
   "Nghê gốm": "Nghê phong thủy",
-  "Rồng - Phượng sứ": "Rồng phượng",
-  "Rồng - Phượng gốm": "Rồng phượng",
+  "Rồng - Phượng sứ": "Rồng - phượng",
+  "Rồng - Phượng gốm": "Rồng - phượng",
   "Ngói Văn Miếu sứ": "Ngói văn miếu",
   "Ngói Văn Miếu gốm": "Ngói văn miếu",
   "Lan can sứ": "Lan can",
   "Lan can gốm": "Lan can",
-  "Gạch cổ Bát Tràng": "Gạch lát - gạch cổ",
+  "Gạch cổ Bát Tràng": "Gạch lát - Gạch cổ",
   "Đèn vườn sứ": "Đèn vườn",
   "Đèn vườn gốm": "Đèn vườn",
   "Gạch hoa sứ": "Gạch trang trí",
   "Gạch hoa gốm": "Gạch trang trí",
+  "Gạch thông gió sứ": "Gạch thông gió",
+  "Gạch thông gió gốm": "Gạch thông gió",
   "Ngói âm dương sứ": "Ngói âm dương",
   "Ngói âm dương gốm": "Ngói âm dương",
 };
+
+const subcategoryByCmsName: Record<string, string> = {
+  "Đao - Kìm": "Đao - kìm",
+  "Rồng - Phượng sứ": "Rồng - phượng sứ",
+  "Rồng - Phượng gốm": "Rồng - phượng gốm",
+  "Ngói Văn Miếu sứ": "Ngói văn miếu sứ",
+  "Ngói Văn Miếu gốm": "Ngói văn miếu gốm",
+};
+
+const standaloneCmsCategories = new Set(["Mảnh sành sứ", "Gạch cổ Bát Tràng"]);
+
 
 function cmsImageUrl(url: string): string {
   const recovered = recoveredCmsMediaUrl(url);
@@ -123,6 +136,7 @@ export async function loadPublishedPayloadProducts(): Promise<Product[] | null> 
           title: row.title!,
           code: firstText(row.code) || String(row.id ?? row.slug),
           category: topLevelCategoryByCmsName[category] ?? category,
+          subcategory: standaloneCmsCategories.has(category) ? undefined : subcategoryByCmsName[category] ?? category,
           material: firstText(row.material) || "Liên hệ để xác nhận",
           dimensions: firstText(row.dimensions) || "Theo mẫu thực tế",
           description: firstText(row.shortDescription, row.description),

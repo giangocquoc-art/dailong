@@ -4,7 +4,7 @@ import { ProductCard } from "@/components/product-card";
 import { SiteShell } from "@/components/site-shell";
 import { SiteButton } from "@/components/site-button";
 import { Consultation } from "@/components/consultation";
-import { categories, getProducts, getSettings, projects } from "@/lib/content";
+import { catalogHierarchy, getProducts, getSettings, projects } from "@/lib/content";
 import { contentText, currentPageHref, getLanguage, textFor, withLang, zaloHref, type PageProps } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
@@ -13,7 +13,10 @@ export default async function Home({ searchParams }: PageProps) {
   const [query, settings, products] = await Promise.all([searchParams, getSettings(), getProducts()]);
   const lang = getLanguage(query.lang);
   const featured = [...products.filter((p) => p.featured), ...products.filter((p) => !p.featured)].slice(0, 6);
-  const categoryItems = Array.from(new Set([...categories, ...products.map((p) => p.category)]));
+  const categoryItems = [
+    ...catalogHierarchy.map((item) => item.name),
+    ...products.map((p) => p.category),
+  ].filter((category, index, all) => all.indexOf(category) === index);
   return <SiteShell settings={settings} lang={lang} currentHref={currentPageHref("/", query)}>
     <section className="hero">
       <div className="container-site hero-grid">

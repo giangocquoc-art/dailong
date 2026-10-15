@@ -34,6 +34,7 @@ export type Product = {
   id: string;
   title: string;
   category: string;
+  subcategory?: string;
   code: string;
   material: string;
   dimensions: string;
@@ -64,7 +65,8 @@ export const defaultProducts: Product[] = [
   {
     id: "rong-chau-nguyet",
     title: "Rồng chầu nguyệt men đa sắc",
-    category: "Rồng phượng",
+    category: "Rồng - phượng",
+    subcategory: "Rồng - phượng gốm",
     code: "DL-RP01",
     material: "Gốm Bát Tràng tráng men",
     dimensions: "Chế tác theo công trình",
@@ -80,6 +82,7 @@ export const defaultProducts: Product[] = [
     id: "gach-thong-gio-hoa-roi",
     title: "Gạch thông gió Hoa Roi men xanh",
     category: "Gạch thông gió",
+    subcategory: "Gạch thông gió sứ",
     code: "DL-GTG01",
     material: "Sứ tráng men",
     dimensions: "30 × 30 cm",
@@ -95,6 +98,7 @@ export const defaultProducts: Product[] = [
     id: "den-ngan-hoa",
     title: "Đèn vườn Ngàn Hoa",
     category: "Đèn vườn",
+    subcategory: "Đèn vườn sứ",
     code: "DL-DV01",
     material: "Sứ men kết tinh",
     dimensions: "Nhiều kích thước",
@@ -110,6 +114,7 @@ export const defaultProducts: Product[] = [
     id: "lan-can-luc-binh",
     title: "Lan can lục bình sứ trắng",
     category: "Lan can",
+    subcategory: "Lan can sứ",
     code: "DL-LC01",
     material: "Sứ trắng",
     dimensions: "Thi công theo mét dài",
@@ -139,7 +144,7 @@ export const defaultProducts: Product[] = [
   {
     id: "gach-lat-ngoai-that",
     title: "Gạch lát sân gốm cổ",
-    category: "Gạch lát - gạch cổ",
+    category: "Gạch lát - Gạch cổ",
     code: "DL-GL01",
     material: "Gốm nung nhiệt cao",
     dimensions: "Theo quy cách",
@@ -155,6 +160,7 @@ export const defaultProducts: Product[] = [
     id: "ngoi-am-duong-men-xanh",
     title: "Ngói âm dương men xanh giả đá",
     category: "Ngói âm dương",
+    subcategory: "Ngói âm dương sứ",
     code: "DL-NAD01",
     material: "Sứ tráng men",
     dimensions: "Cỡ S / M / L",
@@ -189,6 +195,7 @@ export const defaultProducts: Product[] = [
     id: "ngoi-van-mieu-xanh",
     title: "Ngói Văn Miếu men xanh cổ vịt",
     category: "Ngói văn miếu",
+    subcategory: "Ngói văn miếu sứ",
     code: "DL-NVM01",
     material: "Sứ tráng men",
     dimensions: "Theo quy cách mái",
@@ -204,6 +211,7 @@ export const defaultProducts: Product[] = [
     id: "nghe-phong-thuy-men-ran",
     title: "Nghê phong thủy men rạn",
     category: "Nghê phong thủy",
+    subcategory: "Nghê gốm",
     code: "DL-NPT01",
     material: "Gốm men rạn đa sắc",
     dimensions: "Nhiều kích thước",
@@ -218,7 +226,8 @@ export const defaultProducts: Product[] = [
   {
     id: "bo-hoa-chanh-doi",
     title: "Bò hoa chanh đôi men da lươn",
-    category: "Đao - Kìm nóc",
+    category: "Phụ kiện mái",
+    subcategory: "Ngói bò nóc",
     code: "DL-DKN01",
     material: "Sứ tráng men",
     dimensions: "Chế tác theo mái",
@@ -352,8 +361,14 @@ export async function getProducts({ includeUnpublished = false }: { includeUnpub
   if (readFromPayload) {
     const restored = await loadPublishedPayloadProducts();
     if (restored !== null) {
+      const roofReference = defaultProducts.find((p) => p.id === "ngoi-am-duong-men-xanh")?.technicalInfo;
       return mergeCatalogWithoutExactDuplicates(defaultProducts, restored)
-        .filter((product) => includeUnpublished || product.isPublished === 1);
+        .filter((product) => includeUnpublished || product.isPublished === 1)
+        // The same reference diagrams and L/M/S sizing guide apply to both
+        // porcelain and earthenware tiles; they are reference data, not per-SKU promises.
+        .map((product) => product.category === "Ngói âm dương" && !product.technicalInfo
+          ? { ...product, technicalInfo: roofReference }
+          : product);
     }
   }
   try {
@@ -402,6 +417,8 @@ export async function getProductById(id: string): Promise<Product | null> {
   return (await getProducts()).find((product) => product.id === id) ?? null;
 }
 
+// Historical category export remains for the legacy editor. The live catalog
+// uses the customer's two-level taxonomy below.
 export const categories = [
   "Rồng phượng",
   "Gạch thông gió",
@@ -413,6 +430,22 @@ export const categories = [
   "Ngói văn miếu",
   "Nghê phong thủy",
   "Đao - Kìm nóc",
+];
+
+export const catalogHierarchy: { name: string; children: string[] }[] = [
+  { name: "Ngói âm dương", children: ["Ngói âm dương sứ", "Ngói âm dương gốm"] },
+  { name: "Ngói văn miếu", children: ["Ngói văn miếu sứ", "Ngói văn miếu gốm"] },
+  { name: "Gạch thông gió", children: ["Gạch thông gió sứ", "Gạch thông gió gốm"] },
+  { name: "Rồng - phượng", children: ["Rồng - phượng sứ", "Rồng - phượng gốm"] },
+  { name: "Lan can", children: ["Lan can sứ", "Lan can gốm"] },
+  { name: "Đèn vườn", children: ["Đèn vườn gốm", "Đèn vườn sứ"] },
+  { name: "Nghê phong thủy", children: ["Nghê gốm", "Nghê sứ"] },
+  { name: "Phụ kiện mái", children: ["Ngói bò nóc", "Hồ lô chống sét", "Đao - kìm"] },
+  { name: "Gạch lát - Gạch cổ", children: [] },
+  { name: "Mảnh sành sứ", children: [] },
+  // Preserve existing gạch trang trí / gạch hoa records not named in the
+  // supplied hierarchy, rather than silently hiding them.
+  { name: "Gạch trang trí", children: ["Gạch hoa sứ", "Gạch hoa gốm"] },
 ];
 
 export const projects = [

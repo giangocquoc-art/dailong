@@ -43,6 +43,7 @@ const translations: Record<string, string> = {
   "Lan can": "Balustrades",
   "Gạch trang trí": "Decorative tiles",
   "Gạch lát - gạch cổ": "Paving & antique bricks",
+  "Gạch lát - Gạch cổ": "Paving & antique bricks",
   "Ngói âm dương": "Yin-yang roof tiles",
   "Ngói văn miếu": "Temple roof tiles",
   "Nghê phong thủy": "Guardian figures",

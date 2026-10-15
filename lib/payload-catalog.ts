@@ -29,6 +29,42 @@ type CMSProduct = {
   order?: number | null;
 };
 
+
+/**
+ * Payload stores granular CMS categories; the customer-facing catalog retains
+ * its existing ten top-level product groups plus the distinct mosaic category.
+ * The original CMS taxonomy remains unchanged in the Payload database.
+ */
+const topLevelCategoryByCmsName: Record<string, string> = {
+  "Mảnh sành sứ": "Mảnh sành sứ",
+  "Đao - Kìm": "Đao - Kìm nóc",
+  "Hồ lô chống sét": "Đao - Kìm nóc",
+  "Ngói bò nóc": "Đao - Kìm nóc",
+  "Nghê sứ": "Nghê phong thủy",
+  "Nghê gốm": "Nghê phong thủy",
+  "Rồng - Phượng sứ": "Rồng phượng",
+  "Rồng - Phượng gốm": "Rồng phượng",
+  "Ngói Văn Miếu sứ": "Ngói văn miếu",
+  "Ngói Văn Miếu gốm": "Ngói văn miếu",
+  "Lan can sứ": "Lan can",
+  "Lan can gốm": "Lan can",
+  "Gạch cổ Bát Tràng": "Gạch lát - gạch cổ",
+  "Đèn vườn sứ": "Đèn vườn",
+  "Đèn vườn gốm": "Đèn vườn",
+  "Gạch hoa sứ": "Gạch trang trí",
+  "Gạch hoa gốm": "Gạch trang trí",
+  "Ngói âm dương sứ": "Ngói âm dương",
+  "Ngói âm dương gốm": "Ngói âm dương",
+};
+
+function cmsImageUrl(url: string): string {
+  const recovered = recoveredCmsMediaUrl(url);
+  if (recovered.startsWith("/api/") || recovered.startsWith("/media/")) {
+    return "https://admin.gomsudailong.vn" + recovered;
+  }
+  return recovered;
+}
+
 type CMSPage = {
   docs?: CMSProduct[];
   page?: number;
@@ -73,7 +109,7 @@ export async function loadPublishedPayloadProducts(): Promise<Product[] | null> 
       .filter((row) => row._status === "published" && row.slug && row.title)
       .map((row, index): Product => {
         const media = mediaUrl(row.featuredImage);
-        const imageUrl = recoveredCmsMediaUrl(firstText(media, row.externalImageUrl));
+        const imageUrl = cmsImageUrl(firstText(media, row.externalImageUrl));
         const category = typeof row.category === "object" && row.category
           ? firstText(row.category.name)
           : typeof row.category === "string" ? row.category : "Khác";
@@ -81,12 +117,12 @@ export async function loadPublishedPayloadProducts(): Promise<Product[] | null> 
           ...(row.gallery ?? []).map((item) => item && typeof item === "object" && "image" in item ? mediaUrl(item.image) : mediaUrl(item as Media)),
           ...(row.externalGallery ?? []).map((item) => firstText(item?.url)),
         ];
-        const images = Array.from(new Set(gallery.map(recoveredCmsMediaUrl).filter((url) => url && url !== imageUrl)));
+        const images = Array.from(new Set(gallery.map(cmsImageUrl).filter((url) => url && url !== imageUrl)));
         return {
           id: row.slug!,
           title: row.title!,
           code: firstText(row.code) || String(row.id ?? row.slug),
-          category,
+          category: topLevelCategoryByCmsName[category] ?? category,
           material: firstText(row.material) || "Liên hệ để xác nhận",
           dimensions: firstText(row.dimensions) || "Theo mẫu thực tế",
           description: firstText(row.shortDescription, row.description),

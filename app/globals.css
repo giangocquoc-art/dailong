@@ -194,6 +194,15 @@
 .product-info-card-copy { padding: 20px 22px 23px; }
 .product-info-card-copy h3 { color: #1f417d; font-family: inherit; font-size: 1.2rem; font-weight: 600; }
 .product-info-card-copy p { margin-top: 8px; color: #6b665c; font-size: .9375rem; }
+/* Readable L/M/S schematics; all dimensions come from the existing spec table. */
+.roof-size-reference { margin-top: 28px; background: #fffdf8; border: 1px solid #dfd7c8; }
+.roof-size-reference > h3 { padding: 16px 20px 0; font-size: 1.06rem; color: #1f417d; }
+.roof-size-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.roof-size-card { min-width: 0; margin: 14px 0 0; padding: 6px 12px; text-align: center; }
+.roof-size-card + .roof-size-card { border-left: 1px solid #dfd7c8; }
+.roof-size-card figcaption { font-size: .96rem; color: #1f417d; }
+.roof-size-card svg { width: 100%; height: auto; max-width: 320px; margin-inline: auto; }
+.roof-size-note { margin: 0; padding: 10px 20px 18px; color: #6b665c; font-size: .8rem; }
 .product-spec-table-wrap { margin-top: 28px; border: 1px solid #dfd7c8; background: #fffdf8; }
 .product-spec-table-wrap > h3 { padding: 16px 18px; color: #1f417d; font-size: 1rem; }
 .product-spec-table-scroll { overflow-x: auto; }
@@ -319,6 +328,8 @@
   .product-info h3 { font-size: .9375rem; } .product-meta { flex-wrap: wrap; gap: 7px; }
   .story-grid, .detail-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; } .product-info-sections { grid-template-columns: 1fr; } .story-image { height: 330px; }
   .product-table-scroll-hint { display: block; }
+  .roof-size-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .roof-size-card { flex: 0 0 min(82vw, 320px); scroll-snap-align: start; }
   .project-grid { gap: 28px; grid-template-columns: 1fr; } .project-card img { aspect-ratio: 1.7; } .project-card .eyebrow { margin-top: 12px; }
   .consultation { padding-block: 38px; } .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .footer-grid > :first-child { grid-column: 1/-1; } .footer-description { max-width: 530px; } .footer-bottom { margin-top: 26px; }

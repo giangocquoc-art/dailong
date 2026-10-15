@@ -27,6 +27,7 @@ type CMSProduct = {
   externalHoverImageUrl?: string | null;
   featured?: boolean | null;
   order?: number | null;
+  specifications?: Array<{ label?: string | null; value?: string | null } | null> | null;
 };
 
 
@@ -142,6 +143,13 @@ export async function loadPublishedPayloadProducts(): Promise<Product[] | null> 
           description: firstText(row.shortDescription, row.description),
           imageUrl,
           images,
+          // Preserve technical rows entered by the customer in Payload, not just
+          // the generic roof-size reference carried over from the old website.
+          specifications: (row.specifications ?? [])
+            .filter((entry): entry is { label?: string | null; value?: string | null } => Boolean(entry && typeof entry === "object"))
+            .map((entry) => ({ label: firstText(entry.label), value: firstText(entry.value) }))
+            .filter((entry) => entry.label && entry.value)
+            .slice(0, 30),
           isPublished: 1,
           featured: row.featured ? 1 : 0,
           sortOrder: 100 + (typeof row.order === "number" ? row.order : index),

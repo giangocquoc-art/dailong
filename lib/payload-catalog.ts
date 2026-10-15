@@ -48,7 +48,7 @@ const topLevelCategoryByCmsName: Record<string, string> = {
   "Ngói Văn Miếu gốm": "Ngói văn miếu",
   "Lan can sứ": "Lan can",
   "Lan can gốm": "Lan can",
-  "Gạch cổ Bát Tràng": "Gạch lát - gạch cổ",
+  "Gạch cổ Bát Tràng": "Gạch lát - Gạch cổ",
   "Đèn vườn sứ": "Đèn vườn",
   "Đèn vườn gốm": "Đèn vườn",
   "Gạch hoa sứ": "Gạch trang trí",

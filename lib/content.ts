@@ -45,6 +45,7 @@ export type Product = {
   featured: number;
   sortOrder: number;
   technicalInfo?: ProductTechnicalInfo;
+  specifications?: { label: string; value: string }[];
 };
 
 export const defaultSettings: SiteSettings = {

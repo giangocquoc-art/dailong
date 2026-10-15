@@ -144,7 +144,7 @@ export const defaultProducts: Product[] = [
   {
     id: "gach-lat-ngoai-that",
     title: "Gạch lát sân gốm cổ",
-    category: "Gạch lát - gạch cổ",
+    category: "Gạch lát - Gạch cổ",
     code: "DL-GL01",
     material: "Gốm nung nhiệt cao",
     dimensions: "Theo quy cách",
@@ -441,7 +441,7 @@ export const catalogHierarchy: { name: string; children: string[] }[] = [
   { name: "Đèn vườn", children: ["Đèn vườn gốm", "Đèn vườn sứ"] },
   { name: "Nghê phong thủy", children: ["Nghê gốm", "Nghê sứ"] },
   { name: "Phụ kiện mái", children: ["Ngói bò nóc", "Hồ lô chống sét", "Đao - kìm"] },
-  { name: "Gạch lát - gạch cổ", children: [] },
+  { name: "Gạch lát - Gạch cổ", children: [] },
   { name: "Mảnh sành sứ", children: [] },
   // Preserve existing gạch trang trí / gạch hoa records not named in the
   // supplied hierarchy, rather than silently hiding them.

@@ -1,4 +1,5 @@
 import type { Product } from "./content";
+import { recoveredCmsMediaUrl } from "./recovered-cms-media";
 
 /**
  * Read-only adapter for the separately deployed Payload CMS.
@@ -72,7 +73,7 @@ export async function loadPublishedPayloadProducts(): Promise<Product[] | null> 
       .filter((row) => row._status === "published" && row.slug && row.title)
       .map((row, index): Product => {
         const media = mediaUrl(row.featuredImage);
-        const imageUrl = firstText(media, row.externalImageUrl);
+        const imageUrl = recoveredCmsMediaUrl(firstText(media, row.externalImageUrl));
         const category = typeof row.category === "object" && row.category
           ? firstText(row.category.name)
           : typeof row.category === "string" ? row.category : "Khác";
@@ -80,7 +81,7 @@ export async function loadPublishedPayloadProducts(): Promise<Product[] | null> 
           ...(row.gallery ?? []).map((item) => item && typeof item === "object" && "image" in item ? mediaUrl(item.image) : mediaUrl(item as Media)),
           ...(row.externalGallery ?? []).map((item) => firstText(item?.url)),
         ];
-        const images = Array.from(new Set(gallery.filter((url) => url && url !== imageUrl)));
+        const images = Array.from(new Set(gallery.map(recoveredCmsMediaUrl).filter((url) => url && url !== imageUrl)));
         return {
           id: row.slug!,
           title: row.title!,

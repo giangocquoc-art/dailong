@@ -1,0 +1,1241 @@
+{
+  "snapshotDate": "2026-10-15",
+  "source": "https://admin.gomsudailong.vn/api/products?limit=100&depth=1",
+  "totalDocs": 19,
+  "published": 19,
+  "notes": [
+    "Read-only copy of public Payload CMS catalog. Does not include authentication details.",
+    "Main image HTTP checks against production domain: 3 accessible; 16 missing (404).",
+    "Identical image URLs do not establish identical products; keep records until manually reviewed."
+  ],
+  "docs": [
+    {
+      "id": 30,
+      "title": "Mảnh sành men lam",
+      "code": "MS001",
+      "slug": "manh-ghep-dao-rong",
+      "category": {
+        "id": 12,
+        "name": "Mảnh sành sứ",
+        "slug": "manh-sanh-su",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 10,
+        "visibility": "visible",
+        "parent": null,
+        "breadcrumbs": [
+          {
+            "doc": 12,
+            "url": "manh-sanh-su",
+            "label": "manh-sanh-su",
+            "id": "6ab3633715b305519cd974fc"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:27:23.916Z",
+        "createdAt": "2026-09-23T05:27:19.666Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/12-manh-sanh-su-anh-man-hinh-2026-09-23-luc-08-53-54.png",
+      "externalGallery": [
+        {
+          "id": "6ab364c315b305519cd9755b",
+          "url": "https://gomsudailong.vn/images/catalog/12-manh-sanh-su-anh-man-hinh-2026-09-23-luc-08-54-08.png"
+        }
+      ],
+      "externalHoverImageUrl": null,
+      "material": "Sứ tráng men",
+      "dimensions": "Theo mảng ghép",
+      "description": "Mảnh sành men lam dành cho các mảng ghép trang trí như tranh tường, phù điêu hoặc điểm nhấn cảnh quan. Với sản phẩm mảnh ghép, nên bắt đầu bằng bản vẽ mảng, chủ đề và kích thước hoàn thiện để dự trù màu men, bố cục và khối lượng vật liệu.",
+      "shortDescription": "Mảnh sành men lam dành cho các mảng ghép trang trí như tranh tường, phù điêu hoặc điểm nhấn cảnh quan. Với sản phẩm mảnh ghép, nên bắt đầu bằng bản vẽ mảng, chủ đề và kích thước hoàn thiện để dự trù màu men, bố cục và khối lượng vật liệu.",
+      "specifications": [
+        {
+          "id": "6ab364c315b305519cd9755c",
+          "label": "Quy cách",
+          "value": "Theo bản vẽ mảng ghép"
+        },
+        {
+          "id": "6ab364c315b305519cd9755d",
+          "label": "Chất liệu",
+          "value": "Sứ tráng men"
+        }
+      ],
+      "featured": false,
+      "order": 19,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:33:55.018Z",
+      "updatedAt": "2026-09-23T05:33:55.018Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 29,
+      "title": "Đao voi nhỏ xanh đồng",
+      "code": "ĐS-001",
+      "slug": "dao-voi-nho-xanh-dong",
+      "category": {
+        "id": 30,
+        "name": "Đao - Kìm",
+        "slug": "dao-kim",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 18,
+        "visibility": "visible",
+        "parent": 11,
+        "breadcrumbs": [
+          {
+            "doc": 11,
+            "url": "phu-kien-mai",
+            "label": "phu-kien-mai",
+            "id": "6ab3640815b305519cd9751f"
+          },
+          {
+            "doc": 30,
+            "url": "phu-kien-mai/dao-kim",
+            "label": "phu-kien-mai/dao-kim",
+            "id": "6ab3640815b305519cd97520"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:30:56.868Z",
+        "createdAt": "2026-09-23T05:30:48.831Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/ao-kim-dsc-5365-copy.jpg",
+      "externalGallery": [],
+      "externalHoverImageUrl": null,
+      "material": "Sứ tráng men",
+      "dimensions": "L630 × H210 × H300 mm",
+      "description": "Đao voi nhỏ xanh đồng là phụ kiện mái sứ tráng men dùng tại vị trí đầu đao hoặc điểm chuyển mái theo thiết kế. Hình ảnh là cơ sở chọn dáng và màu; cần xác nhận thêm hướng đặt, kích thước mái và cấu tạo liên kết với đơn vị thi công.",
+      "shortDescription": "Đao voi nhỏ xanh đồng là phụ kiện mái sứ tráng men dùng tại vị trí đầu đao hoặc điểm chuyển mái theo thiết kế. Hình ảnh là cơ sở chọn dáng và màu; cần xác nhận thêm hướng đặt, kích thước mái và cấu tạo liên kết với đơn vị thi công.",
+      "specifications": [
+        {
+          "id": "6ab364bb15b305519cd97559",
+          "label": "Kích thước",
+          "value": "L630 × H1:210 × H2:300 mm"
+        },
+        {
+          "id": "6ab364bb15b305519cd9755a",
+          "label": "Khối lượng tham khảo",
+          "value": "6 kg"
+        }
+      ],
+      "featured": false,
+      "order": 18,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:33:47.665Z",
+      "updatedAt": "2026-09-23T05:33:47.665Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 28,
+      "title": "Hồ lô sao nâu đỏ",
+      "code": "HL-001",
+      "slug": "ho-lo-sao-nau-do",
+      "category": {
+        "id": 29,
+        "name": "Hồ lô chống sét",
+        "slug": "ho-lo-chong-set",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 17,
+        "visibility": "visible",
+        "parent": 11,
+        "breadcrumbs": [
+          {
+            "doc": 11,
+            "url": "phu-kien-mai",
+            "label": "phu-kien-mai",
+            "id": "6ab363fa15b305519cd9751d"
+          },
+          {
+            "doc": 29,
+            "url": "phu-kien-mai/ho-lo-chong-set",
+            "label": "phu-kien-mai/ho-lo-chong-set",
+            "id": "6ab363fa15b305519cd9751e"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:30:39.601Z",
+        "createdAt": "2026-09-23T05:30:35.262Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/ho-lo-chong-set-dsc-5359.jpg",
+      "externalGallery": [],
+      "externalHoverImageUrl": null,
+      "material": "Sứ tráng men",
+      "dimensions": "H800 × Ø360 mm",
+      "description": "Hồ lô sao nâu đỏ là chi tiết chóp mái sứ tráng men, tạo điểm kết thúc nổi bật cho mái công trình. Vì liên quan đến vị trí cao và liên kết kỹ thuật, khách hàng nên cung cấp bản vẽ hoặc ảnh mái để Đại Long tư vấn giải pháp đặt chi tiết phù hợp.",
+      "shortDescription": "Hồ lô sao nâu đỏ là chi tiết chóp mái sứ tráng men, tạo điểm kết thúc nổi bật cho mái công trình. Vì liên quan đến vị trí cao và liên kết kỹ thuật, khách hàng nên cung cấp bản vẽ hoặc ảnh mái để Đại Long tư vấn giải pháp đặt chi tiết phù hợp.",
+      "specifications": [
+        {
+          "id": "6ab364b215b305519cd97557",
+          "label": "Kích thước",
+          "value": "H800 × bầu Ø360 mm"
+        },
+        {
+          "id": "6ab364b215b305519cd97558",
+          "label": "Chất liệu",
+          "value": "Sứ tráng men"
+        }
+      ],
+      "featured": false,
+      "order": 17,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:33:38.738Z",
+      "updatedAt": "2026-09-23T05:33:38.738Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 27,
+      "title": "Bò hoa chanh đặc nhỏ ghi ánh kim",
+      "code": "BS-001",
+      "slug": "bo-hoa-chanh",
+      "category": {
+        "id": 28,
+        "name": "Ngói bò nóc",
+        "slug": "ngoi-bo-noc",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 16,
+        "visibility": "visible",
+        "parent": 11,
+        "breadcrumbs": [
+          {
+            "doc": 11,
+            "url": "phu-kien-mai",
+            "label": "phu-kien-mai",
+            "id": "6ab363ed15b305519cd9751b"
+          },
+          {
+            "doc": 28,
+            "url": "phu-kien-mai/ngoi-bo-noc",
+            "label": "phu-kien-mai/ngoi-bo-noc",
+            "id": "6ab363ed15b305519cd9751c"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:30:28.344Z",
+        "createdAt": "2026-09-23T05:30:21.927Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/ngoi-bo-noc-750-5242.jpg",
+      "externalGallery": [
+        {
+          "id": "6ab364a415b305519cd97554",
+          "url": "https://gomsudailong.vn/images/catalog/ngoi-bo-noc-750-5246.jpg"
+        }
+      ],
+      "externalHoverImageUrl": null,
+      "material": "Sứ tráng men",
+      "dimensions": "L180 × W100 × H100 mm",
+      "description": "Bò hoa chanh đặc nhỏ ghi ánh kim là phụ kiện hoàn thiện đường nóc mái, dùng để tạo nhịp và che các điểm chuyển tiếp theo thiết kế. Mẫu cần được chọn cùng ngói chính để bảo đảm tỷ lệ, sắc men và phương án lắp đặt nhất quán.",
+      "shortDescription": "Bò hoa chanh đặc nhỏ ghi ánh kim là phụ kiện hoàn thiện đường nóc mái, dùng để tạo nhịp và che các điểm chuyển tiếp theo thiết kế. Mẫu cần được chọn cùng ngói chính để bảo đảm tỷ lệ, sắc men và phương án lắp đặt nhất quán.",
+      "specifications": [
+        {
+          "id": "6ab364a415b305519cd97555",
+          "label": "Kích thước",
+          "value": "L180 × W100 × H100 mm"
+        },
+        {
+          "id": "6ab364a415b305519cd97556",
+          "label": "Khối lượng tham khảo",
+          "value": "1,6 kg"
+        }
+      ],
+      "featured": false,
+      "order": 16,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:33:24.554Z",
+      "updatedAt": "2026-09-23T05:33:24.554Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 26,
+      "title": "Nghê ngồi men rạn",
+      "code": "NS-001",
+      "slug": "nghe-ngoi-men-ran",
+      "category": {
+        "id": 27,
+        "name": "Nghê sứ",
+        "slug": "nghe-su",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 15,
+        "visibility": "visible",
+        "parent": 9,
+        "breadcrumbs": [
+          {
+            "doc": 9,
+            "url": "nghe-phong-thuy",
+            "label": "nghe-phong-thuy",
+            "id": "6ab363e215b305519cd97519"
+          },
+          {
+            "doc": 27,
+            "url": "nghe-phong-thuy/nghe-su",
+            "label": "nghe-phong-thuy/nghe-su",
+            "id": "6ab363e215b305519cd9751a"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:30:17.099Z",
+        "createdAt": "2026-09-23T05:30:11.066Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/nghe-su-a7500174.jpg",
+      "externalGallery": [],
+      "externalHoverImageUrl": null,
+      "material": "Sứ tráng men",
+      "dimensions": "H70 × W35 × D41",
+      "description": "Nghê ngồi men rạn là mẫu nghê sứ tráng men dành cho không gian tâm linh và kiến trúc cần chi tiết truyền thống. Dáng nghê, sắc men và tỷ lệ bệ cần được cân nhắc cùng kiến trúc xung quanh thay vì chọn tách rời theo một ảnh mẫu.",
+      "shortDescription": "Nghê ngồi men rạn là mẫu nghê sứ tráng men dành cho không gian tâm linh và kiến trúc cần chi tiết truyền thống. Dáng nghê, sắc men và tỷ lệ bệ cần được cân nhắc cùng kiến trúc xung quanh thay vì chọn tách rời theo một ảnh mẫu.",
+      "specifications": [
+        {
+          "id": "6ab3649b15b305519cd97552",
+          "label": "Kích thước",
+          "value": "H70 × W35 × D41"
+        },
+        {
+          "id": "6ab3649b15b305519cd97553",
+          "label": "Chất liệu",
+          "value": "Sứ tráng men"
+        }
+      ],
+      "featured": true,
+      "order": 15,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:33:15.942Z",
+      "updatedAt": "2026-09-23T05:33:15.942Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 25,
+      "title": "Nghê gốm nhỏ",
+      "code": "NG-001",
+      "slug": "nghe-gom-nho",
+      "category": {
+        "id": 26,
+        "name": "Nghê gốm",
+        "slug": "nghe-gom",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 14,
+        "visibility": "visible",
+        "parent": 9,
+        "breadcrumbs": [
+          {
+            "doc": 9,
+            "url": "nghe-phong-thuy",
+            "label": "nghe-phong-thuy",
+            "id": "6ab363d815b305519cd97517"
+          },
+          {
+            "doc": 26,
+            "url": "nghe-phong-thuy/nghe-gom",
+            "label": "nghe-phong-thuy/nghe-gom",
+            "id": "6ab363d815b305519cd97518"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:30:06.598Z",
+        "createdAt": "2026-09-23T05:30:01.011Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/nghe-gom-dsc-5388.jpg",
+      "externalGallery": [],
+      "externalHoverImageUrl": null,
+      "material": "Gốm đất nung",
+      "dimensions": "400 × 350 mm",
+      "description": "Nghê gốm nhỏ là sản phẩm gốm đất nung dùng làm điểm nhấn cho cổng, hiên hoặc không gian thờ tự. Khi chọn nghê, nên xem đồng thời tỷ lệ bệ đặt, hướng nhìn và cặp trái–phải để tổng thể trang nghiêm, cân đối.",
+      "shortDescription": "Nghê gốm nhỏ là sản phẩm gốm đất nung dùng làm điểm nhấn cho cổng, hiên hoặc không gian thờ tự. Khi chọn nghê, nên xem đồng thời tỷ lệ bệ đặt, hướng nhìn và cặp trái–phải để tổng thể trang nghiêm, cân đối.",
+      "specifications": [
+        {
+          "id": "6ab3649415b305519cd97550",
+          "label": "Kích thước",
+          "value": "400 × 350 mm"
+        },
+        {
+          "id": "6ab3649415b305519cd97551",
+          "label": "Chất liệu",
+          "value": "Gốm đất nung"
+        }
+      ],
+      "featured": false,
+      "order": 14,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:33:08.071Z",
+      "updatedAt": "2026-09-23T05:33:08.071Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 24,
+      "title": "Rồng vàng mini",
+      "code": "RS-001",
+      "slug": "rong-vang-mini",
+      "category": {
+        "id": 25,
+        "name": "Rồng - Phượng sứ",
+        "slug": "rong-phuong-su",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 13,
+        "visibility": "visible",
+        "parent": 1,
+        "breadcrumbs": [
+          {
+            "doc": 1,
+            "url": "rong-phuong",
+            "label": "rong-phuong",
+            "id": "6ab363cd15b305519cd97515"
+          },
+          {
+            "doc": 25,
+            "url": "rong-phuong/rong-phuong-su",
+            "label": "rong-phuong/rong-phuong-su",
+            "id": "6ab363cd15b305519cd97516"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:29:55.978Z",
+        "createdAt": "2026-09-23T05:29:50.023Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/rong-phuong.jpg",
+      "externalGallery": [
+        {
+          "id": "6ab3648b15b305519cd9754d",
+          "url": "https://gomsudailong.vn/images/rong-phuong-hover.png"
+        }
+      ],
+      "externalHoverImageUrl": null,
+      "material": "Sứ tráng men",
+      "dimensions": "150 × 150 mm",
+      "description": "Rồng vàng mini là mẫu rồng trang trí thuộc dòng Rồng - Phượng sứ tráng men. Đây là chi tiết nhấn cho công trình, vì vậy hình ảnh dùng để tham khảo tạo hình; vị trí, số lượng và màu men cần được chốt đồng bộ cùng phương án mái hoặc mảng trang trí.",
+      "shortDescription": "Rồng vàng mini là mẫu rồng trang trí thuộc dòng Rồng - Phượng sứ tráng men. Đây là chi tiết nhấn cho công trình, vì vậy hình ảnh dùng để tham khảo tạo hình; vị trí, số lượng và màu men cần được chốt đồng bộ cùng phương án mái hoặc mảng trang trí.",
+      "specifications": [
+        {
+          "id": "6ab3648b15b305519cd9754e",
+          "label": "Kích thước",
+          "value": "150 × 150 mm"
+        },
+        {
+          "id": "6ab3648b15b305519cd9754f",
+          "label": "Chất liệu",
+          "value": "Sứ tráng men"
+        }
+      ],
+      "featured": false,
+      "order": 13,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:32:59.569Z",
+      "updatedAt": "2026-09-23T05:32:59.569Z",
+      "imageStatus": "200"
+    },
+    {
+      "id": 23,
+      "title": "Rồng mini gốm",
+      "code": "RG-001",
+      "slug": "rong-mini-gom",
+      "category": {
+        "id": 24,
+        "name": "Rồng - Phượng gốm",
+        "slug": "rong-phuong-gom",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 12,
+        "visibility": "visible",
+        "parent": 1,
+        "breadcrumbs": [
+          {
+            "doc": 1,
+            "url": "rong-phuong",
+            "label": "rong-phuong",
+            "id": "6ab363bf15b305519cd97513"
+          },
+          {
+            "doc": 24,
+            "url": "rong-phuong/rong-phuong-gom",
+            "label": "rong-phuong/rong-phuong-gom",
+            "id": "6ab363bf15b305519cd97514"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:29:40.846Z",
+        "createdAt": "2026-09-23T05:29:36.365Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/rong-phuong-gom-dsc-5319.jpg",
+      "externalGallery": [],
+      "externalHoverImageUrl": null,
+      "material": "Gốm đất nung",
+      "dimensions": "150 × 150 mm",
+      "description": "Rồng mini gốm là chi tiết trang trí gốm đất nung cho mái, tường hoặc mảng điểm nhấn của không gian kiến trúc. Với chi tiết tạo hình, cần trao đổi vị trí lắp và tỷ lệ tổng thể để chọn mẫu phù hợp với đường nét công trình.",
+      "shortDescription": "Rồng mini gốm là chi tiết trang trí gốm đất nung cho mái, tường hoặc mảng điểm nhấn của không gian kiến trúc. Với chi tiết tạo hình, cần trao đổi vị trí lắp và tỷ lệ tổng thể để chọn mẫu phù hợp với đường nét công trình.",
+      "specifications": [
+        {
+          "id": "6ab3648115b305519cd9754b",
+          "label": "Kích thước",
+          "value": "150 × 150 mm"
+        },
+        {
+          "id": "6ab3648115b305519cd9754c",
+          "label": "Chất liệu",
+          "value": "Gốm đất nung"
+        }
+      ],
+      "featured": false,
+      "order": 12,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:32:49.818Z",
+      "updatedAt": "2026-09-23T05:32:49.818Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 22,
+      "title": "Ngói miếu cổ Bái Đính",
+      "code": "NMHS",
+      "slug": "ngoi-mieu-co-bai-dinh",
+      "category": {
+        "id": 23,
+        "name": "Ngói Văn Miếu sứ",
+        "slug": "ngoi-van-mieu-su",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 11,
+        "visibility": "visible",
+        "parent": 8,
+        "breadcrumbs": [
+          {
+            "doc": 8,
+            "url": "ngoi-van-mieu",
+            "label": "ngoi-van-mieu",
+            "id": "6ab363b415b305519cd97511"
+          },
+          {
+            "doc": 23,
+            "url": "ngoi-van-mieu/ngoi-van-mieu-su",
+            "label": "ngoi-van-mieu/ngoi-van-mieu-su",
+            "id": "6ab363b415b305519cd97512"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:29:30.121Z",
+        "createdAt": "2026-09-23T05:29:24.467Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/ngoi-van-mieu-su-pan-7470.jpg",
+      "externalGallery": [
+        {
+          "id": "6ab3647615b305519cd97548",
+          "url": "https://gomsudailong.vn/images/catalog/ngoi-van-mieu-su-pan-7471.jpg"
+        }
+      ],
+      "externalHoverImageUrl": null,
+      "material": "Sứ tráng men",
+      "dimensions": "200 × 170 mm",
+      "description": "Ngói miếu cổ Bái Đính là mẫu ngói Văn Miếu sứ tráng men cho công trình tâm linh và phục dựng kiến trúc truyền thống. Hãy gửi kích thước mái, ảnh hiện trạng hoặc bản vẽ để được đối chiếu quy cách, màu men và các chi tiết đồng bộ trước khi đặt.",
+      "shortDescription": "Ngói miếu cổ Bái Đính là mẫu ngói Văn Miếu sứ tráng men cho công trình tâm linh và phục dựng kiến trúc truyền thống. Hãy gửi kích thước mái, ảnh hiện trạng hoặc bản vẽ để được đối chiếu quy cách, màu men và các chi tiết đồng bộ trước khi đặt.",
+      "specifications": [
+        {
+          "id": "6ab3647615b305519cd97549",
+          "label": "Kích thước",
+          "value": "200 × 170 mm"
+        },
+        {
+          "id": "6ab3647615b305519cd9754a",
+          "label": "Chất liệu",
+          "value": "Sứ tráng men"
+        }
+      ],
+      "featured": true,
+      "order": 11,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:32:38.926Z",
+      "updatedAt": "2026-09-23T05:32:38.926Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 21,
+      "title": "Ngói mũi hài gốm",
+      "code": "NMHG",
+      "slug": "ngoi-mui-hai-gom",
+      "category": {
+        "id": 22,
+        "name": "Ngói Văn Miếu gốm",
+        "slug": "ngoi-van-mieu-gom",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 10,
+        "visibility": "visible",
+        "parent": 8,
+        "breadcrumbs": [
+          {
+            "doc": 8,
+            "url": "ngoi-van-mieu",
+            "label": "ngoi-van-mieu",
+            "id": "6ab363a915b305519cd9750f"
+          },
+          {
+            "doc": 22,
+            "url": "ngoi-van-mieu/ngoi-van-mieu-gom",
+            "label": "ngoi-van-mieu/ngoi-van-mieu-gom",
+            "id": "6ab363a915b305519cd97510"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:29:18.843Z",
+        "createdAt": "2026-09-23T05:29:13.413Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/ngoi-van-mieu.jpg",
+      "externalGallery": [
+        {
+          "id": "6ab3646d15b305519cd97545",
+          "url": "https://gomsudailong.vn/images/ngoi-van-mieu-hover.png"
+        }
+      ],
+      "externalHoverImageUrl": null,
+      "material": "Gốm đất nung",
+      "dimensions": "150 × 150 mm",
+      "description": "Ngói mũi hài gốm thuộc dòng ngói Văn Miếu, phù hợp công trình cần nhịp mái cổ và vật liệu gốm đất nung. Kích thước 150 × 150 mm là thông tin tham khảo cho bước chọn mẫu; mái thực tế cần được khảo sát độ dốc, rìa mái và phụ kiện đi kèm.",
+      "shortDescription": "Ngói mũi hài gốm thuộc dòng ngói Văn Miếu, phù hợp công trình cần nhịp mái cổ và vật liệu gốm đất nung. Kích thước 150 × 150 mm là thông tin tham khảo cho bước chọn mẫu; mái thực tế cần được khảo sát độ dốc, rìa mái và phụ kiện đi kèm.",
+      "specifications": [
+        {
+          "id": "6ab3646d15b305519cd97546",
+          "label": "Kích thước",
+          "value": "150 × 150 mm"
+        },
+        {
+          "id": "6ab3646d15b305519cd97547",
+          "label": "Chất liệu",
+          "value": "Gốm đất nung"
+        }
+      ],
+      "featured": false,
+      "order": 10,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:32:29.508Z",
+      "updatedAt": "2026-09-23T05:32:29.508Z",
+      "imageStatus": "200"
+    },
+    {
+      "id": 20,
+      "title": "Lan can giọt lệ sứ",
+      "code": "LCS001",
+      "slug": "lan-can-giot-le-su",
+      "category": {
+        "id": 21,
+        "name": "Lan can sứ",
+        "slug": "lan-can-su",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 9,
+        "visibility": "visible",
+        "parent": 4,
+        "breadcrumbs": [
+          {
+            "doc": 4,
+            "url": "lan-can",
+            "label": "lan-can",
+            "id": "6ab3639a15b305519cd9750d"
+          },
+          {
+            "doc": 21,
+            "url": "lan-can/lan-can-su",
+            "label": "lan-can/lan-can-su",
+            "id": "6ab3639a15b305519cd9750e"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:29:07.262Z",
+        "createdAt": "2026-09-23T05:28:59.126Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/lan-can-su-ban-sao-cua-dsc-8401.jpg",
+      "externalGallery": [
+        {
+          "id": "6ab3646515b305519cd97542",
+          "url": "https://gomsudailong.vn/images/catalog/lan-can-su-lan-can-giot-len-57-nau-en.jpg"
+        }
+      ],
+      "externalHoverImageUrl": null,
+      "material": "Sứ tráng men",
+      "dimensions": "Theo bản vẽ",
+      "description": "Lan can giọt lệ sứ là mẫu con tiện sứ tráng men có dáng thuôn, phù hợp các khu vực cần nhịp trang trí rõ ràng. Hình ảnh sản phẩm dùng để chọn dáng và màu men; bản vẽ lan can thực tế là cơ sở để chốt số lượng, cao độ và cấu tạo lắp đặt.",
+      "shortDescription": "Lan can giọt lệ sứ là mẫu con tiện sứ tráng men có dáng thuôn, phù hợp các khu vực cần nhịp trang trí rõ ràng. Hình ảnh sản phẩm dùng để chọn dáng và màu men; bản vẽ lan can thực tế là cơ sở để chốt số lượng, cao độ và cấu tạo lắp đặt.",
+      "specifications": [
+        {
+          "id": "6ab3646515b305519cd97543",
+          "label": "Quy cách",
+          "value": "Theo bản vẽ và vị trí lắp đặt"
+        },
+        {
+          "id": "6ab3646515b305519cd97544",
+          "label": "Chất liệu",
+          "value": "Sứ tráng men"
+        }
+      ],
+      "featured": true,
+      "order": 9,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:32:21.576Z",
+      "updatedAt": "2026-09-23T05:32:21.576Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 19,
+      "title": "Lan can gốm",
+      "code": "LCG001",
+      "slug": "lan-can-gom",
+      "category": {
+        "id": 20,
+        "name": "Lan can gốm",
+        "slug": "lan-can-gom",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 8,
+        "visibility": "visible",
+        "parent": 4,
+        "breadcrumbs": [
+          {
+            "doc": 4,
+            "url": "lan-can",
+            "label": "lan-can",
+            "id": "6ab3638e15b305519cd9750b"
+          },
+          {
+            "doc": 20,
+            "url": "lan-can/lan-can-gom",
+            "label": "lan-can/lan-can-gom",
+            "id": "6ab3638e15b305519cd9750c"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:28:52.481Z",
+        "createdAt": "2026-09-23T05:28:46.903Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/lan-can-gom-lan-can-gom.jpg",
+      "externalGallery": [],
+      "externalHoverImageUrl": null,
+      "material": "Gốm tráng men",
+      "dimensions": "H480 × L100 × W100 mm",
+      "description": "Lan can gốm là chi tiết con tiện cho hiên, hành lang và ban công theo phong cách kiến trúc truyền thống. Kích thước từng viên giúp kiến trúc sư tính nhịp lan can; số lượng và giải pháp liên kết cần được xác nhận theo bản vẽ công trình.",
+      "shortDescription": "Lan can gốm là chi tiết con tiện cho hiên, hành lang và ban công theo phong cách kiến trúc truyền thống. Kích thước từng viên giúp kiến trúc sư tính nhịp lan can; số lượng và giải pháp liên kết cần được xác nhận theo bản vẽ công trình.",
+      "specifications": [
+        {
+          "id": "6ab3645d15b305519cd97540",
+          "label": "Kích thước",
+          "value": "H480 × L100 × W100 mm"
+        },
+        {
+          "id": "6ab3645d15b305519cd97541",
+          "label": "Khối lượng tham khảo",
+          "value": "1,7 kg/viên"
+        }
+      ],
+      "featured": false,
+      "order": 8,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:32:13.440Z",
+      "updatedAt": "2026-09-23T05:32:13.440Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 18,
+      "title": "Gạch cổ Bát Tràng",
+      "code": "GCBT",
+      "slug": "gach-co-bat-trang",
+      "category": {
+        "id": 19,
+        "name": "Gạch cổ Bát Tràng",
+        "slug": "gach-co-bat-trang",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 7,
+        "visibility": "visible",
+        "parent": 6,
+        "breadcrumbs": [
+          {
+            "doc": 6,
+            "url": "gach-lat-gach-co",
+            "label": "gach-lat-gach-co",
+            "id": "6ab3638115b305519cd97509"
+          },
+          {
+            "doc": 19,
+            "url": "gach-lat-gach-co/gach-co-bat-trang",
+            "label": "gach-lat-gach-co/gach-co-bat-trang",
+            "id": "6ab3638115b305519cd9750a"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:28:40.203Z",
+        "createdAt": "2026-09-23T05:28:34.591Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/6-gach-lat-gach-co-img-0424.jpg",
+      "externalGallery": [],
+      "externalHoverImageUrl": null,
+      "material": "Gốm đất nung",
+      "dimensions": "30 × 30 × 5 cm",
+      "description": "Gạch cổ Bát Tràng là gạch gốm đất nung khổ 30 × 30 cm cho sân, lối đi và các mảng lát mang cảm giác mộc. Khi lập dự toán, nên tính thêm hao hụt cắt ghép, mép bo và hướng lát để số lượng đặt phù hợp với mặt bằng thực tế.",
+      "shortDescription": "Gạch cổ Bát Tràng là gạch gốm đất nung khổ 30 × 30 cm cho sân, lối đi và các mảng lát mang cảm giác mộc. Khi lập dự toán, nên tính thêm hao hụt cắt ghép, mép bo và hướng lát để số lượng đặt phù hợp với mặt bằng thực tế.",
+      "specifications": [
+        {
+          "id": "6ab3645615b305519cd9753e",
+          "label": "Kích thước",
+          "value": "30 × 30 × 5 cm"
+        },
+        {
+          "id": "6ab3645615b305519cd9753f",
+          "label": "Chất liệu",
+          "value": "Gốm đất nung"
+        }
+      ],
+      "featured": false,
+      "order": 7,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:32:06.459Z",
+      "updatedAt": "2026-09-23T05:32:06.459Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 17,
+      "title": "Đèn thỏ xanh đồng",
+      "code": "ĐTSXD",
+      "slug": "den-tho-xanh-dong",
+      "category": {
+        "id": 18,
+        "name": "Đèn vườn sứ",
+        "slug": "den-vuon-su",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 6,
+        "visibility": "visible",
+        "parent": 3,
+        "breadcrumbs": [
+          {
+            "doc": 3,
+            "url": "den-vuon",
+            "label": "den-vuon",
+            "id": "6ab3637715b305519cd97507"
+          },
+          {
+            "doc": 18,
+            "url": "den-vuon/den-vuon-su",
+            "label": "den-vuon/den-vuon-su",
+            "id": "6ab3637715b305519cd97508"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:28:28.429Z",
+        "createdAt": "2026-09-23T05:28:23.925Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/den-vuon.jpg",
+      "externalGallery": [
+        {
+          "id": "6ab3644c15b305519cd9753b",
+          "url": "https://gomsudailong.vn/images/den-vuon-hover.png"
+        }
+      ],
+      "externalHoverImageUrl": null,
+      "material": "Sứ tráng men",
+      "dimensions": "Cao 44–50 cm",
+      "description": "Đèn thỏ xanh đồng thuộc dòng đèn vườn sứ tráng men, dùng để bổ sung ánh sáng trang trí cho hiên và sân vườn. Dòng mẫu có nhiều chiều cao; cần chốt mẫu, vị trí đặt và phương án điện với Đại Long trước khi sản xuất hoặc lắp đặt.",
+      "shortDescription": "Đèn thỏ xanh đồng thuộc dòng đèn vườn sứ tráng men, dùng để bổ sung ánh sáng trang trí cho hiên và sân vườn. Dòng mẫu có nhiều chiều cao; cần chốt mẫu, vị trí đặt và phương án điện với Đại Long trước khi sản xuất hoặc lắp đặt.",
+      "specifications": [
+        {
+          "id": "6ab3644c15b305519cd9753c",
+          "label": "Chiều cao cả nắp",
+          "value": "50 cm / 46,5 cm / 44 cm"
+        },
+        {
+          "id": "6ab3644c15b305519cd9753d",
+          "label": "Chiều cao không nắp",
+          "value": "35 cm / 33,5 cm"
+        }
+      ],
+      "featured": false,
+      "order": 6,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:31:56.753Z",
+      "updatedAt": "2026-09-23T05:31:56.754Z",
+      "imageStatus": "200"
+    },
+    {
+      "id": 16,
+      "title": "Đèn gốm tứ cảnh",
+      "code": "DGTC",
+      "slug": "den-gom-tu-canh",
+      "category": {
+        "id": 17,
+        "name": "Đèn vườn gốm",
+        "slug": "den-vuon-gom",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 5,
+        "visibility": "visible",
+        "parent": 3,
+        "breadcrumbs": [
+          {
+            "doc": 3,
+            "url": "den-vuon",
+            "label": "den-vuon",
+            "id": "6ab3636d15b305519cd97505"
+          },
+          {
+            "doc": 17,
+            "url": "den-vuon/den-vuon-gom",
+            "label": "den-vuon/den-vuon-gom",
+            "id": "6ab3636d15b305519cd97506"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:28:18.797Z",
+        "createdAt": "2026-09-23T05:28:13.680Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/en-vuon-gom-pan-7441.jpg",
+      "externalGallery": [
+        {
+          "id": "6ab3644315b305519cd97537",
+          "url": "https://gomsudailong.vn/images/catalog/en-vuon-gom-pan-7445.jpg"
+        }
+      ],
+      "externalHoverImageUrl": null,
+      "material": "Gốm tráng men",
+      "dimensions": "Cao 680 mm",
+      "description": "Đèn gốm tứ cảnh là mẫu đèn sân vườn gồm phần mái và thân đèn, tạo điểm dừng ánh sáng cho lối đi, sân trong hoặc cảnh quan. Kích thước tổng thể được ghi rõ để đối chiếu với bệ đặt đèn và khoảng nhìn trong thiết kế.",
+      "shortDescription": "Đèn gốm tứ cảnh là mẫu đèn sân vườn gồm phần mái và thân đèn, tạo điểm dừng ánh sáng cho lối đi, sân trong hoặc cảnh quan. Kích thước tổng thể được ghi rõ để đối chiếu với bệ đặt đèn và khoảng nhìn trong thiết kế.",
+      "specifications": [
+        {
+          "id": "6ab3644315b305519cd97538",
+          "label": "Mái đèn",
+          "value": "L360 × H320 mm"
+        },
+        {
+          "id": "6ab3644315b305519cd97539",
+          "label": "Thân đèn",
+          "value": "L360 × D250 mm"
+        },
+        {
+          "id": "6ab3644315b305519cd9753a",
+          "label": "Chiều cao cả đèn",
+          "value": "L680 mm"
+        }
+      ],
+      "featured": true,
+      "order": 5,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:31:47.562Z",
+      "updatedAt": "2026-09-23T05:31:47.562Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 15,
+      "title": "Gạch hoa bưởi 30 xanh đồng",
+      "code": "GH001",
+      "slug": "gach-hoa-buoi-xanh-dong",
+      "category": {
+        "id": 16,
+        "name": "Gạch hoa sứ",
+        "slug": "gach-hoa-su",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 4,
+        "visibility": "visible",
+        "parent": 2,
+        "breadcrumbs": [
+          {
+            "doc": 2,
+            "url": "gach-thong-gio",
+            "label": "gach-thong-gio",
+            "id": "6ab3635f15b305519cd97503"
+          },
+          {
+            "doc": 16,
+            "url": "gach-thong-gio/gach-hoa-su",
+            "label": "gach-thong-gio/gach-hoa-su",
+            "id": "6ab3635f15b305519cd97504"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:28:07.189Z",
+        "createdAt": "2026-09-23T05:28:00.050Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/gach-hoa-su-gach-hoa-buoi-30-xanh-ong-3.jpg",
+      "externalGallery": [
+        {
+          "id": "6ab3643d15b305519cd97534",
+          "url": "https://gomsudailong.vn/images/catalog/gach-hoa-su-gach-hoa-buoi-30-xanh-ong.jpg"
+        }
+      ],
+      "externalHoverImageUrl": null,
+      "material": "Sứ tráng men",
+      "dimensions": "30 × 30 × 3 cm",
+      "description": "Gạch hoa bưởi 30 xanh đồng là phiên bản sứ tráng men của dòng gạch thông gió hoa bưởi. Hoa văn tạo lớp nhìn xuyên vừa đủ, phù hợp khi cần điểm nhấn màu men ở mặt đứng, cổng hoặc mảng vách sân vườn.",
+      "shortDescription": "Gạch hoa bưởi 30 xanh đồng là phiên bản sứ tráng men của dòng gạch thông gió hoa bưởi. Hoa văn tạo lớp nhìn xuyên vừa đủ, phù hợp khi cần điểm nhấn màu men ở mặt đứng, cổng hoặc mảng vách sân vườn.",
+      "specifications": [
+        {
+          "id": "6ab3643d15b305519cd97535",
+          "label": "Kích thước",
+          "value": "30 × 30 × 3 cm"
+        },
+        {
+          "id": "6ab3643d15b305519cd97536",
+          "label": "Chất liệu",
+          "value": "Sứ tráng men"
+        }
+      ],
+      "featured": true,
+      "order": 4,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:31:41.284Z",
+      "updatedAt": "2026-09-23T05:31:41.284Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 14,
+      "title": "Gạch hoa bưởi 30 gốm",
+      "code": "GH002",
+      "slug": "gach-hoa-buoi-gom",
+      "category": {
+        "id": 15,
+        "name": "Gạch hoa gốm",
+        "slug": "gach-hoa-gom",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 3,
+        "visibility": "visible",
+        "parent": 2,
+        "breadcrumbs": [
+          {
+            "doc": 2,
+            "url": "gach-thong-gio",
+            "label": "gach-thong-gio",
+            "id": "6ab3635415b305519cd97501"
+          },
+          {
+            "doc": 15,
+            "url": "gach-thong-gio/gach-hoa-gom",
+            "label": "gach-thong-gio/gach-hoa-gom",
+            "id": "6ab3635415b305519cd97502"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:27:54.477Z",
+        "createdAt": "2026-09-23T05:27:49.518Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/gach-hoa-gom-gach-hoa-buoi-30-gom-3.jpg",
+      "externalGallery": [
+        {
+          "id": "6ab3643315b305519cd97531",
+          "url": "https://gomsudailong.vn/images/catalog/gach-hoa-gom-gach-hoa-buoi-30-gom.jpg"
+        }
+      ],
+      "externalHoverImageUrl": null,
+      "material": "Gốm tráng men",
+      "dimensions": "30 × 30 × 3 cm",
+      "description": "Gạch hoa bưởi 30 gốm tạo mảng thoáng có hoa văn cho tường rào, hiên và vách ngăn. Khổ 30 × 30 cm thuận tiện để xác định module mảng tường trước khi đặt sản xuất và thi công.",
+      "shortDescription": "Gạch hoa bưởi 30 gốm tạo mảng thoáng có hoa văn cho tường rào, hiên và vách ngăn. Khổ 30 × 30 cm thuận tiện để xác định module mảng tường trước khi đặt sản xuất và thi công.",
+      "specifications": [
+        {
+          "id": "6ab3643315b305519cd97532",
+          "label": "Kích thước",
+          "value": "30 × 30 × 3 cm"
+        },
+        {
+          "id": "6ab3643315b305519cd97533",
+          "label": "Chất liệu",
+          "value": "Gốm tráng men"
+        }
+      ],
+      "featured": true,
+      "order": 3,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:31:31.742Z",
+      "updatedAt": "2026-09-23T05:31:31.742Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 13,
+      "title": "Ngói âm dương 27 xanh đồng",
+      "code": "NAD27XD",
+      "slug": "ngoi-am-duong-27-xanh-dong",
+      "category": {
+        "id": 14,
+        "name": "Ngói âm dương sứ",
+        "slug": "ngoi-am-duong-su",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 2,
+        "visibility": "visible",
+        "parent": 7,
+        "breadcrumbs": [
+          {
+            "doc": 7,
+            "url": "ngoi-am-duong",
+            "label": "ngoi-am-duong",
+            "id": "6ab3634b15b305519cd974ff"
+          },
+          {
+            "doc": 14,
+            "url": "ngoi-am-duong/ngoi-am-duong-su",
+            "label": "ngoi-am-duong/ngoi-am-duong-su",
+            "id": "6ab3634b15b305519cd97500"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:27:43.975Z",
+        "createdAt": "2026-09-23T05:27:39.556Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/ngoi-am-duong-su-dav-0006.jpg",
+      "externalGallery": [
+        {
+          "id": "6ab3642c15b305519cd97528",
+          "url": "https://gomsudailong.vn/images/catalog/ngoi-am-duong-su-dav-0007.jpg"
+        },
+        {
+          "id": "6ab3642c15b305519cd97529",
+          "url": "https://gomsudailong.vn/images/catalog/ngoi-am-duong-su-dav-6224.jpg"
+        },
+        {
+          "id": "6ab3642c15b305519cd9752a",
+          "url": "https://gomsudailong.vn/images/catalog/ngoi-am-duong-su-dav-6234.jpg"
+        }
+      ],
+      "externalHoverImageUrl": null,
+      "material": "Sứ tráng men",
+      "dimensions": "27 cặp/m²",
+      "description": "Ngói âm dương 27 xanh đồng là lựa chọn sứ tráng men cho mái kiến trúc Việt cần màu men làm điểm nhấn. Hệ viên âm, viên dương và riềm cùng quy cách giúp chủ đầu tư trao đổi với đơn vị thi công trên một bộ thông số thống nhất.",
+      "shortDescription": "Ngói âm dương 27 xanh đồng là lựa chọn sứ tráng men cho mái kiến trúc Việt cần màu men làm điểm nhấn. Hệ viên âm, viên dương và riềm cùng quy cách giúp chủ đầu tư trao đổi với đơn vị thi công trên một bộ thông số thống nhất.",
+      "specifications": [
+        {
+          "id": "6ab3642c15b305519cd9752b",
+          "label": "Quy cách phủ mái",
+          "value": "27 cặp/m²"
+        },
+        {
+          "id": "6ab3642c15b305519cd9752c",
+          "label": "Ngói âm",
+          "value": "L180 × W190 mm; 0,9 kg"
+        },
+        {
+          "id": "6ab3642c15b305519cd9752d",
+          "label": "Ngói dương",
+          "value": "L155 × D8 mm; 0,6 kg"
+        },
+        {
+          "id": "6ab3642c15b305519cd9752e",
+          "label": "Ngói diềm",
+          "value": "5 cặp/m dài"
+        },
+        {
+          "id": "6ab3642c15b305519cd9752f",
+          "label": "Riềm âm",
+          "value": "L180 × W190 × D8 mm; 1,3 kg"
+        },
+        {
+          "id": "6ab3642c15b305519cd97530",
+          "label": "Riềm dương",
+          "value": "L155 × D8 mm; Ø95 mm; 0,9 kg"
+        }
+      ],
+      "featured": true,
+      "order": 2,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:31:24.661Z",
+      "updatedAt": "2026-09-23T05:31:24.661Z",
+      "imageStatus": "404"
+    },
+    {
+      "id": 12,
+      "title": "Ngói âm dương 27 gốm đỏ",
+      "code": "NAD27G",
+      "slug": "ngoi-am-duong-27-gom-do",
+      "category": {
+        "id": 13,
+        "name": "Ngói âm dương gốm",
+        "slug": "ngoi-am-duong-gom",
+        "description": null,
+        "image": null,
+        "icon": null,
+        "order": 1,
+        "visibility": "visible",
+        "parent": 7,
+        "breadcrumbs": [
+          {
+            "doc": 7,
+            "url": "ngoi-am-duong",
+            "label": "ngoi-am-duong",
+            "id": "6ab3634015b305519cd974fd"
+          },
+          {
+            "doc": 13,
+            "url": "ngoi-am-duong/ngoi-am-duong-gom",
+            "label": "ngoi-am-duong/ngoi-am-duong-gom",
+            "id": "6ab3634015b305519cd974fe"
+          }
+        ],
+        "updatedAt": "2026-09-23T05:27:35.008Z",
+        "createdAt": "2026-09-23T05:27:29.524Z"
+      },
+      "featuredImage": null,
+      "externalImageUrl": "https://gomsudailong.vn/images/catalog/ngoi-am-duong-gom-anh-1.jpg",
+      "externalGallery": [
+        {
+          "id": "6ab3642315b305519cd97521",
+          "url": "https://gomsudailong.vn/images/catalog/ngoi-am-duong-gom-ngoi-am-duong-dat-nung-co-lon.jpg"
+        }
+      ],
+      "externalHoverImageUrl": null,
+      "material": "Gốm tráng men",
+      "dimensions": "27 cặp/m²",
+      "description": "Ngói âm dương 27 gốm đỏ dành cho mái nhà truyền thống, nhà thờ họ và công trình cần nhịp mái rõ nét. Bộ ngói gồm viên âm, viên dương và riềm đồng bộ để xử lý phần mái, diềm và đường nóc theo cùng một ngôn ngữ vật liệu.",
+      "shortDescription": "Ngói âm dương 27 gốm đỏ dành cho mái nhà truyền thống, nhà thờ họ và công trình cần nhịp mái rõ nét. Bộ ngói gồm viên âm, viên dương và riềm đồng bộ để xử lý phần mái, diềm và đường nóc theo cùng một ngôn ngữ vật liệu.",
+      "specifications": [
+        {
+          "id": "6ab3642315b305519cd97522",
+          "label": "Quy cách phủ mái",
+          "value": "27 cặp/m²"
+        },
+        {
+          "id": "6ab3642315b305519cd97523",
+          "label": "Ngói âm",
+          "value": "L180 × W190 mm; 0,9 kg"
+        },
+        {
+          "id": "6ab3642315b305519cd97524",
+          "label": "Ngói dương",
+          "value": "L155 × D8 mm; 0,6 kg"
+        },
+        {
+          "id": "6ab3642315b305519cd97525",
+          "label": "Ngói diềm",
+          "value": "5 cặp/m dài"
+        },
+        {
+          "id": "6ab3642315b305519cd97526",
+          "label": "Riềm âm",
+          "value": "L180 × W190 × D8 mm; 1,3 kg"
+        },
+        {
+          "id": "6ab3642315b305519cd97527",
+          "label": "Riềm dương",
+          "value": "L155 × D8 mm; Ø95 mm; 0,9 kg"
+        }
+      ],
+      "featured": true,
+      "order": 1,
+      "_status": "published",
+      "createdAt": "2026-09-23T05:31:15.999Z",
+      "updatedAt": "2026-09-23T05:31:16.000Z",
+      "imageStatus": "404"
+    }
+  ]
+}

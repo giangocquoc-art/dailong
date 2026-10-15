@@ -1,0 +1,210 @@
+{
+  "createdAt": "2026-10-15",
+  "originalDeploymentId": "dpl_Am2mPAKbqbBczeGjdFTvVePyaYbA",
+  "originalDeploymentDate": "2026-09-23",
+  "sourceSite": "gomsudailong.vn",
+  "store": "Vercel Blob (existing project store)",
+  "files": 33,
+  "totalBytes": 95549114,
+  "integrityCheck": "Original bytes preserved, SHA256 calculated before upload; all 33 public blob URLs HEAD returned 200 with matching Content-Length and image/* Content-Type.",
+  "items": [
+    {
+      "path": "/images/catalog/12-manh-sanh-su-anh-man-hinh-2026-09-23-luc-08-53-54.png",
+      "bytes": 2968176,
+      "sha256": "a76e3679252f7850e083eafa8b815703a75f1e0f0a9a14d9cf7c7ff64258bed0",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/12-manh-sanh-su-anh-man-hinh-2026-09-23-luc-08-53-54.png"
+    },
+    {
+      "path": "/images/catalog/12-manh-sanh-su-anh-man-hinh-2026-09-23-luc-08-54-08.png",
+      "bytes": 2024187,
+      "sha256": "116c79d8eb264742fcc6c6cd885342d3d04889caee2bbfb68847cc68d26c63ac",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/12-manh-sanh-su-anh-man-hinh-2026-09-23-luc-08-54-08.png"
+    },
+    {
+      "path": "/images/catalog/ao-kim-dsc-5365-copy.jpg",
+      "bytes": 577223,
+      "sha256": "38665436f5320794b7adb29fb21b7e4a75078ed001072462fd6ed786e2f6bba3",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/ao-kim-dsc-5365-copy.jpg"
+    },
+    {
+      "path": "/images/catalog/ho-lo-chong-set-dsc-5359.jpg",
+      "bytes": 3768408,
+      "sha256": "013badef8860d224ec657a32dfba992e587c52a37fc137eabc75f8c7a8a14f40",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/ho-lo-chong-set-dsc-5359.jpg"
+    },
+    {
+      "path": "/images/catalog/ngoi-bo-noc-750-5242.jpg",
+      "bytes": 1952201,
+      "sha256": "1902d6d3af375fd9ccab94a6bd136d5939b7523aa02ab86f967dff6be79ad975",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/ngoi-bo-noc-750-5242.jpg"
+    },
+    {
+      "path": "/images/catalog/ngoi-bo-noc-750-5246.jpg",
+      "bytes": 1903710,
+      "sha256": "d0c376ffa83dfa5d70793fc77b278424c76804e7f347ff49ccff2d53f074d14f",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/ngoi-bo-noc-750-5246.jpg"
+    },
+    {
+      "path": "/images/catalog/nghe-su-a7500174.jpg",
+      "bytes": 3994880,
+      "sha256": "c12eb5b3f5974aa9ac3842d58664bae78c8726b7474363a4e89f2ad5d249e8b7",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/nghe-su-a7500174.jpg"
+    },
+    {
+      "path": "/images/catalog/nghe-gom-dsc-5388.jpg",
+      "bytes": 5442219,
+      "sha256": "b71e4144b0b107679b4716cd7a55b7258d6d65cb8c42842341879450984019fb",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/nghe-gom-dsc-5388.jpg"
+    },
+    {
+      "path": "/images/rong-phuong.jpg",
+      "bytes": 77801,
+      "sha256": "3fc55fc627749a131210cf0304ac4b1f55882a4a6cb24668a30ff9c50bcb189b",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/rong-phuong.jpg"
+    },
+    {
+      "path": "/images/rong-phuong-hover.png",
+      "bytes": 1838843,
+      "sha256": "13cac38337466ad6558301d3c39f2b722591d300924c8f5c6240664f5d81b0a8",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/rong-phuong-hover.png"
+    },
+    {
+      "path": "/images/catalog/rong-phuong-gom-dsc-5319.jpg",
+      "bytes": 2765654,
+      "sha256": "103d1432ca70a8e7eba6918e2f519999ec8822743d82dbc4358b264d6ae0fdae",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/rong-phuong-gom-dsc-5319.jpg"
+    },
+    {
+      "path": "/images/catalog/ngoi-van-mieu-su-pan-7470.jpg",
+      "bytes": 5215617,
+      "sha256": "7aac1a0fd0c2134413e7991fc31da0d0c2c95bb33904d7357eca8381c51688fb",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/ngoi-van-mieu-su-pan-7470.jpg"
+    },
+    {
+      "path": "/images/catalog/ngoi-van-mieu-su-pan-7471.jpg",
+      "bytes": 4317641,
+      "sha256": "76a1671014bd13dbc0fc48af605bbe0307251d67da712f04ddf0596e536110b4",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/ngoi-van-mieu-su-pan-7471.jpg"
+    },
+    {
+      "path": "/images/ngoi-van-mieu.jpg",
+      "bytes": 61695,
+      "sha256": "54f2a15d8c2f375d01e29641b3db98a9ba9f59adf8e01db248b405043ff865f7",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/ngoi-van-mieu.jpg"
+    },
+    {
+      "path": "/images/ngoi-van-mieu-hover.png",
+      "bytes": 2039865,
+      "sha256": "a525d1f78787eabb3b123565b84fd18dc08a6520ee3e7047184647b4f42257dc",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/ngoi-van-mieu-hover.png"
+    },
+    {
+      "path": "/images/catalog/lan-can-su-ban-sao-cua-dsc-8401.jpg",
+      "bytes": 5169871,
+      "sha256": "24ac92f3e75cd5b985d3f7cae3a4e901dfeeb0f7fff1c4609ee406955dee3def",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/lan-can-su-ban-sao-cua-dsc-8401.jpg"
+    },
+    {
+      "path": "/images/catalog/lan-can-su-lan-can-giot-len-57-nau-en.jpg",
+      "bytes": 3341835,
+      "sha256": "06d226b7b19265c91fbf434ca52f58acc6f5b03475773383474d450d3e564fc9",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/lan-can-su-lan-can-giot-len-57-nau-en.jpg"
+    },
+    {
+      "path": "/images/catalog/lan-can-gom-lan-can-gom.jpg",
+      "bytes": 62896,
+      "sha256": "75308f331b56f9891d8b0f52223d1fe19d682e6f4d05aa531c75ab8ebe4cca9a",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/lan-can-gom-lan-can-gom.jpg"
+    },
+    {
+      "path": "/images/catalog/6-gach-lat-gach-co-img-0424.jpg",
+      "bytes": 227360,
+      "sha256": "ba36949dd641f98b7e74bd04ae225b1879e43f3c9aa331defcc078e5dca59486",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/6-gach-lat-gach-co-img-0424.jpg"
+    },
+    {
+      "path": "/images/den-vuon.jpg",
+      "bytes": 43825,
+      "sha256": "3ccdee8d677bac9b4b76625b9eddad8de755f473c75f09dd2d68531efb57f840",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/den-vuon.jpg"
+    },
+    {
+      "path": "/images/den-vuon-hover.png",
+      "bytes": 2061685,
+      "sha256": "b362a6aafe3a991ffaf1410840e7db5f370c028958e74c65c776f7be46389931",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/den-vuon-hover.png"
+    },
+    {
+      "path": "/images/catalog/en-vuon-gom-pan-7441.jpg",
+      "bytes": 5523939,
+      "sha256": "ef3ea6064386b6615c92f8f6c392de1c606a1eec6071fbc10d993490c81f112c",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/en-vuon-gom-pan-7441.jpg"
+    },
+    {
+      "path": "/images/catalog/en-vuon-gom-pan-7445.jpg",
+      "bytes": 5708948,
+      "sha256": "36d8abaac6796bb94b6ec032f548332533854ba4ae0cc3968afe1a6681d6a5df",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/en-vuon-gom-pan-7445.jpg"
+    },
+    {
+      "path": "/images/catalog/gach-hoa-su-gach-hoa-buoi-30-xanh-ong-3.jpg",
+      "bytes": 4970501,
+      "sha256": "041ad54e093059d25d0ded25970ea74e2a26e7a6d8486f1ce8cef4560624bebb",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/gach-hoa-su-gach-hoa-buoi-30-xanh-ong-3.jpg"
+    },
+    {
+      "path": "/images/catalog/gach-hoa-su-gach-hoa-buoi-30-xanh-ong.jpg",
+      "bytes": 6260528,
+      "sha256": "23cbe76776c4a0fa64e8a7227ecad6a73eae38c4b43e9840a6212a55b363fd83",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/gach-hoa-su-gach-hoa-buoi-30-xanh-ong.jpg"
+    },
+    {
+      "path": "/images/catalog/gach-hoa-gom-gach-hoa-buoi-30-gom-3.jpg",
+      "bytes": 5438111,
+      "sha256": "7d6d2441cf786107bca3fb60b3a3bf437f6879920f1bcd688faeca00f14d6343",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/gach-hoa-gom-gach-hoa-buoi-30-gom-3.jpg"
+    },
+    {
+      "path": "/images/catalog/gach-hoa-gom-gach-hoa-buoi-30-gom.jpg",
+      "bytes": 4287117,
+      "sha256": "cf09cac32017cdb74096b8dd45d18d9d669b88f1a599e05615af04445e9a87e5",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/gach-hoa-gom-gach-hoa-buoi-30-gom.jpg"
+    },
+    {
+      "path": "/images/catalog/ngoi-am-duong-su-dav-0006.jpg",
+      "bytes": 2977561,
+      "sha256": "7fafccff48114571d279c9fb720b2381ffe8937c6b3ba552b1c286849bbe500c",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/ngoi-am-duong-su-dav-0006.jpg"
+    },
+    {
+      "path": "/images/catalog/ngoi-am-duong-su-dav-0007.jpg",
+      "bytes": 2884057,
+      "sha256": "0ebf36756b81ffa88d4832ae9d74524ca133dca2624823f917b2ac7cacae2652",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/ngoi-am-duong-su-dav-0007.jpg"
+    },
+    {
+      "path": "/images/catalog/ngoi-am-duong-su-dav-6224.jpg",
+      "bytes": 3820628,
+      "sha256": "6756ae1f01523f2f66b7e1fd45472015e4f5d65109e5ef26af67e75ec790419c",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/ngoi-am-duong-su-dav-6224.jpg"
+    },
+    {
+      "path": "/images/catalog/ngoi-am-duong-su-dav-6234.jpg",
+      "bytes": 3707904,
+      "sha256": "05e356b32838aabd53a2e7663e99a4735c11a380890ecd8bdc13e11700b4134c",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/ngoi-am-duong-su-dav-6234.jpg"
+    },
+    {
+      "path": "/images/catalog/ngoi-am-duong-gom-anh-1.jpg",
+      "bytes": 63293,
+      "sha256": "7f9d3e7aa9546e1777255b7b045f1eef192c35299a8c689652452e82d18a5755",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/ngoi-am-duong-gom-anh-1.jpg"
+    },
+    {
+      "path": "/images/catalog/ngoi-am-duong-gom-ngoi-am-duong-dat-nung-co-lon.jpg",
+      "bytes": 50935,
+      "sha256": "8c4874dd0cf50866dbf865df2c28a97b2b8c5310cbbc3cb17f17976a9f66cd9c",
+      "blobUrl": "https://wewoaj1xzedqy2c6.public.blob.vercel-storage.com/dailong-recovery-2026-10-15/images/catalog/ngoi-am-duong-gom-ngoi-am-duong-dat-nung-co-lon.jpg"
+    }
+  ]
+}

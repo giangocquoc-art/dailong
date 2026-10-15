@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   },
   description:
     "Rồng phượng, gạch thông gió, đèn vườn, lan can, ngói và gốm kiến trúc chế tác tại Bát Tràng.",
-  metadataBase: new URL("https://gomsudailong.com"),
+  metadataBase: new URL("https://gomsudailong.vn"),
   icons: {
     icon: "/logo-dai-long.png",
     shortcut: "/logo-dai-long.png",

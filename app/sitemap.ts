@@ -1,8 +1,25 @@
 import type { MetadataRoute } from "next";
-import { defaultProducts } from "@/lib/content";
+import { getProducts } from "@/lib/content";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://gomsudailong.com";
+// New published CMS products are included as the catalog changes.
+export const dynamic = "force-dynamic";
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const base = "https://gomsudailong.vn";
   const pages = ["", "/san-pham", "/du-an", "/gioi-thieu", "/lien-he"];
-  return [...pages.map((path) => ({ url: `${base}${path}`, changeFrequency: "weekly" as const, priority: path === "" ? 1 : 0.8 })), ...defaultProducts.map((product) => ({ url: `${base}/san-pham/${product.id}`, changeFrequency: "monthly" as const, priority: 0.7 }))];
+  const products = await getProducts();
+  const urls = new Set<string>();
+
+  for (const page of pages) {
+    urls.add(base + page);
+  }
+  for (const product of products) {
+    urls.add(base + "/san-pham/" + encodeURIComponent(product.id));
+  }
+
+  return Array.from(urls).map((url) => ({
+    url,
+    changeFrequency: "weekly" as const,
+    priority: url === base ? 1 : url.includes("/san-pham/") ? 0.7 : 0.8,
+  }));
 }

@@ -1,10 +1,8 @@
 import type { NextConfig } from "next";
 
-// This branch is deployed only as a Vercel visual review. The production site
-// continues to use its Cloudflare worker bindings and the Vinext build.
-const isDaiLongVercelPreview =
-  process.env.VERCEL === "1" &&
-  process.env.VERCEL_GIT_COMMIT_REF === "codex/dai-long-feedback-refresh";
+// Vercel has no Cloudflare Worker bindings. Use the existing empty preview shim
+// for all Vercel branches; the CMS recovery uses a separate read-only HTTP API.
+const isDaiLongVercelPreview = process.env.VERCEL === "1";
 
 const nextConfig: NextConfig = {
   ...(isDaiLongVercelPreview

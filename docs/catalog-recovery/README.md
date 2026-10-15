@@ -10,6 +10,8 @@
 - **14/14 ảnh gallery bổ sung cũng trả HTTP 404** (kiểm tra trực tiếp từng URL). Tổng cộng 30/33 đường dẫn ảnh lưu trong CMS bị lỗi 404.
 - CMS `/api/media` trả 0 bản ghi, ảnh catalog thuộc `/images/catalog/` vắng mặt trong nhánh Git đang triển khai. Không xóa, không sửa database/production.
 
+Các mã 404 trong bảng bên dưới là **tình trạng đường dẫn cũ trên production trước khi khôi phục**; URL dự phòng Blob tương ứng hiện trả 200 trên bản preview.
+
 ## Danh sách CMS & ảnh đại diện
 
 | # | Mã | Tên | HTTP ảnh | Cảnh báo |
@@ -47,18 +49,20 @@
 - `DL-NPT01` — Nghê phong thủy men rạn
 - `DL-DKN01` — Bò hoa chanh đôi men da lươn
 
-## Rủi ro bắt buộc xử lý trước khi phát hành
+## Trạng thái phục hồi ảnh và điều kiện phát hành
 
-1. Khôi phục **ảnh gốc** của ít nhất 16 sản phẩm CMS và các ảnh gallery đang thất lạc từ nguồn khách hàng, backup media hoặc hạ tầng lưu trữ cũ. Không thay bằng ảnh mặt hàng khác.
-2. Rà thủ công 3 cặp dùng chung ảnh (`RS-001`/`DL-RP01`, `NMHG`/`DL-NVM01`, `ĐTSXD`/`DL-DV01`): có thể là sản phẩm khác nhau nhưng ảnh đại diện dùng chung.
-3. Preview dùng adapter đọc CMS (không ghi) và gộp theo mã, slug, tên chính xác; kiểm tra giao diện, sản phẩm, SEO và API trước khi bật cờ trên production.
-4. Chỉ phát hành khi ảnh được kiểm tra HTTP 200 và khách xác nhận các mẫu trùng thực tế. Không tự động xóa sản phẩm CMS.
+1. **ĐÃ PHỤC HỒI:** 33/33 tệp ảnh gốc (19 ảnh đại diện + 14 gallery), tổng cộng **95.549.114 bytes**. Đọc từ deployment Vercel 23/09/2026 và chép nguyên byte vào **Vercel Blob hiện có của dự án**, namespace `dailong-recovery-2026-10-15`. Không dùng ảnh AI hay ảnh thay thế.
+2. **ĐÃ XÁC MINH:** HEAD cả 33 Blob URL trả HTTP 200, `Content-Length` khớp byte gốc, MIME `image/*`. Manifest SHA-256 của từng tệp: [`recovered-media-manifest-2026-10-15.json`](./recovered-media-manifest-2026-10-15.json).
+3. **ĐÃ TEST:** Bản preview trên nhánh `codex/dai-long-cms-catalog-recovery` đang hiển thị 29 mã (10 mặc định + 19 CMS), các URL CMS đã chuyển sang ảnh Blob; website chính **chưa thay đổi**.
+4. **CHỜ RÀ SOÁT NGHIỆP VỤ:** 3 cặp dùng chung ảnh (`RS-001`/`DL-RP01`, `NMHG`/`DL-NVM01`, `ĐTSXD`/`DL-DV01`) có thể là sản phẩm khác nhau; không tự động xóa/gộp nếu chưa xác nhận.
+5. **CHƯA PHÁT HÀNH:** Merge/promotion và cờ production `DAI_LONG_ENABLE_PAYLOAD_CATALOG=1` chưa được thực hiện. Cần kiểm tra ảnh trực quan và sự trùng mẫu thực tế trước khi đưa lên website chính.
 
 ## Thiết kế kỹ thuật trên nhánh kiểm thử
 
 - `lib/payload-catalog.ts`: đọc danh sách sản phẩm Payload qua API, lấy nhiều trang nếu cần; không ghi CMS.
 - `lib/content.ts`: chỉ dùng Payload trên nhánh `codex/dai-long-cms-catalog-recovery` hoặc khi `DAI_LONG_ENABLE_PAYLOAD_CATALOG=1` trong Vercel. Production hiện tại KHÔNG bật cờ.
 - `next.config.ts`: alias Cloudflare Worker bindings cho môi trường Vercel để preview biên dịch; Cloudflare Worker thực tế không thay đổi.
+- `lib/recovered-cms-media.ts`: ánh xạ **chỉ 33 URL ảnh được kiểm chứng** sang Vercel Blob; không ảnh hưởng ảnh mặc định, cũng không đổi ảnh sản phẩm CMS sẽ thêm về sau.
 - Giữ nguyên các trang JSX/CSS hiện tại. Có fallback 10 sản phẩm khi CMS không truy cập được.
 
 ## Phát hiện mới: bản deploy ngày 23/09/2026 còn giữ ảnh gốc
@@ -66,5 +70,5 @@
 - Đã truy tìm deployment Vercel production cũ `dpl_Am2mPAKbqbBczeGjdFTvVePyaYbA` (23/09/2026, nhánh `feature/admin-cms-builder`, commit lúc deploy `a9371c0cab010ed5880b241d7615efee5ffa1798`).
 - API Vercel xác nhận thư mục nguồn `src/public/images/catalog` của deployment này **còn 27 tệp**. Số này khớp chính xác 27 đường dẫn ảnh `/images/catalog/*` CMS đang tham chiếu và website mới trả 404; 3 tệp `*-hover.png` thuộc thư mục cha `src/public/images` cũng hiện diện.
 - Đã kiểm tra trực tiếp một số ảnh gốc qua URL của deployment cũ và nhận HTTP 200, như `ngoi-am-duong-gom-anh-1.jpg`, `ao-kim-dsc-5365-copy.jpg`, `ho-lo-chong-set-dsc-5359.jpg`, `ngoi-bo-noc-750-5242.jpg`, `gach-hoa-gom-gach-hoa-buoi-30-gom-3.jpg` và `den-vuon-hover.png`.
-- **Chưa sao chép tệp ảnh nhị phân về Git hoặc website mới**; các công cụ đọc deployment hiện tại giới hạn kích thước/độ sâu phản hồi, và một số tệp ảnh lớn bị chặn khi truy xuất qua kết nối. Không nên xem đường dẫn `.vercel.app` cũ là CDN công khai ổn định vì có Deployment Protection.
-- Dữ liệu CMS 19 bản ghi vẫn an toàn. **Production vẫn giữ 10 sản phẩm; chỉ bản preview phục hồi đủ tên của 29 bản ghi** và cần bổ sung đúng tệp ảnh trước khi xuất bản.
+- **ĐÃ KHẮC PHỤC:** Tất cả 33 ảnh nhị phân đã được sao chép nguyên vẹn sang Vercel Blob. Ảnh được phục vụ trực tiếp từ Blob URL riêng, không phụ thuộc URL `.vercel.app` cũ có Deployment Protection.
+- Dữ liệu CMS 19 bản ghi vẫn an toàn. **Production vẫn giữ 10 sản phẩm; bản preview phục hồi 29 mã và ảnh CMS đã phục hồi đầy đủ.**

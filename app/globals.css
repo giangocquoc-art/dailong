@@ -194,9 +194,9 @@
 .product-info-card-copy { padding: 20px 22px 23px; }
 .product-info-card-copy h3 { color: #1f417d; font-family: inherit; font-size: 1.2rem; font-weight: 600; }
 .product-info-card-copy p { margin-top: 8px; color: #6b665c; font-size: .9375rem; }
-/* Roof body and eaves: two explanatory illustrations, matched to the reference layout. */
+/* Roof body and eaves: original owner's photo-reference composition, not the former flat SVG illustrations. */
 .roof-construction-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
-.roof-construction-card > svg { display: block; width: 100%; height: auto; aspect-ratio: 1.65; background: #f0ede5; }
+.roof-construction-card > img { display: block; width: 100%; aspect-ratio: 1.6; object-fit: contain; background: #f0ede5; }
 .roof-construction-card .product-info-card-copy { padding: 17px 20px 20px; }
 .product-specific-specs .product-spec-table th:first-child { width: 40%; }
 .product-specific-specs .product-spec-table tbody td { text-align: left; }

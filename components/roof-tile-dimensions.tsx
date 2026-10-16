@@ -20,31 +20,13 @@ export function RoofTileConstruction({ lang = "vi" }: { lang?: Language }) {
   ];
   return <div className="roof-construction-grid">
     {items.map((item) => <article className="product-info-card roof-construction-card" key={item.id}>
-      <svg viewBox="0 0 480 290" role="img" aria-label={textFor(lang,
-        "Sơ đồ minh họa vị trí ngói âm và ngói dương, không theo tỷ lệ",
-        "Illustrative diagram of yin and yang roof tiles, not to scale")}>
-        <defs>
-          <linearGradient id={`roof-tile-glaze-${item.id}`} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#27465a"/>
-            <stop offset="48%" stopColor="#698a83"/>
-            <stop offset="100%" stopColor="#182f42"/>
-          </linearGradient>
-          <linearGradient id={`roof-tile-shadow-${item.id}`} x1="0" y1="0" x2="0.9" y2="1">
-            <stop offset="0%" stopColor="#5b7d80"/>
-            <stop offset="100%" stopColor="#1b2f3e"/>
-          </linearGradient>
-        </defs>
-        <rect width="480" height="290" fill="#f0ede5"/>
-        <g transform={item.id === "eaves" ? "translate(9 9) rotate(-6 240 150)" : undefined}>
-          <path d="M72 105 Q151 194 238 121 Q311 193 408 101 L392 170 Q312 253 238 182 Q164 246 88 173 Z"
-            fill={`url(#roof-tile-glaze-${item.id})`} stroke="#344751" strokeWidth="5"/>
-          <path d="M72 105 Q145 180 238 121 Q323 186 408 101" fill="none" stroke="#9cad96" strokeWidth="5"/>
-          <path d="M205 171 L205 107 Q216 54 243 57 Q276 57 283 111 L280 177 Q250 124 205 171 Z"
-            fill={`url(#roof-tile-shadow-${item.id})`} stroke="#213648" strokeWidth="5"/>
-          <path d="M211 165 Q243 111 274 167" fill="none" stroke="#e5e3d8" strokeWidth="9" strokeLinecap="round"/>
-          <path d="M89 173 Q166 239 237 182 Q311 248 392 170" fill="none" stroke="#b6a17c" strokeWidth={item.id === "eaves" ? "10" : "4"}/>
-        </g>
-      </svg>
+      <img
+        src={item.id === "body" ? "/images/roof/than-mai-from-reference.webp" : "/images/roof/diem-mai-from-reference.webp"}
+        alt={textFor(lang,
+          item.id === "body" ? "Hình ảnh ngói âm dương thân mái theo ảnh tham khảo người dùng" : "Hình ảnh ngói âm dương diềm mái theo ảnh tham khảo người dùng",
+          item.id === "body" ? "Yin-yang roof body tiles from owner's reference image" : "Yin-yang eaves tiles from owner's reference image")}
+        width={631} height={394} loading="lazy" decoding="async"
+      />
       <div className="product-info-card-copy">
         <h3>{item.title}</h3><p>{item.copy}</p>
       </div>

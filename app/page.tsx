@@ -1,9 +1,9 @@
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
 import { SiteShell } from "@/components/site-shell";
-import { SiteButton } from "@/components/site-button";
 import { Consultation } from "@/components/consultation";
+import { HeroSlider } from "@/components/hero-slider";
 import { catalogHierarchy, getProducts, getSettings, projects } from "@/lib/content";
 import { contentText, currentPageHref, getLanguage, textFor, withLang, zaloHref, type PageProps } from "@/lib/presentation";
 
@@ -18,25 +18,7 @@ export default async function Home({ searchParams }: PageProps) {
     ...products.map((p) => p.category),
   ].filter((category, index, all) => all.indexOf(category) === index);
   return <SiteShell settings={settings} lang={lang} currentHref={currentPageHref("/", query)}>
-    <section className="hero">
-      <div className="container-site hero-grid">
-        <div className="hero-copy">
-          <p className="eyebrow">{contentText(settings.heroKicker, lang)}</p>
-          <h1 className="hero-title">{contentText(settings.heroTitle, lang)}</h1>
-          <p className="hero-description">{contentText(settings.heroDescription, lang)}</p>
-          <div className="button-row">
-            <SiteButton><Link href={withLang("/san-pham", lang)}>{textFor(lang, "Khám phá sản phẩm", "Explore products")}<ArrowRight aria-hidden="true" /></Link></SiteButton>
-            <SiteButton tone="outline"><a href={zaloHref(settings.phone)} target="_blank" rel="noopener noreferrer">{textFor(lang, "Tư vấn qua Zalo", "Chat on Zalo")}</a></SiteButton>
-          </div>
-          <p className="hero-origin"><MapPin size={17} aria-hidden="true" />{contentText(settings.address, lang)}</p>
-        </div>
-        <figure className="hero-visual">
-          <img className="hero-image" src={settings.heroImageUrl} alt={textFor(lang, "Cận cảnh ngói gốm men xanh và phụ kiện mái nung đất", "Close-up of celadon roof tiles and terracotta roof ornaments")} width={700} height={600} fetchPriority="high" />
-          <div className="hero-inset"><img src="/images/ngoi-van-mieu.jpg" alt={textFor(lang, "Cận cảnh sắc men xanh ngói Văn Miếu", "Close-up of teal-glazed temple roof tiles")} width={160} height={160} /></div>
-          <figcaption>{textFor(lang, "Đất, lửa và sắc men Việt.", "Clay, fire and Vietnamese glaze.")}</figcaption>
-        </figure>
-      </div>
-    </section>
+    <HeroSlider lang={lang} title={contentText(settings.heroTitle, lang)} />
     <section className="category-section" aria-labelledby="categories-title">
       <div className="container-site">
         <div className="category-heading"><h2 id="categories-title">{textFor(lang, "Tìm theo dòng sản phẩm", "Browse by collection")}</h2></div>

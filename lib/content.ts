@@ -437,17 +437,27 @@ export const catalogHierarchy: { name: string; children: string[] }[] = [
   { name: "Ngói âm dương", children: ["Ngói âm dương sứ", "Ngói âm dương gốm"] },
   { name: "Ngói văn miếu", children: ["Ngói văn miếu sứ", "Ngói văn miếu gốm"] },
   { name: "Gạch thông gió", children: ["Gạch thông gió sứ", "Gạch thông gió gốm"] },
-  { name: "Rồng - phượng", children: ["Rồng - phượng sứ", "Rồng - phượng gốm"] },
   { name: "Lan can", children: ["Lan can sứ", "Lan can gốm"] },
   { name: "Đèn vườn", children: ["Đèn vườn gốm", "Đèn vườn sứ"] },
   { name: "Nghê phong thủy", children: ["Nghê gốm", "Nghê sứ"] },
-  { name: "Phụ kiện mái", children: ["Ngói bò nóc", "Hồ lô chống sét", "Đao - kìm"] },
+  { name: "Phụ kiện mái", children: ["Ngói bò nóc", "Hồ lô chống sét", "Đao - kìm", "Rồng - phượng"] },
   { name: "Gạch lát - Gạch cổ", children: [] },
   { name: "Mảnh sành sứ", children: [] },
   // Preserve existing gạch trang trí / gạch hoa records not named in the
   // supplied hierarchy, rather than silently hiding them.
   { name: "Gạch trang trí", children: ["Gạch hoa sứ", "Gạch hoa gốm"] },
 ];
+
+// Display-only grouping: keep the original category and material variant in the CMS.
+export function catalogParentCategory(category: string): string {
+  return category === "Rồng - phượng" || category === "Rồng phượng" ? "Phụ kiện mái" : category;
+}
+
+export function catalogProductSubcategory(product: Pick<Product, "category" | "subcategory">): string | undefined {
+  return product.category === "Rồng - phượng" || product.category === "Rồng phượng"
+    ? "Rồng - phượng"
+    : product.subcategory;
+}
 
 export const projects = [
   {

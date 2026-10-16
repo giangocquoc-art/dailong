@@ -6,7 +6,7 @@ import { ProductCard } from "@/components/product-card";
 import { RoofTileConstruction, RoofTileDimensions } from "@/components/roof-tile-dimensions";
 import { SiteShell } from "@/components/site-shell";
 import { SiteButton } from "@/components/site-button";
-import { getProductById, getProducts, getSettings } from "@/lib/content";
+import { catalogParentCategory, catalogProductSubcategory, getProductById, getProducts, getSettings } from "@/lib/content";
 import { contentText, currentPageHref, formatPhone, getLanguage, phoneHref, textFor, withLang, zaloHref, type PageProps } from "@/lib/presentation";
 
 type DetailProps = PageProps & { params: Promise<{ id: string }> };
@@ -22,6 +22,8 @@ export default async function ProductDetail({ params, searchParams }: DetailProp
   const product = allProducts.find((p) => p.id === id) ?? await getProductById(id);
   if (!product) notFound();
   const lang = getLanguage(query.lang);
+  const parentCategory = catalogParentCategory(product.category);
+  const childCategory = catalogProductSubcategory(product);
   const related = allProducts.filter((p) => p.id !== id && p.category === product.category);
   const relatedProducts = [...related, ...allProducts.filter((p) => p.id !== id && p.category !== product.category)].slice(0, 3);
   const gallery = Array.from(new Set([product.imageUrl, ...product.images])).filter(Boolean);
@@ -33,7 +35,7 @@ export default async function ProductDetail({ params, searchParams }: DetailProp
   );
   return <SiteShell settings={settings} lang={lang} currentHref={currentPageHref("/san-pham/" + id, query)}>
     <section className="section"><div className="container-site">
-      <nav className="breadcrumbs" aria-label={textFor(lang, "Đường dẫn trang", "Breadcrumb")}><Link href={withLang("/san-pham", lang)} className="text-link"><ArrowLeft aria-hidden="true" />{textFor(lang, "Bộ sưu tập sản phẩm", "Product collection")}</Link><span aria-hidden="true">/</span><Link href={withLang("/san-pham?danh-muc=" + encodeURIComponent(product.category), lang)}>{contentText(product.category, lang)}</Link>{product.subcategory && <><span aria-hidden="true">/</span><Link href={withLang("/san-pham?danh-muc=" + encodeURIComponent(product.category) + "&phan-loai=" + encodeURIComponent(product.subcategory), lang)}>{contentText(product.subcategory, lang)}</Link></>}</nav>
+      <nav className="breadcrumbs" aria-label={textFor(lang, "Đường dẫn trang", "Breadcrumb")}><Link href={withLang("/san-pham", lang)} className="text-link"><ArrowLeft aria-hidden="true" />{textFor(lang, "Bộ sưu tập sản phẩm", "Product collection")}</Link><span aria-hidden="true">/</span><Link href={withLang("/san-pham?danh-muc=" + encodeURIComponent(parentCategory), lang)}>{contentText(parentCategory, lang)}</Link>{childCategory && <><span aria-hidden="true">/</span><Link href={withLang("/san-pham?danh-muc=" + encodeURIComponent(parentCategory) + "&phan-loai=" + encodeURIComponent(childCategory), lang)}>{contentText(childCategory, lang)}</Link></>}</nav>
       <div className="detail-grid">
         <div className="detail-gallery">
           <div className="detail-photo"><img src={product.imageUrl} alt={contentText(product.title, lang)} width={900} height={900} fetchPriority="high" /></div>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
 import { SiteShell } from "@/components/site-shell";
 import { SiteButton } from "@/components/site-button";
-import { catalogHierarchy, getProducts, getSettings } from "@/lib/content";
+import { catalogHierarchy, catalogParentCategory, catalogProductSubcategory, getProducts, getSettings } from "@/lib/content";
 import { contentText, currentPageHref, getLanguage, textFor, withLang, type PageProps } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
@@ -17,17 +17,24 @@ export default async function ProductsPage({ searchParams }: PageProps) {
   const lang = getLanguage(query.lang);
   const oldCategoryAliases: Record<string, string> = { "Rồng phượng": "Rồng - phượng", "Đao - Kìm nóc": "Phụ kiện mái", "Gạch lát - gạch cổ": "Gạch lát - Gạch cổ" };
   const requestedCategory = typeof query["danh-muc"] === "string" ? query["danh-muc"] : undefined;
-  const selected = requestedCategory ? oldCategoryAliases[requestedCategory] ?? requestedCategory : undefined;
+  const legacyDragonCategory = requestedCategory === "Rồng - phượng" || requestedCategory === "Rồng phượng";
+  const selected = requestedCategory ? catalogParentCategory(oldCategoryAliases[requestedCategory] ?? requestedCategory) : undefined;
   const requestedSubcategory = typeof query["phan-loai"] === "string" ? query["phan-loai"] : undefined;
-  const selectedSubcategory = selected && catalogHierarchy.find((item) => item.name === selected)?.children.includes(requestedSubcategory ?? "")
+  const selectedSubcategory = legacyDragonCategory
+    ? "Rồng - phượng"
+    : selected && catalogHierarchy.find((item) => item.name === selected)?.children.includes(requestedSubcategory ?? "")
+      ? requestedSubcategory : undefined;
+  // Existing bookmarks with a ceramic/porcelain dragon filter still work.
+  const legacyDragonVariant = legacyDragonCategory && ["Rồng - phượng sứ", "Rồng - phượng gốm"].includes(requestedSubcategory ?? "")
     ? requestedSubcategory : undefined;
   const visible = products.filter((product) =>
-    (!selected || product.category === selected) &&
-    (!selectedSubcategory || product.subcategory === selectedSubcategory)
+    (!selected || catalogParentCategory(product.category) === selected) &&
+    (!selectedSubcategory || catalogProductSubcategory(product) === selectedSubcategory) &&
+    (!legacyDragonVariant || product.subcategory === legacyDragonVariant)
   );
   const knownCategories = new Set(catalogHierarchy.map((item) => item.name));
   const categoryItems = [...catalogHierarchy,
-    ...Array.from(new Set(products.map((p) => p.category)))
+    ...Array.from(new Set(products.map((p) => catalogParentCategory(p.category))))
       .filter((category) => !knownCategories.has(category))
       .map((name) => ({ name, children: [] as string[] }))];
   const categoryHref = (category: string, subcategory?: string) =>
@@ -45,11 +52,11 @@ export default async function ProductsPage({ searchParams }: PageProps) {
           <Link className="catalog-nav-all" href={withLang("/san-pham", lang)} aria-current={!selected ? "page" : undefined}><span>{textFor(lang, "Tất cả sản phẩm", "All products")}</span><small>{products.length}</small></Link>
           {categoryItems.map((group) => <div className="catalog-nav-group" key={group.name}>
             <Link className="catalog-nav-parent" href={categoryHref(group.name)} aria-current={selected === group.name && !selectedSubcategory ? "page" : undefined}>
-              <span>{contentText(group.name, lang)}</span><small>{products.filter((p) => p.category === group.name).length}</small>
+              <span>{contentText(group.name, lang)}</span><small>{products.filter((p) => catalogParentCategory(p.category) === group.name).length}</small>
             </Link>
             {group.children.length > 0 && <div className="catalog-subnav">
               {group.children.map((subcategory) => <Link key={subcategory} href={categoryHref(group.name, subcategory)} aria-current={selectedSubcategory === subcategory && selected === group.name ? "page" : undefined}>
-                <span>{contentText(subcategory, lang)}</span><small>{products.filter((p) => p.category === group.name && p.subcategory === subcategory).length}</small>
+                <span>{contentText(subcategory, lang)}</span><small>{products.filter((p) => catalogParentCategory(p.category) === group.name && catalogProductSubcategory(p) === subcategory).length}</small>
               </Link>)}
             </div>}
           </div>)}

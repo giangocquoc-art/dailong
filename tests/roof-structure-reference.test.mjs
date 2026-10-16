@@ -22,6 +22,9 @@ test("roof structure and measurements retain both cards and all original L/M/S l
     ),
   );
   assert.equal((html.match(/roof-construction-card/g) ?? []).length, 2);
+  assert.match(html, /\/images\/roof\/than-mai-from-reference\.webp/);
+  assert.match(html, /\/images\/roof\/diem-mai-from-reference\.webp/);
+  assert.equal((html.match(/class="product-info-card roof-construction-card"/g) ?? []).length, 2);
   assert.equal((html.match(/class="roof-size-card"/g) ?? []).length, 3);
   assert.match(html, /Thân mái: Ngói âm và Ngói dương/);
   assert.match(html, /Diềm mái: Diềm âm và Diềm dương/);

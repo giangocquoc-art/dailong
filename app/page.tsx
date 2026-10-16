@@ -4,7 +4,7 @@ import { ProductCard } from "@/components/product-card";
 import { SiteShell } from "@/components/site-shell";
 import { Consultation } from "@/components/consultation";
 import { HeroSlider } from "@/components/hero-slider";
-import { catalogHierarchy, getProducts, getSettings, projects } from "@/lib/content";
+import { catalogHierarchy, catalogParentCategory, getProducts, getSettings, projects } from "@/lib/content";
 import { contentText, currentPageHref, getLanguage, textFor, withLang, zaloHref, type PageProps } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
@@ -15,7 +15,7 @@ export default async function Home({ searchParams }: PageProps) {
   const featured = [...products.filter((p) => p.featured), ...products.filter((p) => !p.featured)].slice(0, 6);
   const categoryItems = [
     ...catalogHierarchy.map((item) => item.name),
-    ...products.map((p) => p.category),
+    ...products.map((p) => catalogParentCategory(p.category)),
   ].filter((category, index, all) => all.indexOf(category) === index);
   return <SiteShell settings={settings} lang={lang} currentHref={currentPageHref("/", query)}>
     <HeroSlider lang={lang} title={contentText(settings.heroTitle, lang)} />
@@ -23,7 +23,8 @@ export default async function Home({ searchParams }: PageProps) {
       <div className="container-site">
         <div className="category-heading"><h2 id="categories-title">{textFor(lang, "Tìm theo dòng sản phẩm", "Browse by collection")}</h2></div>
         <div className="category-grid">{categoryItems.map((category) => {
-          const item = products.find((product) => product.category === category);
+          const item = products.find((product) => product.category === category)
+            ?? products.find((product) => catalogParentCategory(product.category) === category);
           if (!item) return null;
           return <Link className="category-tile" key={category} href={withLang("/san-pham?danh-muc=" + encodeURIComponent(category), lang)}>
             <div className="category-image"><img src={item.imageUrl} alt="" width={120} height={120} loading="lazy" decoding="async" /></div><span>{contentText(category, lang)}</span>
